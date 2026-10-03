@@ -24,14 +24,13 @@ The rest of the page has four parts:
 - **Order flow:** shown as a store receipt.
 - **Contact form:** it opens the visitor's email app.
 
-The footer names the parent company, Yuki Security (Kabushiki Kaisha Yuki). The whole site is in Japanese and English, with a 日本語 / EN switch. It starts in the visitor's browser language and remembers their choice.
+The footer and contact section credit the parent company, Yuki Security (株式会社裕輝 / Yuki Co., Ltd.), with a link to https://yuki-security.com/. The whole site is in Japanese and English, with a 日本語 / EN switch. It starts in the visitor's browser language and remembers their choice.
 
 **Edit before going live**
 
 | what | where |
 |---|---|
 | Contact email address (currently a placeholder) | `CONTACT_EMAIL` in `src/site/store.js` |
-| Parent company's registered name (株式会社ユキ / Kabushiki Kaisha Yuki) | footer in `index.html` |
 | Yukizo's speech-bubble lines | `LINES` in `src/site/store.js` |
 | Page copy | `index.html`: every text exists as `<span lang="ja">` + `<span lang="en">` |
 | Images | `public/img/`, converted from the design bundle's uploads |
