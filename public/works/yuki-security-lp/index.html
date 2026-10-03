@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUKI</title>
+    <meta name="description" content="圧倒的なプロフェッショナリズム。地域密着型・即日対応の警備会社。">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-follower" class="custom-cursor-follower"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Background Huge Typography (Parallax) -->
+    <div class="bg-typography" id="bg-typo">PROTECT</div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__inner">
+            <h1 class="header__logo">
+                <span class="logo-ja lang-ja">株式会社裕輝</span>
+                <span class="logo-en lang-en">YUKI CO., LTD.</span>
+            </h1>
+
+            <div class="header__controls">
+                <div class="lang-switch">
+                    <button class="lang-btn is-active" data-lang="ja">JP</button>
+                    <span class="lang-divider">/</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <div class="header__nav-btn">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero__image-wrapper parallax-img">
+                <video src="assets/yuki.mp4" poster="assets/poster.jpg" autoplay loop muted playsinline
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"></video>
+                <div class="hero__bg"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background-image: none;">
+                </div>
+                <div class="hero__glitch-effect"></div>
+            </div>
+
+            <div class="hero__content">
+                <p class="hero__subtitle reveal-text">
+                    <span class="lang-ja">地域を守るプロフェッショナル</span>
+                    <span class="lang-en">LOCAL SECURITY PROFESSIONALS</span>
+                </p>
+                <h2 class="hero__title">
+                    <span class="lang-ja">
+                        <span class="reveal-text">私たちが利用する「道」<br></span>
+                        <span class="reveal-text highlight-neon">ＬＩＮＥ</span><span class="reveal-text">を安全に守る。</span>
+                    </span>
+                    <span class="lang-en">
+                        <span class="reveal-text">PROTECTING THE </span><span
+                            class="reveal-text highlight-neon">LINES</span><br>
+                        <span class="reveal-text">OF OUR DAILY LIVES.</span>
+                    </span>
+                </h2>
+                <div class="hero__actions reveal-fade">
+                    <a href="#contact" class="btn btn--solid">
+                        <span class="lang-ja">無料相談・お見積り</span>
+                        <span class="lang-en">FREE CONSULTATION</span>
+                        <span class="arrow">→</span>
+                    </a>
+                    <a href="#line" class="btn btn--neon">
+                        <span class="lang-ja">LINE で相談する</span>
+                        <span class="lang-en">CONTACT VIA LINE</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strengths Section -->
+        <section class="strengths">
+            <div class="container">
+                <div class="section-header reveal-fade">
+                    <h2 class="section-title">STRENGTHS</h2>
+                    <p class="section-ja">
+                        <span class="lang-ja">我々の圧倒的強み</span>
+                        <span class="lang-en">OUR STRENGTHS</span>
+                    </p>
+                </div>
+
+                <div class="strengths__grid">
+                    <!-- Item 1 -->
+                    <div class="strength-card reveal-slide-up">
+                        <div class="strength-card__num">01</div>
+                        <h3 class="strength-card__title">
+                            <span class="lang-ja">即日対応<br>SPEED</span>
+                            <span class="lang-en">RAPID<br>RESPONSE</span>
+                        </h3>
+                        <p class="strength-card__desc">
+                            <span class="lang-ja">急な人員不足にもスピーディに対応。最短即日で警備員を手配する機動力。</span>
+                            <span class="lang-en">Quickly responding to sudden staff shortages. Rapid deployment
+                                available on the same day.</span>
+                        </p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="strength-card reveal-slide-up" style="transition-delay: 0.1s;">
+                        <div class="strength-card__num">02</div>
+                        <h3 class="strength-card__title">
+                            <span class="lang-ja">地域密着<br>LOCAL</span>
+                            <span class="lang-en">LOCAL<br>TRUST</span>
+                        </h3>
+                        <p class="strength-card__desc">
+                            <span class="lang-ja">地域に根ざした活動で、周辺環境や住民に配慮した丁寧かつ確実な警備。</span>
+                            <span class="lang-en">Community-based operations ensuring careful and reliable security with
+                                full respect for local environments.</span>
+                        </p>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="strength-card reveal-slide-up" style="transition-delay: 0.2s;">
+                        <div class="strength-card__num">03</div>
+                        <h3 class="strength-card__title">
+                            <span class="lang-ja">高品質<br>QUALITY</span>
+                            <span class="lang-en">HIGH<br>QUALITY</span>
+                        </h3>
+                        <p class="strength-card__desc">
+                            <span class="lang-ja">法定教育だけでなく、現場に即した実践的で過酷な研修を受けたプロフェッショナル。</span>
+                            <span class="lang-en">Professionals trained not only by law but through rigorous, practical
+                                on-site scenarios.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-header reveal-fade">
+                    <h2 class="section-title">SERVICES</h2>
+                    <p class="section-ja">
+                        <span class="lang-ja">提供するミッション</span>
+                        <span class="lang-en">OUR SERVICES</span>
+                    </p>
+                </div>
+
+                <div class="services__list">
+                    <!-- Service 1 -->
+                    <div class="service-item reveal-fade">
+                        <div class="service-item__img-container" data-speed="-0.1">
+                            <div class="service-item__img"
+                                style="background-image: url('assets/traffic_control_1778475751174.png');"></div>
+                            <div class="service-item__overlay">TRAFFIC</div>
+                        </div>
+                        <div class="service-item__content">
+                            <h3 class="service-item__title">
+                                <span class="lang-ja">交通誘導警備</span>
+                                <span class="lang-en">Traffic Control</span>
+                            </h3>
+                            <p class="service-item__desc">
+                                <span class="lang-ja">工事現場や駐車場での車両・歩行者の安全で円滑な誘導。一瞬の油断も許さない確実なオペレーション。</span>
+                                <span class="lang-en">Ensuring the safe and smooth guidance of vehicles and pedestrians
+                                    at construction sites and parking lots. Flawless operations with zero tolerance for
+                                    errors.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-item reverse reveal-fade">
+                        <div class="service-item__img-container" data-speed="-0.1">
+                            <div class="service-item__img" style="background-image: url('assets/IMG_7012.JPG');"></div>
+                            <div class="service-item__overlay">EVENT</div>
+                        </div>
+                        <div class="service-item__content">
+                            <h3 class="service-item__title">
+                                <span class="lang-ja">イベント警備</span>
+                                <span class="lang-en">Event Security</span>
+                            </h3>
+                            <p class="service-item__desc">
+                                <span class="lang-ja">巨大な群衆をコントロールする。雑踏警備、人員整理、あらゆる事故を未然に防ぐ高度な戦略。</span>
+                                <span class="lang-en">Controlling massive crowds. Implementing advanced strategies for
+                                    crowd control, staff coordination, and total accident prevention.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-item reveal-fade">
+                        <div class="service-item__img-container" data-speed="-0.1">
+                            <div class="service-item__img" style="background-image: url('assets/IMG_6997.JPG');"></div>
+                            <div class="service-item__overlay">FACILITY</div>
+                        </div>
+                        <div class="service-item__content">
+                            <h3 class="service-item__title">
+                                <span class="lang-ja">施設警備</span>
+                                <span class="lang-en">Facility Security</span>
+                            </h3>
+                            <p class="service-item__desc">
+                                <span class="lang-ja">オフィスビルや商業施設の絶対的防衛ライン。巡回・出入管理により防犯・防災を徹底する。</span>
+                                <span class="lang-en">The absolute line of defense for office buildings and commercial
+                                    facilities. Thorough crime and disaster prevention through strict patrolling and
+                                    access control.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recruit Section (Brutalist block) -->
+        <section class="recruit" id="recruit">
+            <div class="container">
+                <div class="recruit__box reveal-fade" id="apply">
+                    <div class="recruit__content">
+                        <span class="recruit__badge">RECRUITMENT</span>
+                        <h2 class="recruit__title">WE NEED<br>YOUR POWER</h2>
+                        <ul class="recruit__benefits">
+                            <li>
+                                <span>01.</span>
+                                <span class="lang-ja">未経験からのプロフェッショナル育成</span>
+                                <span class="lang-en">Comprehensive training from beginner to professional</span>
+                            </li>
+                            <li>
+                                <span>02.</span>
+                                <span class="lang-ja">即金性（日払い・週払い対応）</span>
+                                <span class="lang-en">Fast payouts (Daily or weekly payments available)</span>
+                            </li>
+                            <li>
+                                <span>03.</span>
+                                <span class="lang-ja">柔軟な出撃（週1日〜、WワークOK）</span>
+                                <span class="lang-en">Flexible shifts (From 1 day a week, side jobs welcome)</span>
+                            </li>
+                        </ul>
+                        <a href="#apply" class="btn btn--block">JOIN US NOW <span class="arrow">→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company & Map -->
+        <section class="company" id="contact">
+            <div class="container">
+                <div class="company__inner reveal-fade">
+                    <div class="company__info">
+                        <h2 class="section-title">COMPANY</h2>
+                        <ul class="company__list">
+                            <li>
+                                <span class="label">COMPANY NAME</span>
+                                <span class="value">
+                                    <span class="lang-ja">株式会社裕輝</span>
+                                    <span class="lang-en">Yuki Co., Ltd.</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="label">CEO</span>
+                                <span class="value">
+                                    <span class="lang-ja">柿本 淳</span>
+                                    <span class="lang-en">Jun Kakimoto</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="label">BUSINESS</span>
+                                <span class="value">
+                                    <span class="lang-ja">警備業</span>
+                                    <span class="lang-en">Security Services</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="label">EMPLOYEES</span>
+                                <span class="value">
+                                    <span class="lang-ja">20名</span>
+                                    <span class="lang-en">20 Employees</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="label">LOCATION</span>
+                                <span class="value">
+                                    <span class="lang-ja">〒658-0052<br>兵庫県神戸市東灘区住吉東町1-2-18</span>
+                                    <span class="lang-en">1-2-18 Sumiyoshi Higashimachi, Higashinada-ku, Kobe, Hyogo
+                                        658-0052, JP</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="label">PHONE</span>
+                                <span class="value">078-891-7210</span>
+                            </li>
+                            <li>
+                                <span class="label">BENEFITS</span>
+                                <span class="value">
+                                    <span class="lang-ja">交通費全額支給 / 社会保険完備</span>
+                                    <span class="lang-en">Fully Covered Transportation / Comprehensive Social
+                                        Insurance</span>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="label">WEBSITE</span>
+                                <span class="value"><a href="https://yuki-security.com/" target="_blank"
+                                        style="color: inherit; text-decoration: underline;">https://yuki-security.com/</a></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="company__map-wrapper">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3995954605955!2d135.2638891152637!3d34.721453280434496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000f3f9828e833f%3A0x6b4f7a79f329971c!2z44CSNjU4LTAwNTIg5YW15bqr55yM56We5oi45biC5p2x546L5Yy65L2P5ZCJ5p2x55S677yR77yS77yR77yW!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__logo">YUKI CO., LTD.</p>
+            <p class="footer__copy">&copy; 2026 YUKI CO., LTD. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Fixed Bottom Bar (Solid, brutalist) -->
+    <div class="fixed-bottom-bar">
+        <a href="tel:078-891-7210" class="fbb-item fbb-tel">
+            <span class="fbb-text">CALL</span>
+        </a>
+        <a href="#line" class="fbb-item fbb-line">
+            <span class="fbb-text">LINE</span>
+        </a>
+        <a href="#recruit" class="fbb-item fbb-apply">
+            <span class="fbb-text">APPLY</span>
+        </a>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

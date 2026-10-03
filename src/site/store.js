@@ -49,8 +49,8 @@ const LINES = {
     en: '<strong>Video editing</strong>: your footage, cut and finished with captions and music.',
   },
   lp: {
-    ja: '<strong>ランディングページ</strong>。お問い合わせにつながる1枚を設計します。',
-    en: '<strong>Landing pages</strong> designed to turn visitors into enquiries.',
+    ja: '<strong>ランディングページ</strong>。かっこいい系も、かわいい系も。作品例を見ていってほしいゾウ！',
+    en: "<strong>Landing pages</strong>, cool or cute, built to turn visitors into enquiries. Come see some examples!",
   },
   site: {
     ja: '<strong>Webサイト</strong>。会社の顔を、スマホでも見やすく。',
@@ -305,7 +305,7 @@ function goToAisle(id) {
   const aisle = document.getElementById(id);
   if (!aisle) return;
   aisle.scrollIntoView({ block: 'start' });
-  const h = aisle.querySelector('h2');
+  const h = aisle.matches('h2, h3') ? aisle : aisle.querySelector('h2, h3');
   h.tabIndex = -1;
   h.focus({ preventScroll: true });
 }
