@@ -1,0 +1,27 @@
+{
+  "name": "yukizo-hero",
+  "version": "1.0.0",
+  "description": "Yukizo, the elephant mascot, as an animated 3D <yukizo-hero> web component for website heroes.",
+  "type": "module",
+  "main": "./dist-lib/yukizo-hero.js",
+  "module": "./dist-lib/yukizo-hero.js",
+  "exports": {
+    ".": "./dist-lib/yukizo-hero.js"
+  },
+  "files": [
+    "dist-lib"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --mode lib",
+    "build:site": "vite build",
+    "build:lib": "vite build --mode lib",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "0.184.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.2"
+  }
+}

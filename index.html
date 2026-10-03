@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yuki Lab Store｜ユキラボ ストア</title>
+<meta name="description" content="Yuki Lab（ユキラボ）は Yuki Security のクリエイティブ部門。ゲーム、Excel・Word・PowerPoint 資料、ランディングページ、セキュリティアプリまで、店長ユキゾウがご案内します。">
+<meta name="theme-color" content="#1b2a63">
+<meta property="og:title" content="Yuki Lab Store｜ユキラボ ストア">
+<meta property="og:description" content="Games, documents, landing pages and security apps — made to order by Yuki Lab, the creative studio of Yuki Security.">
+<meta property="og:image" content="/img/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231b2a63'/%3E%3Cpath d='M14 14h11l7 12 7-12h11L37 34v16H27V34z' fill='%23f6c531'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Yomogi&display=swap">
+<link rel="stylesheet" href="/src/site/store.css">
+<script>
+  // language before first paint: saved choice → browser language → Japanese
+  (() => {
+    let l = null;
+    try { l = localStorage.getItem('yukilab-lang'); } catch (e) {}
+    if (l !== 'ja' && l !== 'en') l = (navigator.language || 'ja').toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    document.documentElement.lang = l;
+    // hide below-the-fold content for its scroll-in animation before first paint (no flash on /#links);
+    // safety net: if the page script never runs, show everything anyway
+    document.documentElement.classList.add('js');
+    setTimeout(() => { if (!window.__yukiReady) document.documentElement.classList.remove('js'); }, 4000);
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#aisles"><span lang="ja">本文へスキップ</span><span lang="en">Skip to content</span></a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Yuki Lab">
+    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 14h11l7 12 7-12h11L37 34v16H27V34z"/></svg></span>
+    <span class="brand-text"><strong>Yuki Lab</strong><small>ユキラボ</small></span>
+  </a>
+  <nav class="nav-links" aria-label="Floor guide">
+    <a href="#aisle-games" data-spy="aisle-games"><span lang="ja">ゲーム</span><span lang="en">Games</span></a>
+    <a href="#aisle-office" data-spy="aisle-office"><span lang="ja">オフィス資料</span><span lang="en">Office</span></a>
+    <a href="#aisle-web" data-spy="aisle-web">Web</a>
+    <a href="#aisle-apps" data-spy="aisle-apps"><span lang="ja">アプリ</span><span lang="en">Apps</span></a>
+    <a href="#manager" data-spy="manager"><span lang="ja">店長紹介</span><span lang="en">Manager</span></a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang" role="group" aria-label="Language / 言語">
+      <button type="button" data-set-lang="ja">日本語</button>
+      <button type="button" data-set-lang="en">EN</button>
+    </div>
+    <a class="btn btn-gold btn-sm nav-cta" href="#contact"><span lang="ja">ご相談</span><span lang="en">Contact</span></a>
+    <button class="menu-btn" type="button" id="menu-btn" aria-controls="drawer" aria-expanded="false">
+      <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="sr-only"><span lang="ja">メニュー</span><span lang="en">Menu</span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE FLOOR GUIDE (drawer) ============ -->
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer-scrim" data-close></div>
+  <nav class="drawer-panel" aria-label="Floor guide">
+    <p class="drawer-title"><span lang="ja">フロアガイド</span><span lang="en">Floor guide</span></p>
+    <ol class="drawer-list">
+      <li><a href="#aisle-games" data-spy="aisle-games"><b>01</b><span><span lang="ja">ゲーム</span><span lang="en">Games</span></span></a></li>
+      <li><a href="#aisle-office" data-spy="aisle-office"><b>02</b><span><span lang="ja">オフィス資料</span><span lang="en">Office documents</span></span></a></li>
+      <li><a href="#aisle-web" data-spy="aisle-web"><b>03</b><span><span lang="ja">Web・LP</span><span lang="en">Web &amp; landing pages</span></span></a></li>
+      <li><a href="#aisle-apps" data-spy="aisle-apps"><b>04</b><span><span lang="ja">アプリ</span><span lang="en">Apps</span></span></a></li>
+      <li><a href="#manager" data-spy="manager"><b>★</b><span><span lang="ja">店長紹介</span><span lang="en">Meet the manager</span></span></a></li>
+    </ol>
+    <a class="btn btn-gold btn-lg drawer-cta" href="#contact"><span lang="ja">店長に相談する</span><span lang="en">Ask the manager</span></a>
+    <div class="lang lang-lg" role="group" aria-label="Language / 言語">
+      <button type="button" data-set-lang="ja">日本語</button>
+      <button type="button" data-set-lang="en">English</button>
+    </div>
+  </nav>
+</div>
+
+<main>
+<!-- ============ STOREFRONT HERO ============ -->
+<section class="store" id="top" aria-labelledby="store-title">
+  <div class="store-wall" aria-hidden="true"></div>
+  <div class="store-floor" aria-hidden="true"></div>
+
+  <div class="sign" aria-hidden="false">
+    <span class="sign-chain l" aria-hidden="true"></span><span class="sign-chain r" aria-hidden="true"></span>
+    <h1 class="sign-board" id="store-title">
+      <span class="sign-open" aria-hidden="true">OPEN</span>
+      <span class="sign-name">YUKI LAB</span>
+      <span class="sign-sub"><span lang="ja">ユキラボ ストア</span><span lang="en">STORE</span></span>
+    </h1>
+  </div>
+  <p class="store-tagline">
+    <span lang="ja">ゲームも、資料も、Webも、アプリも。<br class="sp">ほしいものを、オーダーメイドで。</span>
+    <span lang="en">Games, documents, websites and apps —<br class="sp"> all made to order.</span>
+  </p>
+  <div class="store-ctas">
+    <a class="btn btn-navy" href="#aisles"><span lang="ja">売り場を見る</span><span lang="en">Browse the aisles</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></a>
+    <a class="btn btn-ghost" href="#contact"><span lang="ja">店長に相談する</span><span lang="en">Ask the manager</span></a>
+  </div>
+
+  <div class="store-stage">
+    <!-- the store manager -->
+    <div class="manager">
+      <div class="bubble" id="bubble">
+        <p class="bubble-text" id="bubble-text" aria-hidden="true"></p>
+        <p class="sr-only" id="bubble-live" role="status" aria-live="polite"></p>
+        <p class="bubble-hint" id="bubble-hint" aria-hidden="true"></p>
+      </div>
+      <div class="manager-loading" id="manager-loading" aria-hidden="true">
+        <span class="spinner"></span>
+        <span><span lang="ja">店長、出勤中…</span><span lang="en">The manager is on his way…</span></span>
+      </div>
+      <img class="manager-fallback" src="/img/yukizo-harbor.webp" alt="" width="900" height="1599" hidden>
+      <yukizo-hero id="yukizo" label="ユキゾウ — Yuki Lab ストアの店長。水色のゾウのマスコット。Enterで敬礼します。"></yukizo-hero>
+      <div class="standee" aria-hidden="true">
+        <span class="standee-role"><span lang="ja">店長</span><span lang="en">STORE MANAGER</span></span>
+        <span class="standee-name"><span lang="ja">ユキゾウ</span><span lang="en">Yukizo</span></span>
+      </div>
+    </div>
+
+    <div class="shelves">
+    <!-- left shelving -->
+    <div class="shelf-unit left">
+      <div class="shelf" data-shelf="games">
+        <span class="pop pop-pick" aria-hidden="true"><span lang="ja">店長<br>イチオシ!</span><span lang="en">Manager's<br>pick!</span></span>
+        <div class="shelf-items">
+          <button class="product" type="button" data-item="runner" data-aisle="aisle-games">
+            <span class="pkg pkg-art"><img src="/img/game-subway-runner.webp" alt="" width="720" height="1558" loading="eager"></span>
+            <span class="product-name"><span lang="ja">地下鉄ランナー</span><span lang="en">Subway Runner</span></span>
+          </button>
+          <button class="product" type="button" data-item="sim" data-aisle="aisle-games">
+            <span class="pkg pkg-art"><img src="/img/game-security-sim.webp" alt="" width="720" height="1558" loading="eager"></span>
+            <span class="product-name"><span lang="ja">警備会社シミュ</span><span lang="en">Security Sim</span></span>
+          </button>
+          <button class="product" type="button" data-item="game" data-aisle="aisle-games">
+            <span class="pkg pkg-icon" style="--p1:#ffb43a;--p2:#f07b2e"><svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".9" class="f"/><circle cx="17.8" cy="13.8" r=".9" class="f"/></svg></span>
+            <span class="product-name"><span lang="ja">ゲーム制作</span><span lang="en">Custom games</span></span>
+          </button>
+        </div>
+        <div class="shelf-board"><span class="shelf-tag"><b>01</b><span lang="ja">ゲーム</span><span lang="en">Games</span></span></div>
+      </div>
+      <div class="shelf" data-shelf="office">
+        <div class="shelf-items">
+          <button class="product" type="button" data-item="xlsx" data-aisle="aisle-office">
+            <span class="pkg pkg-icon" style="--p1:#2fb36f;--p2:#17844f"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 9h17M3.5 14.5h17M9.5 3.5v17"/></svg><em>XLSX</em></span>
+            <span class="product-name"><span lang="ja">Excel</span><span lang="en">Spreadsheets</span></span>
+          </button>
+          <button class="product" type="button" data-item="docx" data-aisle="aisle-office">
+            <span class="pkg pkg-icon" style="--p1:#4b8df0;--p2:#2a5fc4"><svg viewBox="0 0 24 24"><path d="M6 2.8h8.5L19 7.3v13.9H6z"/><path d="M14.3 3v4.5H19M9 11.5h7M9 14.5h7M9 17.5h4.5"/></svg><em>DOCX</em></span>
+            <span class="product-name"><span lang="ja">Word</span><span lang="en">Documents</span></span>
+          </button>
+          <button class="product" type="button" data-item="pptx" data-aisle="aisle-office">
+            <span class="pkg pkg-icon" style="--p1:#ff8a4c;--p2:#df5a26"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M12 17v3.5M8.5 20.5h7"/><path d="M7 13.5V11M10.5 13.5V8.5M14 13.5v-3.5M17.5 13.5V7.5"/></svg><em>PPTX</em></span>
+            <span class="product-name"><span lang="ja">PowerPoint</span><span lang="en">Slides</span></span>
+          </button>
+        </div>
+        <div class="shelf-board"><span class="shelf-tag"><b>02</b><span lang="ja">オフィス資料</span><span lang="en">Office</span></span></div>
+      </div>
+    </div>
+
+    <!-- right shelving -->
+    <div class="shelf-unit right">
+      <div class="shelf" data-shelf="web">
+        <div class="shelf-items">
+          <button class="product" type="button" data-item="lp" data-aisle="aisle-web">
+            <span class="pkg pkg-icon" style="--p1:#30b9c9;--p2:#17859b"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M2.5 8.5h19"/><circle cx="5.3" cy="6.3" r=".6" class="f"/><circle cx="7.3" cy="6.3" r=".6" class="f"/><path d="M6.5 12.5h7M6.5 15.5h4.5"/><rect x="14.8" y="12" width="4" height="4.5" rx="1"/></svg><em>LP</em></span>
+            <span class="product-name"><span lang="ja">LP制作</span><span lang="en">Landing pages</span></span>
+          </button>
+          <button class="product" type="button" data-item="site" data-aisle="aisle-web">
+            <span class="pkg pkg-icon" style="--p1:#6f7cf6;--p2:#4752c9"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg><em>WEB</em></span>
+            <span class="product-name"><span lang="ja">Webサイト</span><span lang="en">Websites</span></span>
+          </button>
+          <button class="product" type="button" data-item="mascot" data-aisle="aisle-web">
+            <span class="pkg pkg-icon" style="--p1:#8fc6f5;--p2:#4f8fd8"><svg viewBox="0 0 24 24"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg><em>3D</em></span>
+            <span class="product-name"><span lang="ja">3Dキャラ</span><span lang="en">3D mascots</span></span>
+          </button>
+        </div>
+        <div class="shelf-board"><span class="shelf-tag"><b>03</b>Web</span></div>
+      </div>
+      <div class="shelf" data-shelf="apps">
+        <div class="shelf-items">
+          <button class="product" type="button" data-item="secapp" data-aisle="aisle-apps">
+            <span class="pkg pkg-icon" style="--p1:#2c3f86;--p2:#141d48;--ic:#f6c531"><svg viewBox="0 0 24 24"><path d="M12 2.8l7.5 3v5.6c0 4.7-3.1 8.3-7.5 9.8-4.4-1.5-7.5-5.1-7.5-9.8V5.8z"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8"/></svg><em>SECURITY</em></span>
+            <span class="product-name"><span lang="ja">セキュリティ</span><span lang="en">Security apps</span></span>
+          </button>
+          <button class="product" type="button" data-item="app" data-aisle="aisle-apps">
+            <span class="pkg pkg-icon" style="--p1:#f46f95;--p2:#cf3f6c"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 5.3h3"/><circle cx="12" cy="18.3" r=".8" class="f"/></svg><em>APP</em></span>
+            <span class="product-name"><span lang="ja">業務アプリ</span><span lang="en">Business apps</span></span>
+          </button>
+        </div>
+        <div class="shelf-board"><span class="shelf-tag"><b>04</b><span lang="ja">アプリ</span><span lang="en">Apps</span></span></div>
+      </div>
+    </div>
+    </div><!-- /.shelves -->
+  </div>
+
+</section>
+
+<!-- ============ AISLES ============ -->
+<div id="aisles">
+
+<!-- 01 GAMES -->
+<section class="aisle" id="aisle-games" aria-labelledby="h-games">
+  <header class="aisle-head reveal">
+    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>01</span>
+    <div>
+      <h2 id="h-games"><span lang="ja">ゲーム</span><span lang="en">Games</span></h2>
+      <p class="aisle-lead">
+        <span lang="ja">企画・キャラクター・開発まで、まるごとお任せください。店長ユキゾウが主役のゲームも、当店で生まれました。</span>
+        <span lang="en">Concept, characters and development, all under one roof. Even our manager Yukizo got his start as a game hero right here.</span>
+      </p>
+    </div>
+      <div class="pop pop-note" role="note">
+      <span class="pop-tape" aria-hidden="true"></span>
+      <span class="pop-head"><span lang="ja">店長のひとこと</span><span lang="en">From the manager</span></span>
+      <p><span lang="ja">ぼくが走るゲームもあるゾウ。<br>ぜひ遊んでみてね！</span><span lang="en">There's even a game<br>where I run. Give it a go!</span></p>
+      <span class="pop-sign"><span lang="ja">店長 ユキゾウ</span><span lang="en">Yukizo, manager</span><i class="hanko-mini" aria-hidden="true">ユ</i></span>
+    </div>
+  </header>
+
+  <div class="games">
+    <article class="game reveal">
+      <div class="phone"><img src="/img/game-subway-runner.webp" alt="ユキゾウ 地下鉄ランナー のタイトル画面 / Title screen of Yukizo Subway Runner" width="720" height="1558" loading="lazy"></div>
+      <div class="game-body">
+        <span class="price-tag"><span lang="ja">当店オリジナル</span><span lang="en">Store original</span></span>
+        <h3>ユキゾウ 地下鉄ランナー<small>Yukizo Subway Runner</small></h3>
+        <p>
+          <span lang="ja">光る地下鉄トンネルを、ユキゾウが全力ダッシュ！コインを集めてハイスコアをめざすランアクションです。</span>
+          <span lang="en">Yukizo dashes through glowing subway tunnels. Collect coins and chase a new high score in this runner.</span>
+        </p>
+        <ul class="chips">
+          <li><span lang="ja">ランアクション</span><span lang="en">Endless runner</span></li>
+          <li><span lang="ja">フリーモード</span><span lang="en">Free mode</span></li>
+          <li><span lang="ja">ストーリーモード 近日公開</span><span lang="en">Story mode coming soon</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="game reveal">
+      <div class="phone"><img src="/img/game-security-sim.webp" alt="警備会社シミュレーション のタイトル画面 / Title screen of Security Company Simulation" width="720" height="1558" loading="lazy"></div>
+      <div class="game-body">
+        <span class="price-tag"><span lang="ja">当店オリジナル</span><span lang="en">Store original</span></span>
+        <h3>警備会社シミュレーション<small><span lang="ja">〜あなたの街の警備ヒーロー〜</span><span lang="en">Your town's security hero</span></small></h3>
+        <p>
+          <span lang="ja">警備会社を経営して、街の安心を守るシミュレーション。本物の警備会社グループだからこそ描ける、リアルな現場の手ざわりが魅力です。</span>
+          <span lang="en">Run your own security company and keep the town safe. Made by a real security group, so the details come from the field.</span>
+        </p>
+        <ul class="chips">
+          <li><span lang="ja">経営シミュレーション</span><span lang="en">Management sim</span></li>
+          <li><span lang="ja">セーブ・つづきから</span><span lang="en">Save &amp; continue</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="game game-custom reveal">
+      <div class="custom-art" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".9" class="f"/><circle cx="17.8" cy="13.8" r=".9" class="f"/></svg>
+      </div>
+      <div class="game-body">
+        <span class="price-tag tag-gold"><span lang="ja">受注制作</span><span lang="en">Made to order</span></span>
+        <h3><span lang="ja">あなたのゲーム、次はここに。</span><span lang="en">Your game could be next.</span></h3>
+        <p>
+          <span lang="ja">販促用のミニゲーム、自社キャラクターのゲーム、研修に使えるシミュレーションまで。スマホでもブラウザでも遊べる形でお届けします。</span>
+          <span lang="en">Promo mini-games, games starring your own characters, training simulations and more, built to play on phones and in the browser.</span>
+        </p>
+        <a class="btn btn-navy" href="#contact" data-need="games"><span lang="ja">ゲームの相談をする</span><span lang="en">Talk to us about a game</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 02 OFFICE -->
+<section class="aisle aisle-alt" id="aisle-office" aria-labelledby="h-office">
+  <header class="aisle-head reveal">
+    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>02</span>
+    <div>
+      <h2 id="h-office"><span lang="ja">オフィス資料</span><span lang="en">Office documents</span></h2>
+      <p class="aisle-lead">
+        <span lang="ja">「表がぐちゃぐちゃ」「資料が伝わらない」を、きれいに整えます。Excel・Word・PowerPoint の作成から改善まで。</span>
+        <span lang="en">Messy spreadsheets and slides that don't land, tidied up. We build and improve Excel, Word and PowerPoint files.</span>
+      </p>
+    </div>
+      <div class="pop pop-note" role="note">
+      <span class="pop-tape" aria-hidden="true"></span>
+      <span class="pop-head"><span lang="ja">店長のひとこと</span><span lang="en">From the manager</span></span>
+      <p><span lang="ja">Excelの「あの作業」、<br>自動化できるかも？<br>気軽に聞いてね。</span><span lang="en">That one Excel chore?<br>It might be automatable.<br>Just ask!</span></p>
+      <span class="pop-sign"><span lang="ja">店長 ユキゾウ</span><span lang="en">Yukizo, manager</span><i class="hanko-mini" aria-hidden="true">ユ</i></span>
+    </div>
+  </header>
+
+  <div class="office">
+    <article class="office-card reveal" style="--accent:#1f9d5c">
+      <div class="mock mock-sheet" aria-hidden="true">
+        <div class="sheet-bar"><i></i><i></i><i></i></div>
+        <div class="sheet-grid">
+          <span class="h"></span><span class="h">Q1</span><span class="h">Q2</span><span class="h">Q3</span>
+          <span class="h">A</span><span>128</span><span>164</span><span class="hi">212</span>
+          <span class="h">B</span><span>96</span><span>118</span><span>141</span>
+          <span class="h">C</span><span>74</span><span>102</span><span>133</span>
+        </div>
+        <div class="sheet-chart"><i style="--h:42%"></i><i style="--h:58%"></i><i style="--h:76%"></i><i style="--h:64%"></i><i style="--h:88%"></i><i style="--h:100%"></i></div>
+      </div>
+      <h3>Excel <small><span lang="ja">表計算・集計</span><span lang="en">Spreadsheets</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">売上・勤怠などの集計表、ダッシュボード</span><span lang="en">Sales and timesheet trackers, dashboards</span></li>
+        <li><span lang="ja">入力ミスを防ぐテンプレート設計</span><span lang="en">Templates that prevent input mistakes</span></li>
+        <li><span lang="ja">関数・グラフで、手作業を自動化</span><span lang="en">Formulas and charts that replace manual work</span></li>
+      </ul>
+    </article>
+
+    <article class="office-card reveal" style="--accent:#2a63d4">
+      <div class="mock mock-doc" aria-hidden="true">
+        <div class="doc-page">
+          <b></b><i style="--w:92%"></i><i style="--w:86%"></i><i style="--w:95%"></i><i style="--w:60%"></i>
+          <u></u><i style="--w:90%"></i><i style="--w:78%"></i><i style="--w:84%"></i>
+        </div>
+      </div>
+      <h3>Word <small><span lang="ja">文書・マニュアル</span><span lang="en">Documents</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">業務マニュアル・手順書</span><span lang="en">Operations manuals and procedures</span></li>
+        <li><span lang="ja">提案書・報告書・社内規程</span><span lang="en">Proposals, reports and internal policies</span></li>
+        <li><span lang="ja">読みやすいレイアウトと書式統一</span><span lang="en">Readable layouts with consistent styles</span></li>
+      </ul>
+    </article>
+
+    <article class="office-card reveal" style="--accent:#e2632c">
+      <div class="mock mock-slide" aria-hidden="true">
+        <div class="slide">
+          <b></b><i></i>
+          <div class="slide-cols"><span class="pie"></span><span class="bars"><em style="--h:45%"></em><em style="--h:70%"></em><em style="--h:100%"></em></span></div>
+        </div>
+      </div>
+      <h3>PowerPoint <small><span lang="ja">プレゼン資料</span><span lang="en">Presentations</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">営業資料・会社紹介・ピッチ資料</span><span lang="en">Sales decks, company profiles, pitch decks</span></li>
+        <li><span lang="ja">研修・説明会用スライド</span><span lang="en">Training and briefing slides</span></li>
+        <li><span lang="ja">図解とグラフで「伝わる」構成に</span><span lang="en">Diagrams and charts that get the point across</span></li>
+      </ul>
+    </article>
+  </div>
+  <a class="aisle-cta reveal" href="#contact" data-need="office">
+    <span class="aisle-cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4.5 3.5v-3.5h-2.5z"/></svg></span>
+    <span><span lang="ja">Excel・Word・PowerPoint のご相談はこちら</span><span lang="en">Talk to us about Excel, Word or PowerPoint</span></span>
+    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></svg>
+  </a>
+</section>
+
+<!-- 03 WEB -->
+<section class="aisle" id="aisle-web" aria-labelledby="h-web">
+  <header class="aisle-head reveal">
+    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>03</span>
+    <div>
+      <h2 id="h-web"><span lang="ja">Web・ランディングページ</span><span lang="en">Web &amp; landing pages</span></h2>
+      <p class="aisle-lead">
+        <span lang="ja">集客のためのLPから、会社のWebサイトまで。スマホで見やすく、速く、印象に残るページをつくります。</span>
+        <span lang="en">From campaign landing pages to company websites: fast, easy to read on phones, and memorable.</span>
+      </p>
+    </div>
+      <div class="pop pop-note" role="note">
+      <span class="pop-tape" aria-hidden="true"></span>
+      <span class="pop-head"><span lang="ja">店長のひとこと</span><span lang="en">From the manager</span></span>
+      <p><span lang="ja">このページも当店の手づくり。<br>ほら、ぼくも動いてるでしょ？</span><span lang="en">This very page was made here.<br>See? I can move!</span></p>
+      <span class="pop-sign"><span lang="ja">店長 ユキゾウ</span><span lang="en">Yukizo, manager</span><i class="hanko-mini" aria-hidden="true">ユ</i></span>
+    </div>
+  </header>
+
+  <div class="web">
+    <article class="browser reveal" aria-hidden="true">
+      <div class="browser-bar"><i></i><i></i><i></i><span>yukilab.example/campaign</span></div>
+      <div class="lp">
+        <div class="lp-hero">
+          <div class="lp-copy"><b></b><b class="s"></b><i></i><i class="s"></i><span class="lp-cta"></span></div>
+          <div class="lp-visual"><span></span></div>
+        </div>
+        <div class="lp-row"><span></span><span></span><span></span></div>
+      </div>
+    </article>
+    <div class="web-list">
+      <article class="web-item reveal">
+        <h3><span lang="ja">ランディングページ（LP）</span><span lang="en">Landing pages</span></h3>
+        <p><span lang="ja">キャンペーン・採用・新サービスの告知に。お問い合わせにつながる導線まで設計します。</span><span lang="en">For campaigns, hiring and launches, designed all the way through to the enquiry form.</span></p>
+      </article>
+      <article class="web-item reveal">
+        <h3><span lang="ja">コーポレートサイト</span><span lang="en">Company websites</span></h3>
+        <p><span lang="ja">会社の顔になるサイトを、更新しやすい形で。スマホ対応は標準です。</span><span lang="en">A site that represents your company and is easy to update. Works on phones as standard.</span></p>
+      </article>
+      <article class="web-item reveal">
+        <h3><span lang="ja">3Dキャラクター・演出</span><span lang="en">3D mascots &amp; interaction</span></h3>
+        <p><span lang="ja">このページの店長ユキゾウのように、動いて反応する3Dキャラクターをサイトに。目線でカーソルを追いかけます。</span><span lang="en">Live 3D characters that move and react, like Yukizo on this page. His eyes follow your cursor.</span></p>
+        <button class="link-btn" type="button" id="try-salute"><span lang="ja">ユキゾウに敬礼してもらう →</span><span lang="en">Ask Yukizo to salute →</span></button>
+      </article>
+    </div>
+  </div>
+  <a class="aisle-cta reveal" href="#contact" data-need="web">
+    <span class="aisle-cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4.5 3.5v-3.5h-2.5z"/></svg></span>
+    <span><span lang="ja">LP・Webサイトのご相談はこちら</span><span lang="en">Talk to us about a landing page or website</span></span>
+    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></svg>
+  </a>
+</section>
+
+<!-- 04 APPS -->
+<section class="aisle aisle-dark" id="aisle-apps" aria-labelledby="h-apps">
+  <header class="aisle-head reveal">
+    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>04</span>
+    <div>
+      <h2 id="h-apps"><span lang="ja">アプリ</span><span lang="en">Apps</span></h2>
+      <p class="aisle-lead">
+        <span lang="ja">親会社 Yuki Security の現場で培った知見をいかして、警備・セキュリティの業務アプリを中心に開発しています。</span>
+        <span lang="en">Drawing on the field experience of our parent company, Yuki Security, we focus on apps for security operations.</span>
+      </p>
+    </div>
+      <div class="pop pop-note" role="note">
+      <span class="pop-tape" aria-hidden="true"></span>
+      <span class="pop-head"><span lang="ja">店長のひとこと</span><span lang="en">From the manager</span></span>
+      <p><span lang="ja">警備の現場を知ってるから、<br>つくれるアプリがあるゾウ。</span><span lang="en">We know security work first-hand.<br>It shows in our apps.</span></p>
+      <span class="pop-sign"><span lang="ja">店長 ユキゾウ</span><span lang="en">Yukizo, manager</span><i class="hanko-mini" aria-hidden="true">ユ</i></span>
+    </div>
+  </header>
+
+  <div class="apps">
+    <div class="app-phone reveal" aria-hidden="true">
+      <div class="app-screen">
+        <div class="app-top"><span class="app-shield"><svg viewBox="0 0 24 24"><path d="M12 2.8l7.5 3v5.6c0 4.7-3.1 8.3-7.5 9.8-4.4-1.5-7.5-5.1-7.5-9.8V5.8z"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8"/></svg></span><b><span lang="ja">巡回チェック</span><span lang="en">Patrol check</span></b></div>
+        <div class="app-progress"><span style="--p:66%"></span></div>
+        <ul class="app-list">
+          <li class="done"><span lang="ja">正面ゲート</span><span lang="en">Main gate</span><em>21:02</em></li>
+          <li class="done"><span lang="ja">搬入口</span><span lang="en">Loading dock</span><em>21:09</em></li>
+          <li class="now"><span lang="ja">駐車場 B</span><span lang="en">Car park B</span><em><span lang="ja">確認中</span><span lang="en">Checking</span></em></li>
+        </ul>
+        <span class="app-btn ok"><span lang="ja">異常なし</span><span lang="en">All clear</span></span>
+        <span class="app-btn warn"><span lang="ja">報告する</span><span lang="en">Report</span></span>
+      </div>
+    </div>
+    <div class="app-cards">
+      <article class="app-card reveal">
+        <span class="app-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.8l7.5 3v5.6c0 4.7-3.1 8.3-7.5 9.8-4.4-1.5-7.5-5.1-7.5-9.8V5.8z"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8"/></svg></span>
+        <h3><span lang="ja">セキュリティアプリ</span><span lang="en">Security apps</span></h3>
+        <p><span lang="ja">巡回記録、報告書、シフト連絡など、警備の現場の「紙と電話」をアプリに。現場を知るチームが設計します。</span><span lang="en">Patrol logs, incident reports and shift messages, moved from paper and phone calls into an app. Designed by a team that knows the job.</span></p>
+      </article>
+      <article class="app-card reveal">
+        <span class="app-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 5.3h3"/><circle cx="12" cy="18.3" r=".8" class="f"/></svg></span>
+        <h3><span lang="ja">業務アプリ・スマホアプリ</span><span lang="en">Business &amp; mobile apps</span></h3>
+        <p><span lang="ja">社内の申請・管理ツールから、お客さま向けアプリまで。小さく始めて、育てていけます。</span><span lang="en">From internal request and admin tools to customer apps. Start small and grow from there.</span></p>
+      </article>
+      <article class="app-card reveal">
+        <span class="app-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.3" class="f"/></svg></span>
+        <h3><span lang="ja">セキュリティを前提に</span><span lang="en">Secure by default</span></h3>
+        <p><span lang="ja">警備会社グループの一員として、情報の取り扱いと安全性に気を配った開発を大切にしています。</span><span lang="en">As part of a security group, we build with careful data handling and safety in mind.</span></p>
+      </article>
+    </div>
+  </div>
+  <a class="aisle-cta reveal" href="#contact" data-need="apps">
+    <span class="aisle-cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4.5 3.5v-3.5h-2.5z"/></svg></span>
+    <span><span lang="ja">アプリ開発のご相談はこちら</span><span lang="en">Talk to us about an app</span></span>
+    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></svg>
+  </a>
+</section>
+
+</div>
+
+<!-- ============ MANAGER ============ -->
+<section class="manager-intro" id="manager" aria-labelledby="h-manager">
+  <figure class="key-visual reveal">
+    <img src="/img/yukizo-harbor.webp" alt="港町で手を差し出すユキゾウ / Yukizo welcoming visitors at the harbour" width="900" height="1599" loading="lazy">
+  </figure>
+  <div class="staff reveal">
+    <p class="eyebrow"><span lang="ja">店長紹介</span><span lang="en">Meet the manager</span></p>
+    <h2 id="h-manager"><span lang="ja">ユキゾウ</span><span lang="en">Yukizo</span></h2>
+    <div class="staff-card">
+      <div class="staff-card-head"><span>YUKI LAB</span><span>STAFF ID</span></div>
+      <dl>
+        <div><dt><span lang="ja">役職</span><span lang="en">Role</span></dt><dd><span lang="ja">Yuki Lab ストア 店長</span><span lang="en">Store manager, Yuki Lab</span></dd></div>
+        <div><dt><span lang="ja">所属</span><span lang="en">Team</span></dt><dd>Yuki Security</dd></div>
+        <div><dt><span lang="ja">トレードマーク</span><span lang="en">Trademark</span></dt><dd><span lang="ja">金色の「Y」バッジと制帽</span><span lang="en">The gold "Y" badge and officer's cap</span></dd></div>
+        <div><dt><span lang="ja">とくい</span><span lang="en">Good at</span></dt><dd><span lang="ja">ご案内・パトロール・敬礼</span><span lang="en">Showing you around, patrols, salutes</span></dd></div>
+      </dl>
+    </div>
+    <p class="staff-quote">
+      <span lang="ja">「街の安心を守るのが警備のお仕事。お客さまの『こんなのつくりたい』を守って、かたちにするのが、ぼくのお仕事だゾウ！」</span>
+      <span lang="en">"Keeping the town safe is what security is all about. Taking good care of your ideas and making them real — that's my job!"</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ HOW TO ORDER ============ -->
+<section class="order" id="order" aria-labelledby="h-order">
+  <div class="receipt reveal">
+    <p class="receipt-head">YUKI LAB STORE<br><small><span lang="ja">ご注文の流れ</span><span lang="en">HOW TO ORDER</span></small></p>
+    <h2 id="h-order" class="sr-only"><span lang="ja">ご注文の流れ</span><span lang="en">How to order</span></h2>
+    <ol>
+      <li><b>01</b><div><strong><span lang="ja">ご相談</span><span lang="en">Consultation</span></strong><span lang="ja">「まだぼんやり」でも大丈夫。やりたいことをお聞かせください。</span><span lang="en">Even a rough idea is fine. Tell us what you'd like to make.</span></div></li>
+      <li><b>02</b><div><strong><span lang="ja">ご提案・お見積もり</span><span lang="en">Proposal &amp; quote</span></strong><span lang="ja">内容・スケジュール・費用をわかりやすくご提示します。</span><span lang="en">A clear outline of scope, schedule and cost.</span></div></li>
+      <li><b>03</b><div><strong><span lang="ja">制作</span><span lang="en">Production</span></strong><span lang="ja">途中経過を共有しながら、一緒に仕上げていきます。</span><span lang="en">We share progress along the way and finish it together.</span></div></li>
+      <li><b>04</b><div><strong><span lang="ja">納品・アフターフォロー</span><span lang="en">Delivery &amp; aftercare</span></strong><span lang="ja">納品後の修正や運用のご相談もお任せください。</span><span lang="en">We're here for tweaks and support after delivery.</span></div></li>
+    </ol>
+    <p class="receipt-total"><span lang="ja">ご相談</span><span lang="en">Consultation</span><b><span lang="ja">無料</span><span lang="en">FREE</span></b></p>
+    <span class="hanko" aria-hidden="true"><span>ユキラボ</span><b>受付</b><span>店長</span></span>
+    <p class="receipt-foot"><span lang="ja">ご来店ありがとうございます</span><span lang="en">Thank you for visiting</span> ★</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact" aria-labelledby="h-contact">
+  <div class="contact-inner reveal">
+    <span class="contact-avatar" aria-hidden="true"><img src="/img/yukizo-harbor.webp" alt="" width="900" height="1599" loading="lazy"></span>
+    <p class="eyebrow"><span lang="ja">お問い合わせ</span><span lang="en">Contact</span></p>
+    <h2 id="h-contact"><span lang="ja">店長に相談する</span><span lang="en">Ask the manager</span></h2>
+    <p class="contact-lead"><span lang="ja">気になる商品にチェックを入れて送信してください。メールソフトが開きます。</span><span lang="en">Tick what you're interested in and press send. Your email app will open with the message ready.</span></p>
+    <form class="form" id="contact-form" novalidate>
+      <fieldset class="needs">
+        <legend><span lang="ja">ご相談の内容（複数可）</span><span lang="en">What do you need? (choose any)</span></legend>
+        <label><input type="checkbox" name="need" value="games"><span><span lang="ja">ゲーム</span><span lang="en">Games</span></span></label>
+        <label><input type="checkbox" name="need" value="office"><span><span lang="ja">Excel・Word・PowerPoint</span><span lang="en">Excel, Word, PowerPoint</span></span></label>
+        <label><input type="checkbox" name="need" value="web"><span><span lang="ja">LP・Webサイト</span><span lang="en">Landing pages &amp; websites</span></span></label>
+        <label><input type="checkbox" name="need" value="apps"><span><span lang="ja">アプリ</span><span lang="en">Apps</span></span></label>
+      </fieldset>
+      <div class="row">
+        <label class="field"><span><span lang="ja">お名前</span><span lang="en">Name</span></span><input name="name" autocomplete="name" required></label>
+        <label class="field"><span><span lang="ja">会社名（任意）</span><span lang="en">Company (optional)</span></span><input name="company" autocomplete="organization"></label>
+      </div>
+      <label class="field"><span><span lang="ja">ご相談内容</span><span lang="en">Message</span></span><textarea name="message" rows="5" required></textarea></label>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+      <button class="btn btn-gold btn-lg" type="submit"><span lang="ja">メールで送る</span><span lang="en">Send by email</span></button>
+      <div class="form-sent" id="form-sent" role="status" hidden>
+        <p><strong><span lang="ja">メールソフトを開きました。</span><span lang="en">Your email app should now be open.</span></strong>
+        <span lang="ja">開かない場合は、下のアドレスに直接お送りください。</span><span lang="en">If it didn't open, email us directly:</span></p>
+      </div>
+      <p class="mail-direct">
+        <span lang="ja">メールで直接：</span><span lang="en">Or email us directly:</span>
+        <a href="#" id="mail-link" class="mail-link"></a>
+        <button type="button" class="copy-btn" id="copy-mail"><span lang="ja">コピー</span><span lang="en">Copy</span></button>
+      </p>
+    </form>
+  </div>
+</section>
+</main>
+
+<a class="sticky-cta" id="sticky-cta" href="#contact" aria-hidden="true" tabindex="-1">
+  <span class="sticky-cta-face" aria-hidden="true"><img src="/img/yukizo-harbor.webp" alt="" width="900" height="1599" loading="lazy"></span>
+  <span><span lang="ja">店長に相談する</span><span lang="en">Ask the manager</span></span>
+</a>
+
+<!-- ============ STAMP RALLY (スタンプラリー) ============ -->
+<div class="rally" id="rally" hidden>
+  <button class="rally-btn" type="button" id="rally-btn" aria-expanded="false" aria-controls="rally-card">
+    <span class="rally-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span><span lang="ja">スタンプ</span><span lang="en">Stamps</span> <b id="rally-count">0/4</b></span>
+  </button>
+  <div class="rally-card" id="rally-card" hidden>
+    <p class="rally-title"><span lang="ja">ユキラボ スタンプラリー</span><span lang="en">Yuki Lab stamp rally</span></p>
+    <p class="rally-sub" id="rally-sub"><span lang="ja">4つの売り場をまわって、スタンプを集めよう。</span><span lang="en">Visit all four aisles to collect a stamp from each.</span></p>
+    <ol class="rally-slots">
+      <li data-stamp="games"><span class="slot"></span><span><span lang="ja">ゲーム</span><span lang="en">Games</span></span></li>
+      <li data-stamp="office"><span class="slot"></span><span><span lang="ja">オフィス</span><span lang="en">Office</span></span></li>
+      <li data-stamp="web"><span class="slot"></span><span>Web</span></li>
+      <li data-stamp="apps"><span class="slot"></span><span><span lang="ja">アプリ</span><span lang="en">Apps</span></span></li>
+    </ol>
+    <div class="rally-done" id="rally-done" hidden>
+      <p><strong><span lang="ja">コンプリート！</span><span lang="en">Complete!</span></strong>
+      <span lang="ja">全部の売り場を見てくれて、ありがとうだゾウ。気になるものがあったら、店長に声をかけてね。</span>
+      <span lang="en">Thanks for visiting every aisle! If anything caught your eye, come and talk to the manager.</span></p>
+      <a class="btn btn-gold btn-sm" href="#contact"><span lang="ja">店長に相談する</span><span lang="en">Ask the manager</span></a>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a class="brand brand-light" href="#top" aria-label="Yuki Lab">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 14h11l7 12 7-12h11L37 34v16H27V34z"/></svg></span>
+        <span class="brand-text"><strong>Yuki Lab</strong><small>ユキラボ</small></span>
+      </a>
+      <p><span lang="ja">ゲーム・オフィス資料・Web・アプリの制作ストア。</span><span lang="en">A made-to-order store for games, office documents, web and apps.</span></p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#aisle-games"><span lang="ja">ゲーム</span><span lang="en">Games</span></a>
+      <a href="#aisle-office"><span lang="ja">オフィス資料</span><span lang="en">Office</span></a>
+      <a href="#aisle-web">Web</a>
+      <a href="#aisle-apps"><span lang="ja">アプリ</span><span lang="en">Apps</span></a>
+      <a href="#manager"><span lang="ja">店長紹介</span><span lang="en">Manager</span></a>
+      <a href="#contact"><span lang="ja">お問い合わせ</span><span lang="en">Contact</span></a>
+    </nav>
+  </div>
+
+  <div class="parent">
+    <span class="parent-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.8l7.5 3v5.6c0 4.7-3.1 8.3-7.5 9.8-4.4-1.5-7.5-5.1-7.5-9.8V5.8z"/><path d="M8.6 12.2l2.4 2.4 4.6-4.8"/></svg></span>
+    <div>
+      <p class="parent-label"><span lang="ja">運営会社</span><span lang="en">Parent company</span></p>
+      <p class="parent-name">Yuki Security</p>
+      <p class="parent-legal"><span lang="ja">株式会社ユキ</span><span lang="en">Kabushiki Kaisha Yuki</span></p>
+    </div>
+    <p class="parent-note"><span lang="ja">Yuki Lab は、Yuki Security（株式会社ユキ）のクリエイティブ部門です。</span><span lang="en">Yuki Lab is the creative studio of Yuki Security (Kabushiki Kaisha Yuki).</span></p>
+  </div>
+
+  <div class="footer-bottom">
+    <small>© <span id="year">2026</span> Yuki Lab / Yuki Security. All rights reserved.</small>
+    <a href="#top" class="to-top"><span lang="ja">ページの先頭へ ↑</span><span lang="en">Back to top ↑</span></a>
+  </div>
+</footer>
+
+<script type="module" src="/src/site/store.js"></script>
+</body>
+</html>
