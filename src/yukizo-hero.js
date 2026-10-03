@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { buildYukizo } from './model/yukizo.js';
+import { loadYukizo } from './model/yukizo-glb.js';
 import { Stage } from './stage.js';
 import { Life } from './life.js';
 import { exportGLB, exportOBJ } from './export.js';
@@ -73,9 +74,11 @@ const css = `
  *   background  any CSS background (same as setting --yukizo-bg).
  *   name        basename for downloads (default "yukizo").
  *   label       accessible description (defaults to an English one).
+ *   src         URL of a yukizo .glb to show (loaded once, when first connected). Without it, or if it fails
+ *               to load, he is built in code.
  *
  * Methods: salute(), talk(seconds), gesture('wave' | 'proud' | 'chest'), lookAt(x, y), headTop(), feet(), resetView(), downloadGLB(), downloadOBJ()
- * Events:  'yukizo-ready' once the model is built; 'yukizo-salute' whenever he salutes.
+ * Events:  'yukizo-ready' once the model is built or loaded; 'yukizo-salute' whenever he salutes.
  */
 export class YukizoHero extends HTMLElement {
   static observedAttributes = ['mode', 'background', 'label'];
@@ -124,7 +127,7 @@ export class YukizoHero extends HTMLElement {
         return;
       }
     }
-    this._attach();
+    if (this._model) this._attach(); // otherwise _install() attaches once the model is in
   }
 
   disconnectedCallback() {
@@ -188,17 +191,31 @@ export class YukizoHero extends HTMLElement {
   _build() {
     const stage = (this._stage = new Stage(this));
     this.shadowRoot.insertBefore(stage.canvas, this._err);
-    const model = (this._model = buildYukizo());
-    // fur shells share host geometry — skip them when hit-testing
-    for (const s of model.furShells) s.raycast = () => {};
-    stage.setObject(model.root);
-    this._life = new Life(model, stage);
-
     const c = stage.canvas;
     c.addEventListener('webglcontextlost', (e) => { e.preventDefault(); this._fail(new Error('WebGL context lost')); });
     c.tabIndex = 0;
     c.setAttribute('role', 'img');
     c.setAttribute('aria-label', this.getAttribute('label') || LABEL);
+
+    const src = this.getAttribute('src');
+    const model = src
+      ? loadYukizo(new URL(src, document.baseURI).href).catch((err) => {
+          console.warn("Couldn't load the Yukizo model; building him in code instead.", err);
+          return buildYukizo();
+        })
+      : Promise.resolve(buildYukizo());
+    model.then((m) => this._install(m)).catch((err) => this._fail(err));
+  }
+
+  _install(model) {
+    const stage = this._stage, c = stage?.canvas;
+    if (this._failed || !stage) return;
+    this._model = model;
+    // fur shells share host geometry — skip them when hit-testing
+    for (const s of model.furShells) s.raycast = () => {};
+    stage.setObject(model.root);
+    this._life = new Life(model, stage);
+
     c.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -244,6 +261,7 @@ export class YukizoHero extends HTMLElement {
     for (const b of this._buttons) b.disabled = false;
     this._resolveReady(this);
     queueMicrotask(() => this.dispatchEvent(new CustomEvent('yukizo-ready', { bubbles: true, composed: true })));
+    if (this.isConnected) this._attach();
   }
 
   _attach() {
@@ -257,7 +275,7 @@ export class YukizoHero extends HTMLElement {
   }
 
   _detach() {
-    if (!this._stage) return;
+    if (!this._stage || !this._model) return;
     window.removeEventListener('pointermove', this._onMove);
     window.removeEventListener('pointerup', this._onUp);
     window.removeEventListener('pointercancel', this._onCancel);
@@ -281,6 +299,7 @@ export class YukizoHero extends HTMLElement {
   _screenPoint(side) {
     const s = this._stage;
     if (!s?.size) return null;
+    s.camera.updateMatrixWorld(); // before the first frame is drawn, the camera's matrices are still stale
     const p = new THREE.Vector3(s.center.x, s.center.y + (side * s.size.y) / 2, s.center.z).project(s.camera);
     return { x: ((p.x + 1) / 2) * this.clientWidth, y: ((1 - p.y) / 2) * this.clientHeight };
   }
@@ -335,6 +354,7 @@ export class YukizoHero extends HTMLElement {
     this._stage.renderer.setAnimationLoop(null);
     rest();
     for (const s of furShells) s.removeFromParent();
+    root.updateMatrixWorld(true); // OBJ export reads world matrices: they must hold the rest pose, not the last frame drawn
     try {
       await fn(root, (this.getAttribute('name') || 'yukizo').replace(/[^\w.-]+/g, '_'));
     } finally {

@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Yomogi&display=swap">
 <link rel="stylesheet" href="/src/site/store.css">
+<link rel="preload" href="/models/yukizo.glb" as="fetch" type="model/gltf-binary" crossorigin>
 <script>
   // language before first paint: saved choice → browser language → Japanese
   (() => {
@@ -126,7 +127,7 @@
           </span>
         </div>
         <img class="manager-fallback" src="/img/yukizo-harbor.webp" alt="" width="900" height="1599" hidden>
-        <yukizo-hero id="yukizo" label="ユキゾウ — Yuki Lab ストアの店長。水色のゾウのマスコット。Enterで敬礼します。"></yukizo-hero>
+        <yukizo-hero id="yukizo" src="/models/yukizo.glb" label="ユキゾウ — Yuki Lab ストアの店長。水色のゾウのマスコット。Enterで敬礼します。"></yukizo-hero>
       </div>
     </div>
 

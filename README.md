@@ -34,6 +34,7 @@ The footer and contact section credit the parent company, Yuki Security (株式�
 | Yukizo's speech-bubble lines | `LINES` in `src/site/store.js` |
 | Page copy | `index.html`: every text exists as `<span lang="ja">` + `<span lang="en">` |
 | Images | `public/img/`, converted from the design bundle's uploads |
+| Yukizo's 3D model | `public/models/yukizo.glb` (see below) |
 
 ---
 
@@ -79,13 +80,14 @@ Size it with ordinary CSS. The default is `width:100%; height:560px`.
 |              | `viewer` | Full-screen sky gradient, download buttons, hint text and scroll-zoom. |
 | `background` | any CSS background | Same effect as setting `--yukizo-bg`. |
 | `name`       | text | Basename for downloads (default `yukizo`). |
+| `src`        | URL of a `.glb` | Show this model instead of the one built in code. If it fails to load, he is built in code. |
 
 ### Methods & events
 
 ```js
 const y = document.querySelector('yukizo-hero');
 await y.ready;
-y.salute();              // salute + wink
+y.salute();              // salute + wink (the Blender model hops and waves, its sleeves can't bend)
 y.talk(2.5);             // move his mouth as if speaking (e.g. while a speech bubble types)
 y.gesture('wave');       // 'wave' | 'proud' | 'chest'
 y.lookAt(x, y);          // glance at a point on the page (viewport px)
@@ -95,6 +97,12 @@ y.downloadOBJ();         // OBJ + MTL
 y.addEventListener('yukizo-salute', () => {});
 y.addEventListener('yukizo-ready', () => {});
 ```
+
+### The Blender model
+
+The site and the viewer show `public/models/yukizo.glb`, the Blender-built Yukizo (`yukizo_v5.blend`). It must keep the export conventions of the Blender file: metres, Y-up, facing +Z, feet at y≈0, and the node names `rig`, `legs`, `upper`, `head` (pivot at the neck), `head_offset`, `ear_L/R`, `eyelid_L/R`, `iris_L/R`, `brow_L/R`, `hand_R`, `trunk*`, `tail*`, plus an `open` morph target on `mouth` and `tongue`. `src/model/yukizo-glb.js` animates those parts.
+
+The Blender export (about 7 MB) is shrunk to about 0.4 MB with `tools/optimize-yukizo.mjs` (glTF Transform + meshoptimizer; how to run it is at the top of the file). It simplifies only the big meshes, then quantizes and Meshopt-compresses everything, keeping the node names and the mouth's morph target.
 
 ## Develop
 

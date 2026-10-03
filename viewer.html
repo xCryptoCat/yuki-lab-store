@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yukizo — 3D</title>
+<link rel="preload" href="/models/yukizo.glb" as="fetch" type="model/gltf-binary" crossorigin>
 <style>
   html, body { margin: 0; height: 100%; background: #3b86e3; }
   yukizo-hero:not(:defined) { visibility: hidden; }
 </style>
 </head>
 <body>
-<yukizo-hero mode="viewer" name="yukizo"></yukizo-hero>
+<yukizo-hero mode="viewer" name="yukizo" src="/models/yukizo.glb"></yukizo-hero>
 <script type="module" src="/src/index.js"></script>
 </body>
 </html>

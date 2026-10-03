@@ -235,6 +235,7 @@ export class Life {
       this.headT.lerp(this.goal, 0.07);
       this.lookW += (lookT - this.lookW) * 0.05;
       this.talkW += (talkT - this.talkW) * 0.2;
+      fx.talk = this.talkW;
       m.arms.r = clamp(spring(this.sp.r, tr, STEP), -0.05, 1.08);
       m.arms.l = clamp(spring(this.sp.l, tl, STEP), -0.05, 1.08);
       m.arms.wave = clamp(spring(this.sp.wave, tw, STEP, 6, 1), 0, 1);

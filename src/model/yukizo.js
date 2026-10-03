@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { createMaterials } from './materials.js';
+import { addFur } from './fur.js';
 import {
   V, V2, DEG, grp, pivot, add, sphere, orient, profileLookup, subdivide, smooth, extrude, decal, ribbon,
   limb, place, ring, rrect, ellipse, poly, yShape, basisQ,
@@ -460,46 +461,9 @@ export function buildYukizo() {
   });
 
   /* ---------- fur shells (display only — removed for export) ---------- */
-  const furShells = [];
-  {
-    // fur only where a plush toy is actually fuzzy: the skin. Fabric (uniform, cap, gloves) reads through its felt texture,
-    // and the trunk stays clean so its fringe never haloes across the face.
-    const NAMES = new Set(['head', 'ear_L', 'ear_R', 'foot_L', 'foot_R']);
-    const hosts = [];
-    root.traverse((o) => { if (o.isMesh && NAMES.has(o.name)) hosts.push(o); });
-    const LAYERS = 5;
-    for (const o of hosts)
-      for (let i = 1; i <= LAYERS; i++) {
-        const m = o.material.clone();
-        m.name = o.material.name + '_fur';
-        m.sheen *= 0.3; // sheen flares at grazing angles — on shells that read as white frost
-        m.color.multiplyScalar(0.9); // edge fuzz sits in its own shadow: a shade darker than the face, never a glowing rim
-        const u = { uFurOff: { value: 0.0009 * i }, uFurTh: { value: 0.12 * i }, uFurS: { value: o.scale.clone() } };
-        m.onBeforeCompile = (sh) => {
-          Object.assign(sh.uniforms, u);
-          sh.vertexShader = 'uniform float uFurOff;\nuniform vec3 uFurS;\nvarying vec3 vFurP;\n' + sh.vertexShader.replace('#include <project_vertex>',
-            '#include <project_vertex>\n  mvPosition.xyz += normalize(transformedNormal) * uFurOff;\n  gl_Position = projectionMatrix * mvPosition;\n  vFurP = position * uFurS;');
-          sh.fragmentShader = 'uniform float uFurTh;\nvarying vec3 vFurP;\n' + sh.fragmentShader.replace('#include <alphatest_fragment>',
-            '{ float n = fract(sin(dot(floor(vFurP * 900.0), vec3(12.9898, 78.233, 37.719))) * 43758.5453);\n' +
-            '  float facing = abs(dot(normalize(vNormal), normalize(vViewPosition)));\n' +
-            '  float rim = 1.0 - smoothstep(0.08, 0.62, facing);\n' +            // fuzz shows only toward the silhouette
-            '  float a = rim * (0.55 + 0.45 * n) * (1.0 - uFurTh) * 0.55;\n' +    // outer shells thinner → soft gradient halo
-            '  if (a < 0.01) discard;\n' +
-            '  diffuseColor.a = a;\n' +
-            '  diffuseColor.rgb *= 0.97; }');
-        };
-        m.customProgramCacheKey = () => 'yukizo-fur';
-        m.transparent = true; // blended shells build a smooth velvet halo (no sub-pixel stipple)
-        m.depthWrite = false;
-        const s = new THREE.Mesh(o.geometry, m);
-        s.name = o.name + '_fur';
-        s.castShadow = false;
-        s.receiveShadow = true;
-        s.userData.host = o;
-        o.add(s);
-        furShells.push(s);
-      }
-  }
+  // fur only where a plush toy is actually fuzzy: the skin. Fabric (uniform, cap, gloves) reads through its felt texture,
+  // and the trunk stays clean so its fringe never haloes across the face.
+  const furShells = addFur(root, ['head', 'ear_L', 'ear_R', 'foot_L', 'foot_R']);
 
   /* ---------- posing ---------- */
   const fx = { mouth: 0, brow: 0, perk: 0, lag: 0, nod: 0, twitchL: 0, twitchR: 0, squint: 0 };

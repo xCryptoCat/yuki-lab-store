@@ -114,6 +114,14 @@ export class Stage {
     this.blob.position.set(0, box.min.y + 0.002, 0.03);
     this.size = box.getSize(new THREE.Vector3());
     this.center = box.getCenter(new THREE.Vector3());
+    // keep the whole figure inside the key light's shadow map, whatever his size
+    const sc = this.key.shadow.camera, r = Math.max(0.9, this.size.length() * 0.5);
+    sc.left = sc.bottom = -r;
+    sc.right = sc.top = r;
+    sc.updateProjectionMatrix();
+    this.key.target.position.copy(this.center);
+    this.key.position.copy(this.center).add(new THREE.Vector3(2.5, 6, 5));
+    this.scene.add(this.key.target);
     this.resize();
   }
 
