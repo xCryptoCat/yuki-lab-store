@@ -13,12 +13,12 @@ const LINES = {
   },
   act: { ja: { hover: 'ゆびさす', touch: 'タップする' }, en: { hover: 'Point at', touch: 'Tap' } },
   runner: {
-    ja: '<strong>ユキゾウ 地下鉄ランナー</strong>！トンネルを全力で走るのは、ぼくだゾウ。',
-    en: "<strong>Yukizo Subway Runner</strong>! That's me, sprinting through the tunnels.",
+    ja: '<strong>ユキゾウダッシュ</strong>！夜の地下鉄を全力で走るのは、ぼくだゾウ。ブラウザでもためし走りできるよ！',
+    en: "<strong>Yukizo Dash</strong>! That's me, sprinting through the subway at night. You can even try it in your browser!",
   },
   sim: {
-    ja: '<strong>警備会社シミュレーション</strong>。本物の警備会社グループがつくった、街を守るゲームです。',
-    en: '<strong>Security Company Sim</strong>: a town-protecting game made by a real security group.',
+    ja: '<strong>ヒーローカンパニー</strong>。警備会社の社長になって、街のヒーローをめざすシミュレーションです。',
+    en: '<strong>Hero Company</strong>: run a security firm and become the town\'s heroes.',
   },
   game: {
     ja: '<strong>オリジナルゲーム</strong>も受注制作中。販促ゲームや研修シミュレーションもおまかせ！',
