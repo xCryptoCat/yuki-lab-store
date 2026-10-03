@@ -3,7 +3,7 @@ import '../index.js'; // defines <yukizo-hero>
 /* ------------------------------------------------------------------
    Site settings — edit these
    ------------------------------------------------------------------ */
-const CONTACT_EMAIL = 'hello@yukilab.example'; // TODO: replace with the real Yuki Lab address
+const CONTACT_EMAIL = 'sakuseed0327@gmail.com';
 
 /* What the store manager says about each product (ja / en). */
 const LINES = {

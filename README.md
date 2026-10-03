@@ -30,7 +30,7 @@ The footer and contact section credit the parent company, Yuki Security (株式�
 
 | what | where |
 |---|---|
-| Contact email address (currently a placeholder) | `CONTACT_EMAIL` in `src/site/store.js` |
+| Contact email address (sakuseed0327@gmail.com) | `CONTACT_EMAIL` in `src/site/store.js` |
 | Yukizo's speech-bubble lines | `LINES` in `src/site/store.js` |
 | Page copy | `index.html`: every text exists as `<span lang="ja">` + `<span lang="en">` |
 | Images | `public/img/`, converted from the design bundle's uploads |

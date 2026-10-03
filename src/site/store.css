@@ -1129,6 +1129,31 @@ html.menu-open { overflow: hidden; }
 }
 @media (prefers-reduced-motion: reduce) { .work, .work-desk, .work-phone { transition: none; } }
 
+/* apps aisle: our apps on the stores */
+.store-shelf {
+  margin-top: 28px; padding: 20px 24px; border-radius: 22px; display: flex; align-items: center; justify-content: space-between; gap: 18px 28px; flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+.store-shelf-eyebrow { font: 800 11.5px/1 var(--round); letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.store-shelf-text { margin-top: 8px; font-size: 15px; line-height: 1.6; color: #dfe5ff; word-break: auto-phrase; }
+.store-badges { display: flex; flex-wrap: wrap; gap: 12px; }
+.store-badge {
+  display: inline-flex; align-items: center; gap: 10px; min-width: 168px; padding: 9px 18px 9px 14px; border-radius: 12px;
+  background: #000; color: #fff; text-decoration: none; box-shadow: inset 0 0 0 1.5px #a6a6a6;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.store-badge:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.5px #fff, 0 0 0 2px var(--gold); }
+.store-badge:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.store-badge > svg { width: 26px; height: 26px; flex: none; }
+.store-badge > svg .f { fill: #fff; }
+.store-badge > span:not(.sr-only) { display: flex; flex-direction: column; font: 700 18px/1.05 -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: -0.01em; }
+.store-badge small { font: 600 10.5px/1.2 -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: 0.02em; }
+@media (max-width: 600px) {
+  .store-shelf { padding: 18px; }
+  .store-badges { width: 100%; }
+  .store-badge { flex: 1 1 150px; justify-content: center; }
+}
+
 /* parent company credit */
 .parent-name a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
 .parent-name a svg { width: 20px; height: 20px; fill: none; stroke: var(--gold); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s ease; }
