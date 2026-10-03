@@ -135,6 +135,11 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
    STOREFRONT
    ============================================================ */
 .store {
+  /* one floor for everything: the boards' feet stand --ground above the bottom, the dais a step further back */
+  --ground: clamp(18px, 3.6vh, 40px);
+  --leg: 26px;
+  --floor-h: 31%;
+  --board-x: 400px; /* centre of each board from the middle (down-lights) */
   position: relative; isolation: isolate; overflow: hidden;
   min-height: max(660px, 100svh);
   padding: calc(var(--nav-h) + 6px) 16px 0;
@@ -152,17 +157,19 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
   content: ""; position: absolute; inset: 0 0 auto; height: 16px;
   background: linear-gradient(180deg, rgba(27, 42, 99, 0.12), transparent);
 }
-.store-wall::after {
-  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 60%;
+.store-wall::after { /* down-lights over the two boards */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 64%;
   background:
-    radial-gradient(10% 34% at 18% 0%, rgba(255, 255, 255, 0.85), transparent 70%),
-    radial-gradient(10% 34% at 82% 0%, rgba(255, 255, 255, 0.85), transparent 70%);
+    radial-gradient(9% 38% at calc(50% - var(--board-x)) 0%, rgba(255, 255, 255, 0.9), transparent 70%),
+    radial-gradient(9% 38% at calc(50% + var(--board-x)) 0%, rgba(255, 255, 255, 0.9), transparent 70%);
 }
 .store-floor {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 24%; z-index: -1; overflow: hidden;
-  background: linear-gradient(180deg, #d9e4f3, #eef3fa);
-  border-top: 6px solid #fff;
-  box-shadow: 0 -1px 0 rgba(27, 42, 99, 0.12);
+  position: absolute; left: 0; right: 0; bottom: 0; height: var(--floor-h); z-index: -1; overflow: hidden;
+  background:
+    radial-gradient(34% 70% at 50% 62%, rgba(255, 255, 255, 0.75), transparent 70%), /* pool of light round the dais */
+    linear-gradient(180deg, #d5e1f1, #eef3fa 70%);
+  border-top: 9px solid #fbfcff; /* skirting board */
+  box-shadow: 0 -1px 0 rgba(27, 42, 99, 0.13), inset 0 1px 0 rgba(27, 42, 99, 0.1);
 }
 .store-floor::before {
   content: ""; position: absolute; left: -50%; right: -50%; top: 0; height: 260%;
@@ -210,7 +217,7 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
   font: 700 clamp(15px, 1.7vw, 19px)/1.6 var(--round); color: var(--navy-800);
 }
 
-/* stage: shelves | manager | shelves */
+/* stage: board | manager | board */
 .store-stage {
   position: relative; z-index: 1;
   width: 100%; max-width: 1180px; flex: 1;
@@ -219,33 +226,58 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
   margin-top: -8px;
 }
 
-/* desktop: shelves | manager | shelves (the wrapper only matters on small screens) */
+/* desktop: board | manager | board (the wrapper only matters on small screens) */
 .shelves { display: contents; }
 .shelf-unit.left { grid-column: 1; grid-row: 1; }
 .manager { grid-column: 2; grid-row: 1; }
 .shelf-unit.right { grid-column: 3; grid-row: 1; }
 
-/* shelving units */
+/* the two display boards: a pegboard panel in a wooden frame, a lit navy crown, standing on legs */
 .shelf-unit {
-  position: relative; align-self: end; /* fixtures stand on the shop floor */
-  padding: 18px 16px 14px; margin-bottom: max(18px, 3.5vh);
-  border-radius: 18px 18px 10px 10px;
-  background: linear-gradient(180deg, #ffffff, #f3f7fd);
-  box-shadow: 0 0 0 1px rgba(27, 42, 99, 0.07), var(--shadow-2);
+  position: relative; align-self: end;
+  margin-bottom: calc(var(--ground) + var(--leg));
+  padding: 30px 22px 16px;
+  border-radius: 4px;
+  background:
+    radial-gradient(circle, rgba(27, 42, 99, 0.09) 1.3px, transparent 1.8px) 50% 0 / 18px 18px, /* pegboard holes */
+    linear-gradient(180deg, #ffffff, #eef3fa);
+  box-shadow: 0 0 0 1px rgba(27, 42, 99, 0.08), 0 26px 40px -24px rgba(18, 27, 69, 0.4);
   display: flex; flex-direction: column; gap: 14px;
 }
-.shelf-unit::before { /* crown with a strip light */
-  content: ""; position: absolute; left: 14px; right: 14px; top: 7px; height: 4px; border-radius: 4px;
-  background: linear-gradient(90deg, transparent, rgba(255, 214, 102, 0.9), transparent);
-  filter: blur(0.5px);
+/* the boards turn in a little towards Yukizo, like fixtures flanking a counter */
+.shelf-unit.left { transform: perspective(1400px) rotateY(7deg); transform-origin: 100% 60%; }
+.shelf-unit.right { transform: perspective(1400px) rotateY(-7deg); transform-origin: 0 60%; }
+.shelf-unit::before { /* crown: navy header with a gold trim, and the strip light it casts */
+  content: ""; position: absolute; z-index: 2; left: -10px; right: -10px; top: -10px; height: 22px;
+  border-radius: 9px 9px 4px 4px;
+  background: linear-gradient(180deg, var(--navy-800), var(--navy-900));
+  box-shadow: inset 0 -3px 0 var(--gold), inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 9px 16px -6px rgba(255, 205, 80, 0.75), 0 4px 8px rgba(18, 27, 69, 0.25);
+}
+.board-frame { /* wooden side posts that run down to the floor as legs, plus their shadow */
+  position: absolute; z-index: 1; left: -8px; right: -8px; top: -2px; bottom: calc(-1 * var(--leg));
+  pointer-events: none;
+}
+.board-frame::before, .board-frame::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 12px; border-radius: 3px 3px 2px 2px;
+  background:
+    linear-gradient(180deg, transparent calc(100% - 7px), var(--navy-900) calc(100% - 7px)), /* rubber feet */
+    linear-gradient(90deg, var(--wood-1), var(--wood-2) 55%, var(--wood-3));
+  box-shadow: 0 1px 2px rgba(80, 44, 12, 0.3);
+}
+.board-frame::before { left: 0; }
+.board-frame::after { right: 0; }
+.shelf-unit::after { /* contact shadow on the floor */
+  content: ""; position: absolute; z-index: -1; left: -6%; right: -6%; bottom: calc(-1 * var(--leg) - 9px); height: 20px;
+  background: radial-gradient(closest-side, rgba(18, 27, 69, 0.28), rgba(18, 27, 69, 0));
 }
 .shelf { position: relative; }
 .shelf-items {
-  display: flex; justify-content: space-around; align-items: flex-end; gap: 8px;
-  padding: 6px 6px 0; min-height: 132px;
+  display: flex; justify-content: center; align-items: flex-end; gap: clamp(6px, 1.6vw, 22px);
+  padding: 6px 0 0; min-height: 132px;
 }
 .shelf-board {
-  position: relative; height: 16px; border-radius: 4px;
+  position: relative; height: 16px; margin: 0 -14px; border-radius: 3px;
   background: linear-gradient(180deg, var(--wood-1) 0 40%, var(--wood-2) 40% 100%);
   box-shadow: 0 10px 14px -8px rgba(80, 44, 12, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
@@ -297,7 +329,11 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
 
 /* the manager */
 .manager { position: relative; align-self: stretch; display: flex; align-items: flex-end; justify-content: center; }
-.manager yukizo-hero { height: clamp(420px, calc(100svh - 300px), 700px); } /* fill what's left under the sign + buttons */
+.spot { /* Yukizo on his dais, a step behind the boards' front edge */
+  position: relative; width: 100%; display: flex; justify-content: center; align-items: flex-end;
+  margin-bottom: calc(var(--ground) + 16px);
+}
+.spot yukizo-hero { position: relative; z-index: 1; height: clamp(420px, calc(100svh - 300px), 760px); } /* fill what's left under the sign + buttons; store.js stands his feet on the dais */
 .bubble {
   position: absolute; z-index: 3; top: 2%; left: 62%;
   width: clamp(270px, 23vw, 320px);
@@ -315,28 +351,39 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
 }
 @media (min-width: 601px) { /* store.js sets --head-y once Yukizo is on stage */
   /* just above his head, but never higher than the top of the stage (short screens) */
-  .manager.anchored .bubble { top: auto; bottom: min(calc(100% - var(--head-y) + 12px), calc(100% - var(--bubble-h))); }
+  .manager.anchored .bubble { top: auto; bottom: min(calc(100% - var(--head-y) + 12px), calc(100% - var(--bubble-h) - 10px)); }
 }
 .bubble.hide { opacity: 0; transform: scale(0.85) translateY(6px); }
 .bubble.pop { animation: pop 0.38s cubic-bezier(0.3, 1.6, 0.5, 1); }
 @keyframes pop { 0% { transform: scale(0.9); } 100% { transform: scale(1); } }
 .bubble-text { font: 700 14.5px/1.6 var(--round); }
 .bubble-text strong { color: var(--sky-700); }
-.standee {
-  position: absolute; right: 0; bottom: 11%; z-index: 2;
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-  padding: 8px 14px 10px; border-radius: 10px 10px 4px 4px;
-  background: var(--navy-800); color: #fff; border: 2px solid var(--gold);
-  box-shadow: 0 10px 18px rgba(18, 27, 69, 0.25);
-  transform: perspective(300px) rotateX(8deg);
+
+/* the dais: a round navy step with a gold rim and the manager's nameplate on its front */
+.dais {
+  position: absolute; z-index: 0; left: 50%; bottom: 0; transform: translateX(-50%);
+  width: min(70%, 300px); aspect-ratio: 3.6; pointer-events: none;
+  filter: drop-shadow(0 14px 12px rgba(18, 27, 69, 0.26));
 }
-.standee::before, .standee::after { /* A-frame legs */
-  content: ""; position: absolute; bottom: -16px; width: 4px; height: 18px; background: var(--wood-3); border-radius: 2px;
+.dais::after { /* the curved front face */
+  content: ""; position: absolute; left: 0; right: 0; top: 28%; bottom: 0;
+  border-radius: 0 0 50% 50% / 0 0 38.9% 38.9%; /* bottom curve = half the top ellipse */
+  background:
+    linear-gradient(180deg, rgba(246, 197, 49, 0.9) 0 3px, transparent 3px), /* gold lip */
+    linear-gradient(90deg, #0c1438, var(--navy-800) 22%, #33479a 50%, var(--navy-800) 78%, #0c1438);
 }
-.standee::before { left: 16px; transform: rotate(8deg); }
-.standee::after { right: 16px; transform: rotate(-8deg); }
-.standee-role { font: 800 10px/1.2 var(--round); letter-spacing: 0.2em; color: var(--gold); }
-.standee-name { font: 800 16px/1.2 var(--round); letter-spacing: 0.06em; }
+.dais::before { /* the top Yukizo stands on (store.js aims his feet at its middle: 28% down) */
+  content: ""; position: absolute; z-index: 1; left: 0; right: 0; top: 0; height: 56%; border-radius: 50%;
+  background: radial-gradient(closest-side, #ffffff 0 52%, #eef3fb 80%, #dde6f3);
+  box-shadow: inset 0 0 0 3px var(--gold), inset 0 0 0 5px #fff6d8, inset 0 -8px 14px rgba(27, 42, 99, 0.16);
+}
+.dais-plate {
+  position: absolute; z-index: 2; left: 50%; top: 77%; transform: translate(-50%, -50%);
+  display: inline-flex; align-items: baseline; gap: 8px; white-space: nowrap;
+  color: #fff; font: 800 15px/1 var(--round); letter-spacing: 0.08em;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+.dais-role { font-size: 10px; letter-spacing: 0.24em; color: var(--gold); }
 
 .floor-guide {
   position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 3;
@@ -354,10 +401,12 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
   .store-tagline { margin-top: 10px; font-size: 16px; }
   .store-ctas { margin-top: 12px; }
   .store-ctas .btn { padding: 11px 20px; font-size: 14px; }
-  .manager yukizo-hero { height: clamp(400px, calc(100svh - 250px), 640px); }
-  .shelf-unit { gap: 10px; padding: 14px 14px 12px; }
-  .shelf-items { min-height: 116px; }
-  .pkg { width: 62px; height: 82px; }
+  .store { --ground: 18px; --leg: 18px; }
+  .spot yukizo-hero { height: clamp(390px, calc(100svh - 285px), 640px); }
+  .shelf-unit { gap: 8px; padding: 22px 18px 10px; }
+  .shelf-items { min-height: 108px; }
+  .product { gap: 5px; }
+  .pkg { width: 58px; height: 76px; }
   .pkg-icon svg { width: 30px; height: 30px; }
 }
 
@@ -850,6 +899,17 @@ html.menu-open { overflow: hidden; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* big screens: a wider stage, so Yukizo (sized by his column's width) and the boards grow together */
+@media (min-width: 1600px) and (min-height: 900px) {
+  .store { --board-x: 466px; }
+  .store-stage { max-width: 1320px; grid-template-columns: minmax(0, 1fr) 520px minmax(0, 1fr); }
+  .shelf-items { min-height: 146px; }
+  .product { width: 92px; }
+  .pkg { width: 76px; height: 100px; }
+  .pkg-icon svg { width: 38px; height: 38px; }
+  .bubble { width: 330px; }
+  .dais { width: min(70%, 350px); }
+}
 @media (max-width: 1120px) {
   .nav-links { display: none; }
   .nav-end { margin-left: auto; }
@@ -858,19 +918,25 @@ html.menu-open { overflow: hidden; }
   .product { width: 70px; }
   .pkg { width: 58px; height: 78px; }
   .pkg-icon svg { width: 28px; height: 28px; }
-  .bubble { left: 50%; top: 0; width: 250px; }
+  .bubble { left: 63%; top: 0; width: clamp(250px, 28vw, 300px); }
+  .store { --board-x: 34vw; }
+  .shelf-unit { padding-left: 14px; padding-right: 14px; }
+  .shelf-items { gap: 14px; }
+  .product-name { font-size: 10.5px; }
 }
 
 @media (max-width: 900px) {
-  .store { min-height: 0; padding-bottom: 64px; }
-  .store-floor { height: 52%; }
-  .store-stage { grid-template-columns: 1fr; gap: 14px; margin-top: 4px; }
+  .store { min-height: 0; --floor-h: 44%; --board-x: 25vw; }
+  .store-stage { grid-template-columns: 1fr; gap: 6px; margin-top: 4px; }
   .manager, .shelf-unit.left, .shelf-unit.right { grid-column: auto; grid-row: auto; }
-  .shelves { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .manager yukizo-hero { height: clamp(380px, 58vh, 480px); }
-  .shelf-unit { margin-bottom: 0; align-self: stretch; padding: 14px 8px 12px; }
+  /* the two boards side by side on the floor, Yukizo's dais just behind them */
+  .shelves { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 0 18px; }
+  .spot { margin-bottom: 26px; }
+  .spot yukizo-hero { height: clamp(380px, 58vh, 480px); }
+  .shelf-unit { align-self: stretch; padding: 28px 10px 12px; }
+  .shelf-unit.left { transform: perspective(1200px) rotateY(5deg); }
+  .shelf-unit.right { transform: perspective(1200px) rotateY(-5deg); }
   .bubble { left: auto; right: 0; top: 0; width: min(46vw, 260px); }
-  .standee { right: 4%; }
   .floor-guide { bottom: 12px; }
   .games { grid-template-columns: 1fr; }
   .office { grid-template-columns: 1fr; max-width: 560px; }
@@ -892,27 +958,28 @@ html.menu-open { overflow: hidden; }
   .sign-board { padding: 12px 26px 11px; }
   .sign-sub { font-size: 11px; }
   .store-tagline { margin-top: 14px; }
-  .store { padding-bottom: 20px; }
-  .store-floor { height: 30%; }
+  .store { padding-bottom: 6px; --floor-h: 34%; --leg: 18px; }
   .floor-guide { display: none; }
   /* one swipeable shelf strip under the manager */
   .shelves {
     display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory; scroll-padding: 0 16px;
-    margin: 0 -16px; padding: 4px 16px 14px; scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    margin: 0 -16px; padding: 14px 24px calc(var(--leg) + 18px); scroll-padding: 0 40px; scrollbar-width: none;
   }
   .shelves::-webkit-scrollbar { display: none; }
-  .shelf-unit { flex: none; flex-direction: row; gap: 12px; padding: 14px 12px 12px; }
+  .shelf-unit { flex: none; flex-direction: row; gap: 26px; padding: 24px 16px 12px; margin-bottom: var(--leg); }
+  .shelf-unit.left, .shelf-unit.right { transform: none; } /* flat while they scroll past */
   .shelf { flex: none; width: 252px; scroll-snap-align: start; }
-  .shelf-items { min-height: 112px; gap: 4px; }
+  .shelf-items { min-height: 112px; gap: 8px; }
   .product { width: 76px; }
-  .product-name { font-size: 11px; }
+  .product-name { font-size: 10.5px; }
   .bubble { position: relative; top: auto; right: auto; left: auto; width: auto; margin: 0 4px; order: 2; border-radius: 22px; }
   .bubble::after { left: 50%; bottom: auto; top: -13px; margin-left: -11px; transform: scaleY(-1); clip-path: polygon(0 0, 100% 0, 50% 100%); }
   .manager { flex-direction: column; align-items: stretch; }
-  .manager yukizo-hero { height: min(340px, 42svh); }
-  .standee { top: calc(min(340px, 42svh) - 62px); bottom: auto; right: 0; transform: scale(0.82); transform-origin: 100% 100%; }
-  .bubble { margin: 2px 0 12px; padding: 11px 16px; }
+  .spot yukizo-hero { height: min(340px, 42svh); }
+  .dais { width: min(62%, 236px); }
+  .dais-plate { font-size: 13px; }
+  .bubble { margin: 14px 0 4px; padding: 11px 16px; }
   .bubble-text { font-size: 13.5px; }
   .sign-chain { display: none; }
   .aisle, .manager-intro, .contact { padding-top: 80px; padding-bottom: 80px; }

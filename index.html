@@ -114,17 +114,22 @@
         <span class="spinner"></span>
         <span><span lang="ja">店長、出勤中…</span><span lang="en">The manager is on his way…</span></span>
       </div>
-      <img class="manager-fallback" src="/img/yukizo-harbor.webp" alt="" width="900" height="1599" hidden>
-      <yukizo-hero id="yukizo" label="ユキゾウ — Yuki Lab ストアの店長。水色のゾウのマスコット。Enterで敬礼します。"></yukizo-hero>
-      <div class="standee" aria-hidden="true">
-        <span class="standee-role"><span lang="ja">店長</span><span lang="en">STORE MANAGER</span></span>
-        <span class="standee-name"><span lang="ja">ユキゾウ</span><span lang="en">Yukizo</span></span>
+      <div class="spot">
+        <div class="dais" aria-hidden="true">
+          <span class="dais-plate">
+            <span class="dais-role"><span lang="ja">店長</span><span lang="en">STORE MANAGER</span></span>
+            <span class="dais-name"><span lang="ja">ユキゾウ</span><span lang="en">Yukizo</span></span>
+          </span>
+        </div>
+        <img class="manager-fallback" src="/img/yukizo-harbor.webp" alt="" width="900" height="1599" hidden>
+        <yukizo-hero id="yukizo" label="ユキゾウ — Yuki Lab ストアの店長。水色のゾウのマスコット。Enterで敬礼します。"></yukizo-hero>
       </div>
     </div>
 
     <div class="shelves">
     <!-- left shelving -->
     <div class="shelf-unit left">
+      <span class="board-frame" aria-hidden="true"></span>
       <div class="shelf" data-shelf="games">
         <span class="pop pop-pick" aria-hidden="true"><span lang="ja">店長<br>イチオシ!</span><span lang="en">Manager's<br>pick!</span></span>
         <div class="shelf-items">
@@ -164,6 +169,7 @@
 
     <!-- right shelving -->
     <div class="shelf-unit right">
+      <span class="board-frame" aria-hidden="true"></span>
       <div class="shelf" data-shelf="web">
         <div class="shelf-items">
           <button class="product" type="button" data-item="lp" data-aisle="aisle-web">

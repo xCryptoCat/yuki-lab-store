@@ -74,7 +74,7 @@ const css = `
  *   name        basename for downloads (default "yukizo").
  *   label       accessible description (defaults to an English one).
  *
- * Methods: salute(), talk(seconds), gesture('wave' | 'proud' | 'chest'), lookAt(x, y), headTop(), resetView(), downloadGLB(), downloadOBJ()
+ * Methods: salute(), talk(seconds), gesture('wave' | 'proud' | 'chest'), lookAt(x, y), headTop(), feet(), resetView(), downloadGLB(), downloadOBJ()
  * Events:  'yukizo-ready' once the model is built; 'yukizo-salute' whenever he salutes.
  */
 export class YukizoHero extends HTMLElement {
@@ -150,10 +150,11 @@ export class YukizoHero extends HTMLElement {
   }
   /** Top of his head in px from the element's top-left (e.g. to place a speech bubble), or null before he's built. */
   headTop() {
-    const s = this._stage;
-    if (!s?.size) return null;
-    const p = new THREE.Vector3(s.center.x, s.center.y + s.size.y / 2, s.center.z).project(s.camera);
-    return { x: ((p.x + 1) / 2) * this.clientWidth, y: ((1 - p.y) / 2) * this.clientHeight };
+    return this._screenPoint(1);
+  }
+  /** Where his feet meet the floor, in px from the element's top-left (e.g. to stand him on a stage), or null before he's built. */
+  feet() {
+    return this._screenPoint(-1);
   }
   resetView() {
     this._stage?.frame(true);
@@ -276,6 +277,13 @@ export class YukizoHero extends HTMLElement {
     canvas.style.touchAction = hero ? 'pan-y' : 'none';
   }
 
+  /** The centre of his bounding box's top (side = 1) or bottom (side = -1), projected to element px. */
+  _screenPoint(side) {
+    const s = this._stage;
+    if (!s?.size) return null;
+    const p = new THREE.Vector3(s.center.x, s.center.y + (side * s.size.y) / 2, s.center.z).project(s.camera);
+    return { x: ((p.x + 1) / 2) * this.clientWidth, y: ((1 - p.y) / 2) * this.clientHeight };
+  }
   _toNdc(e) {
     const r = this._stage.canvas.getBoundingClientRect();
     return this._ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);

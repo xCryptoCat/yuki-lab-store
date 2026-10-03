@@ -173,24 +173,34 @@ function showFallback() {
 }
 yukizo.addEventListener('yukizo-error', showFallback);
 
-/* keep the bubble just above his head, however tall the stage gets */
+/* stand Yukizo on his dais, and keep the bubble just above his head, however big the stage gets */
 const manager = document.querySelector('.manager');
-function placeBubble() {
-  const head = yukizo.headTop?.();
-  if (!head) return;
-  manager.style.setProperty('--head-y', `${Math.round(yukizo.offsetTop + head.y)}px`);
+const spot = document.querySelector('.spot');
+const dais = document.querySelector('.dais');
+const DAIS_TOP = 0.28; // middle of the dais top, as a share of the dais height (.dais::before is 56% tall)
+function placeStage() {
+  const feet = yukizo.feet?.(), head = yukizo.headTop?.();
+  if (!feet || !head) return;
+  const d = dais.getBoundingClientRect();
+  if (d.height) {
+    const lift = spot.getBoundingClientRect().bottom - (d.top + d.height * DAIS_TOP);
+    yukizo.style.marginBottom = `${Math.round(lift - (yukizo.clientHeight - feet.y))}px`;
+  }
+  const top = yukizo.getBoundingClientRect().top - manager.getBoundingClientRect().top;
+  manager.style.setProperty('--head-y', `${Math.round(top + head.y)}px`);
   manager.style.setProperty('--bubble-h', `${bubble.offsetHeight}px`);
   manager.classList.add('anchored');
 }
-const bubbleRO = new ResizeObserver(() => requestAnimationFrame(placeBubble));
-bubbleRO.observe(yukizo);
-bubbleRO.observe(bubble); // lines differ in length
+const stageRO = new ResizeObserver(() => requestAnimationFrame(placeStage));
+stageRO.observe(yukizo);
+stageRO.observe(dais);
+stageRO.observe(bubble); // lines differ in length
 if (!hasWebGL) {
   showFallback();
 } else {
   yukizo.ready.then(() => {
     loading.classList.add('done');
-    placeBubble();
+    placeStage();
     // greet once he has popped in — unless a visitor already pointed at something
     setTimeout(() => { if (current === 'welcome' && bubble.classList.contains('hide')) say('welcome'); }, 1300);
   });
