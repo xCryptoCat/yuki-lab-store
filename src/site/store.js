@@ -36,6 +36,18 @@ const LINES = {
     ja: '<strong>PowerPoint</strong>で、伝わるプレゼン資料をつくります。',
     en: '<strong>PowerPoint</strong> decks that get your point across.',
   },
+  music: {
+    ja: '<strong>音楽制作</strong>。BGMもジングルも、テーマソングもつくれるゾウ。♪',
+    en: '<strong>Music</strong>: background music, jingles, even a theme song. ♪',
+  },
+  video: {
+    ja: '<strong>動画制作</strong>。会社紹介からSNSのショート動画まで、企画からおまかせ！',
+    en: '<strong>Video</strong>, from company films to social shorts. We can plan it all.',
+  },
+  edit: {
+    ja: '<strong>動画編集</strong>。お手持ちの素材に、カットやテロップ、BGMを入れて仕上げます。',
+    en: '<strong>Video editing</strong>: your footage, cut and finished with captions and music.',
+  },
   lp: {
     ja: '<strong>ランディングページ</strong>。お問い合わせにつながる1枚を設計します。',
     en: '<strong>Landing pages</strong> designed to turn visitors into enquiries.',
@@ -56,6 +68,18 @@ const LINES = {
     ja: '<strong>業務アプリ</strong>。社内の「紙と電話」を、アプリでラクにします。',
     en: '<strong>Business apps</strong> that replace paper forms and phone calls.',
   },
+  logo: {
+    ja: '<strong>ロゴデザイン</strong>。ぼくの帽子の「Y」みたいに、ひと目でわかる顔をつくるゾウ。',
+    en: "<strong>Logo design</strong>: a face people know at a glance, like the Y on my cap.",
+  },
+  uiux: {
+    ja: '<strong>UI/UXデザイン</strong>。アプリやWebを、迷わず使える画面に設計します。',
+    en: '<strong>UI/UX design</strong>: app and web screens nobody gets lost in.',
+  },
+  graphic: {
+    ja: '<strong>デザイン全般</strong>。チラシやポスター、バナーもおまかせください！',
+    en: '<strong>Graphic design</strong>: flyers, posters, banners and more.',
+  },
   thanks: {
     ja: '<strong>スタンプコンプリート</strong>、ありがとうだゾウ！気になる商品があったら、なんでも聞いてね。',
     en: "You collected <strong>every stamp</strong> — thank you! Ask me about anything that caught your eye.",
@@ -72,11 +96,11 @@ const HINT = {
 const META = {
   ja: {
     title: 'Yuki Lab Store｜ユキラボ ストア',
-    description: 'Yuki Lab（ユキラボ）は Yuki Security のクリエイティブ部門。ゲーム、Excel・Word・PowerPoint 資料、ランディングページ、セキュリティアプリまで、店長ユキゾウがご案内します。',
+    description: 'Yuki Lab（ユキラボ）は Yuki Security のクリエイティブ部門。ゲーム、Excel・Word・PowerPoint 資料、音楽・動画制作、ロゴ・UI/UX デザイン、Webサイト、セキュリティアプリまで、店長ユキゾウがご案内します。',
   },
   en: {
-    title: 'Yuki Lab Store — games, documents, web & apps',
-    description: 'Yuki Lab is the creative studio of Yuki Security. Games, Excel / Word / PowerPoint documents, landing pages and security apps — made to order, with Yukizo the store manager as your guide.',
+    title: 'Yuki Lab Store — games, video, design, web & apps',
+    description: 'Yuki Lab is the creative studio of Yuki Security. Games, Excel / Word / PowerPoint documents, music and video, logo and UI/UX design, websites and security apps, made to order with Yukizo the store manager as your guide.',
   },
 };
 const HERO_LABEL = {
@@ -170,6 +194,7 @@ function showFallback() {
   document.querySelector('.manager-fallback').hidden = false;
   loading.classList.add('done');
   say('welcome', { type: false });
+  requestAnimationFrame(() => { stageRO.observe(document.querySelector('.manager-fallback')); placeStage(); });
 }
 yukizo.addEventListener('yukizo-error', showFallback);
 
@@ -179,6 +204,13 @@ const spot = document.querySelector('.spot');
 const dais = document.querySelector('.dais');
 const DAIS_TOP = 0.28; // middle of the dais top, as a share of the dais height (.dais::before is 56% tall)
 function placeStage() {
+  if (root.classList.contains('no-webgl')) { // the photo stands in for him: the bubble sits just above it
+    const img = document.querySelector('.manager-fallback');
+    manager.style.setProperty('--head-y', `${Math.round(img.getBoundingClientRect().top - manager.getBoundingClientRect().top)}px`);
+    manager.style.setProperty('--bubble-h', `${bubble.offsetHeight}px`);
+    manager.classList.add('anchored');
+    return;
+  }
   const feet = yukizo.feet?.(), head = yukizo.headTop?.();
   if (!feet || !head) return;
   const d = dais.getBoundingClientRect();
@@ -256,10 +288,17 @@ for (const btn of document.querySelectorAll('.product')) {
     if (touchIntro) {
       touchIntro = false;
       present(btn, false);
+      revealBubble();
       return;
     }
     goToAisle(btn.dataset.aisle);
   });
+}
+/** Phones: if his bubble has scrolled up out of sight, bring it back so the tapped product's line can be read. */
+function revealBubble() {
+  const navH = document.querySelector('.nav').offsetHeight;
+  const top = bubble.getBoundingClientRect().top;
+  if (top < navH) window.scrollBy({ top: top - navH - 36, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
 }
 /** Scroll to an aisle and move keyboard focus there too, so Tab continues from the aisle. */
 function goToAisle(id) {
@@ -321,7 +360,7 @@ const spy = new IntersectionObserver(
   },
   { rootMargin: '-45% 0px -50% 0px' }
 );
-for (const id of ['top', 'aisle-games', 'aisle-office', 'aisle-web', 'aisle-apps', 'manager', 'order', 'contact']) spy.observe(document.getElementById(id));
+for (const id of ['top', 'aisle-games', 'aisle-office', 'aisle-media', 'aisle-web', 'aisle-apps', 'aisle-design', 'manager', 'order', 'contact']) spy.observe(document.getElementById(id));
 
 /* ---------- phone: sticky "ask the manager" once the storefront is gone ---------- */
 const sticky = document.getElementById('sticky-cta');
@@ -368,8 +407,10 @@ for (const a of document.querySelectorAll('[data-need]'))
 const NEEDS = {
   games: { ja: 'ゲーム', en: 'Games' },
   office: { ja: 'Excel・Word・PowerPoint', en: 'Excel / Word / PowerPoint' },
+  media: { ja: '音楽・動画', en: 'Music & video' },
   web: { ja: 'LP・Webサイト', en: 'Landing pages & websites' },
   apps: { ja: 'アプリ', en: 'Apps' },
+  design: { ja: 'ロゴ・UI/UX・デザイン', en: 'Logo, UI/UX & design' },
 };
 const mailLink = document.getElementById('mail-link');
 mailLink.href = `mailto:${CONTACT_EMAIL}`;
@@ -418,9 +459,12 @@ form.addEventListener('submit', (e) => {
 const STAMPS = [
   ['games', 'aisle-games', { ja: 'ゲーム', en: 'Games' }],
   ['office', 'aisle-office', { ja: 'オフィス', en: 'Office' }],
+  ['media', 'aisle-media', { ja: '音楽・動画', en: 'Music & video' }],
   ['web', 'aisle-web', { ja: 'Web', en: 'Web' }],
   ['apps', 'aisle-apps', { ja: 'アプリ', en: 'Apps' }],
+  ['design', 'aisle-design', { ja: 'デザイン', en: 'Design' }],
 ];
+const ALL = STAMPS.length;
 const rally = document.getElementById('rally');
 const rallyBtn = document.getElementById('rally-btn');
 const rallyCard = document.getElementById('rally-card');
@@ -432,15 +476,15 @@ try { thanked = localStorage.getItem('yukilab-thanked') === '1'; } catch (e) {}
 
 function renderRally(fresh) {
   const n = stamps.size;
-  document.getElementById('rally-count').textContent = `${n}/4`;
+  document.getElementById('rally-count').textContent = `${n}/${ALL}`;
   rally.querySelectorAll('.rally-dots i').forEach((d, i) => d.classList.toggle('on', i < n));
   for (const li of rally.querySelectorAll('[data-stamp]')) {
     li.classList.toggle('on', stamps.has(li.dataset.stamp));
     li.classList.toggle('fresh', li.dataset.stamp === fresh);
     li.style.setProperty('--r', `${-18 + ((li.dataset.stamp.length * 7) % 16)}deg`); // each stamp lands a bit crooked
   }
-  document.getElementById('rally-done').hidden = n < 4;
-  document.getElementById('rally-sub').hidden = n >= 4;
+  document.getElementById('rally-done').hidden = n < ALL;
+  document.getElementById('rally-sub').hidden = n >= ALL;
 }
 let toastTimer = 0;
 function showToast(html) {
@@ -456,11 +500,11 @@ function award(key, label) {
   stamps.add(key);
   try { localStorage.setItem('yukilab-stamps', JSON.stringify([...stamps])); } catch (e) {}
   renderRally(key);
-  const l = lang(), n = stamps.size, done = n === 4;
+  const l = lang(), n = stamps.size, done = n === ALL;
   const title = done
     ? (l === 'ja' ? 'スタンプコンプリート！' : 'Stamp card complete!')
     : (l === 'ja' ? `「${label.ja}」のスタンプをゲット！` : `${label.en} stamp collected!`);
-  const sub = done ? (l === 'ja' ? 'ご来店ありがとうございます' : 'Thanks for visiting every aisle') : `${n}/4`;
+  const sub = done ? (l === 'ja' ? 'ご来店ありがとうございます' : 'Thanks for visiting every aisle') : `${n}/${ALL}`;
   showToast(`<span class="toast-stamp" aria-hidden="true">ユ</span><span>${title}<small>${sub}</small></span>`);
 }
 renderRally();
@@ -485,7 +529,7 @@ addEventListener('pointerdown', (e) => { if (!rallyCard.hidden && !rally.contain
 // the card appears once the visitor has left the storefront; back at the storefront, a completed card earns a thank-you
 new IntersectionObserver(([en]) => {
   if (!en.isIntersecting) rally.hidden = false;
-  else if (stamps.size === 4 && !thanked && !root.classList.contains('no-webgl')) {
+  else if (stamps.size === ALL && !thanked && !root.classList.contains('no-webgl')) {
     thanked = true;
     try { localStorage.setItem('yukilab-thanked', '1'); } catch (e) {}
     setTimeout(() => { yukizo.salute(); say('thanks'); }, 600); // salute first: it announces its own line

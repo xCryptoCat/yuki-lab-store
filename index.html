@@ -41,9 +41,11 @@
   </a>
   <nav class="nav-links" aria-label="Floor guide">
     <a href="#aisle-games" data-spy="aisle-games"><span lang="ja">ゲーム</span><span lang="en">Games</span></a>
-    <a href="#aisle-office" data-spy="aisle-office"><span lang="ja">オフィス資料</span><span lang="en">Office</span></a>
+    <a href="#aisle-office" data-spy="aisle-office"><span lang="ja">資料</span><span lang="en">Office</span></a>
+    <a href="#aisle-media" data-spy="aisle-media"><span lang="ja">音楽・動画</span><span lang="en">Video</span></a>
     <a href="#aisle-web" data-spy="aisle-web">Web</a>
     <a href="#aisle-apps" data-spy="aisle-apps"><span lang="ja">アプリ</span><span lang="en">Apps</span></a>
+    <a href="#aisle-design" data-spy="aisle-design"><span lang="ja">デザイン</span><span lang="en">Design</span></a>
     <a href="#manager" data-spy="manager"><span lang="ja">店長紹介</span><span lang="en">Manager</span></a>
   </nav>
   <div class="nav-end">
@@ -67,8 +69,10 @@
     <ol class="drawer-list">
       <li><a href="#aisle-games" data-spy="aisle-games"><b>01</b><span><span lang="ja">ゲーム</span><span lang="en">Games</span></span></a></li>
       <li><a href="#aisle-office" data-spy="aisle-office"><b>02</b><span><span lang="ja">オフィス資料</span><span lang="en">Office documents</span></span></a></li>
-      <li><a href="#aisle-web" data-spy="aisle-web"><b>03</b><span><span lang="ja">Web・LP</span><span lang="en">Web &amp; landing pages</span></span></a></li>
-      <li><a href="#aisle-apps" data-spy="aisle-apps"><b>04</b><span><span lang="ja">アプリ</span><span lang="en">Apps</span></span></a></li>
+      <li><a href="#aisle-media" data-spy="aisle-media"><b>03</b><span><span lang="ja">音楽・動画</span><span lang="en">Music &amp; video</span></span></a></li>
+      <li><a href="#aisle-web" data-spy="aisle-web"><b>04</b><span><span lang="ja">Web・LP</span><span lang="en">Web &amp; landing pages</span></span></a></li>
+      <li><a href="#aisle-apps" data-spy="aisle-apps"><b>05</b><span><span lang="ja">アプリ</span><span lang="en">Apps</span></span></a></li>
+      <li><a href="#aisle-design" data-spy="aisle-design"><b>06</b><span><span lang="ja">デザイン</span><span lang="en">Logo, UI/UX &amp; design</span></span></a></li>
       <li><a href="#manager" data-spy="manager"><b>★</b><span><span lang="ja">店長紹介</span><span lang="en">Meet the manager</span></span></a></li>
     </ol>
     <a class="btn btn-gold btn-lg drawer-cta" href="#contact"><span lang="ja">店長に相談する</span><span lang="en">Ask the manager</span></a>
@@ -94,8 +98,8 @@
     </h1>
   </div>
   <p class="store-tagline">
-    <span lang="ja">ゲームも、資料も、Webも、アプリも。<br class="sp">ほしいものを、オーダーメイドで。</span>
-    <span lang="en">Games, documents, websites and apps —<br class="sp"> all made to order.</span>
+    <span lang="ja">ゲーム、動画、音楽、デザイン、Web、アプリまで。<br class="sp">ほしいものを、オーダーメイドで。</span>
+    <span lang="en">Games, video, music, design, web and apps,<br class="sp"> all made to order.</span>
   </p>
   <div class="store-ctas">
     <a class="btn btn-navy" href="#aisles"><span lang="ja">売り場を見る</span><span lang="en">Browse the aisles</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9.5l6 6 6-6"/></svg></a>
@@ -165,6 +169,23 @@
         </div>
         <div class="shelf-board"><span class="shelf-tag"><b>02</b><span lang="ja">オフィス資料</span><span lang="en">Office</span></span></div>
       </div>
+      <div class="shelf" data-shelf="media">
+        <div class="shelf-items">
+          <button class="product" type="button" data-item="music" data-aisle="aisle-media">
+            <span class="pkg pkg-icon" style="--p1:#b57cf7;--p2:#7034cf"><svg viewBox="0 0 24 24"><path d="M9 17.5V5.8l10.5-2.3v11.7"/><path d="M9 9.3l10.5-2.3"/><circle cx="6.6" cy="17.6" r="2.5"/><circle cx="17.1" cy="15.3" r="2.5"/></svg><em>MUSIC</em></span>
+            <span class="product-name"><span lang="ja">音楽制作</span><span lang="en">Music</span></span>
+          </button>
+          <button class="product" type="button" data-item="video" data-aisle="aisle-media">
+            <span class="pkg pkg-icon" style="--p1:#ff6b6b;--p2:#d02f48"><svg viewBox="0 0 24 24"><rect x="2.5" y="6.5" width="13" height="11" rx="2.5"/><path d="M15.5 10.4l6-3v9.2l-6-3z"/><circle cx="6.5" cy="10" r=".9" class="f"/></svg><em>VIDEO</em></span>
+            <span class="product-name"><span lang="ja">動画制作</span><span lang="en">Video</span></span>
+          </button>
+          <button class="product" type="button" data-item="edit" data-aisle="aisle-media">
+            <span class="pkg pkg-icon" style="--p1:#4a5373;--p2:#232840;--ic:#86f0d3"><svg viewBox="0 0 24 24"><circle cx="6" cy="6.5" r="2.6"/><circle cx="6" cy="17.5" r="2.6"/><path d="M8.3 7.9L20 16.8M8.3 16.1L20 7.2"/></svg><em>EDIT</em></span>
+            <span class="product-name"><span lang="ja">動画編集</span><span lang="en">Video editing</span></span>
+          </button>
+        </div>
+        <div class="shelf-board"><span class="shelf-tag"><b>03</b><span lang="ja">音楽・動画</span><span lang="en">Music &amp; video</span></span></div>
+      </div>
     </div>
 
     <!-- right shelving -->
@@ -185,7 +206,7 @@
             <span class="product-name"><span lang="ja">3Dキャラ</span><span lang="en">3D mascots</span></span>
           </button>
         </div>
-        <div class="shelf-board"><span class="shelf-tag"><b>03</b>Web</span></div>
+        <div class="shelf-board"><span class="shelf-tag"><b>04</b>Web</span></div>
       </div>
       <div class="shelf" data-shelf="apps">
         <div class="shelf-items">
@@ -198,7 +219,24 @@
             <span class="product-name"><span lang="ja">業務アプリ</span><span lang="en">Business apps</span></span>
           </button>
         </div>
-        <div class="shelf-board"><span class="shelf-tag"><b>04</b><span lang="ja">アプリ</span><span lang="en">Apps</span></span></div>
+        <div class="shelf-board"><span class="shelf-tag"><b>05</b><span lang="ja">アプリ</span><span lang="en">Apps</span></span></div>
+      </div>
+      <div class="shelf" data-shelf="design">
+        <div class="shelf-items">
+          <button class="product" type="button" data-item="logo" data-aisle="aisle-design">
+            <span class="pkg pkg-icon" style="--p1:#ffd85a;--p2:#e8a910;--ic:#1b2a63"><svg viewBox="0 0 24 24"><path d="M12 2.8l6.2 7.4L12 21.2 5.8 10.2z"/><circle cx="12" cy="11.2" r="1.7"/><path d="M12 2.8v6.7"/></svg><em>LOGO</em></span>
+            <span class="product-name"><span lang="ja">ロゴ</span><span lang="en">Logos</span></span>
+          </button>
+          <button class="product" type="button" data-item="uiux" data-aisle="aisle-design">
+            <span class="pkg pkg-icon pkg-light" style="--p1:#ffffff;--p2:#dfe8f6;--ic:#1b2a63"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14.5" rx="2.5"/><path d="M3 8.5h18M8.5 8.5v10"/><path d="M13.6 12.2l6 2.3-2.6 1-1 2.6z" class="f"/></svg><em>UI/UX</em></span>
+            <span class="product-name">UI/UX</span>
+          </button>
+          <button class="product" type="button" data-item="graphic" data-aisle="aisle-design">
+            <span class="pkg pkg-icon" style="--p1:#ff9a4a;--p2:#e0528f"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.3 0 2-.9 2-1.9 0-1.4-1.2-1.7-1.2-2.9 0-1 .8-1.8 1.9-1.8H17a4 4 0 0 0 4-4c0-4.1-4-7.4-9-7.4z"/><circle cx="7.6" cy="11.2" r="1.1" class="f"/><circle cx="10.2" cy="7.2" r="1.1" class="f"/><circle cx="15" cy="7.4" r="1.1" class="f"/></svg><em>DESIGN</em></span>
+            <span class="product-name"><span lang="ja">デザイン全般</span><span lang="en">Graphic design</span></span>
+          </button>
+        </div>
+        <div class="shelf-board"><span class="shelf-tag"><b>06</b><span lang="ja">デザイン</span><span lang="en">Design</span></span></div>
       </div>
     </div>
     </div><!-- /.shelves -->
@@ -355,10 +393,80 @@
   </a>
 </section>
 
-<!-- 03 WEB -->
-<section class="aisle" id="aisle-web" aria-labelledby="h-web">
+<!-- 03 MUSIC & VIDEO -->
+<section class="aisle aisle-dark" id="aisle-media" aria-labelledby="h-media">
   <header class="aisle-head reveal">
     <span class="aisle-no" aria-hidden="true"><small>AISLE</small>03</span>
+    <div>
+      <h2 id="h-media"><span lang="ja">音楽・動画</span><span lang="en">Music &amp; video</span></h2>
+      <p class="aisle-lead">
+        <span lang="ja">耳に残る音楽と、伝わる映像を。作曲から動画の撮影・制作、お手持ちの素材の編集まで、まとめてお任せください。</span>
+        <span lang="en">Music that sticks and video that tells your story. From composing and producing video to editing the footage you already have.</span>
+      </p>
+    </div>
+      <div class="pop pop-note" role="note">
+      <span class="pop-tape" aria-hidden="true"></span>
+      <span class="pop-head"><span lang="ja">店長のひとこと</span><span lang="en">From the manager</span></span>
+      <p><span lang="ja">ぼくのテーマソング、<br>だれか作ってくれないかな…<br>あ、うちで作れるゾウ！</span><span lang="en">I'd love a theme song...<br>Oh wait, we make those<br>right here!</span></p>
+      <span class="pop-sign"><span lang="ja">店長 ユキゾウ</span><span lang="en">Yukizo, manager</span><i class="hanko-mini" aria-hidden="true">ユ</i></span>
+    </div>
+  </header>
+
+  <div class="office svc">
+    <article class="office-card reveal" style="--accent:#8a4fe0">
+      <div class="mock mock-music" aria-hidden="true">
+        <span class="disc"></span>
+        <span class="eq"><i style="--h:38%"></i><i style="--h:72%"></i><i style="--h:54%"></i><i style="--h:92%"></i><i style="--h:64%"></i><i style="--h:80%"></i><i style="--h:46%"></i><i style="--h:68%"></i></span>
+      </div>
+      <h3><span lang="ja">音楽制作</span><span lang="en">Music</span> <small><span lang="ja">作曲・BGM</span><span lang="en">Composing &amp; BGM</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">動画・ゲーム・イベントのBGM</span><span lang="en">Background music for video, games and events</span></li>
+        <li><span lang="ja">ジングル・テーマソング・効果音</span><span lang="en">Jingles, theme songs and sound effects</span></li>
+        <li><span lang="ja">イメージを伝えるだけでOK</span><span lang="en">Just tell us the mood you're after</span></li>
+      </ul>
+    </article>
+
+    <article class="office-card reveal" style="--accent:#d6334c">
+      <div class="mock mock-video" aria-hidden="true">
+        <div class="player"><span class="rec">REC</span><span class="play"></span><span class="bar"><i></i></span></div>
+      </div>
+      <h3><span lang="ja">動画制作</span><span lang="en">Video</span> <small><span lang="ja">企画・撮影・制作</span><span lang="en">Planning to delivery</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">会社紹介・商品紹介・採用動画</span><span lang="en">Company, product and recruiting videos</span></li>
+        <li><span lang="ja">SNS向けのショート動画</span><span lang="en">Short videos for social media</span></li>
+        <li><span lang="ja">企画・構成から一緒に考えます</span><span lang="en">We plan the concept and script with you</span></li>
+      </ul>
+    </article>
+
+    <article class="office-card reveal" style="--accent:#2a3150">
+      <div class="mock mock-edit" aria-hidden="true">
+        <div class="timeline">
+          <span class="ruler"></span>
+          <span class="track v"><i style="--x:2%;--w:30%"></i><i style="--x:34%;--w:22%"></i><i style="--x:58%;--w:40%"></i></span>
+          <span class="track a"><i style="--x:2%;--w:60%"></i><i style="--x:64%;--w:34%"></i></span>
+          <span class="track t"><i style="--x:10%;--w:20%"></i><i style="--x:44%;--w:26%"></i></span>
+          <span class="playhead"></span>
+        </div>
+      </div>
+      <h3><span lang="ja">動画編集</span><span lang="en">Video editing</span> <small><span lang="ja">素材から仕上げ</span><span lang="en">Your footage, finished</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">カット・テロップ・BGM入れ</span><span lang="en">Cuts, captions and music</span></li>
+        <li><span lang="ja">色味・音量を整えて見やすく</span><span lang="en">Colour and sound balanced for easy viewing</span></li>
+        <li><span lang="ja">お手持ちの映像素材から編集</span><span lang="en">Edited from the footage you already have</span></li>
+      </ul>
+    </article>
+  </div>
+  <a class="aisle-cta reveal" href="#contact" data-need="media">
+    <span class="aisle-cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4.5 3.5v-3.5h-2.5z"/></svg></span>
+    <span><span lang="ja">音楽・動画のご相談はこちら</span><span lang="en">Talk to us about music or video</span></span>
+    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></svg>
+  </a>
+</section>
+
+<!-- 04 WEB -->
+<section class="aisle" id="aisle-web" aria-labelledby="h-web">
+  <header class="aisle-head reveal">
+    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>04</span>
     <div>
       <h2 id="h-web"><span lang="ja">Web・ランディングページ</span><span lang="en">Web &amp; landing pages</span></h2>
       <p class="aisle-lead">
@@ -408,10 +516,10 @@
   </a>
 </section>
 
-<!-- 04 APPS -->
+<!-- 05 APPS -->
 <section class="aisle aisle-dark" id="aisle-apps" aria-labelledby="h-apps">
   <header class="aisle-head reveal">
-    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>04</span>
+    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>05</span>
     <div>
       <h2 id="h-apps"><span lang="ja">アプリ</span><span lang="en">Apps</span></h2>
       <p class="aisle-lead">
@@ -462,6 +570,71 @@
   <a class="aisle-cta reveal" href="#contact" data-need="apps">
     <span class="aisle-cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4.5 3.5v-3.5h-2.5z"/></svg></span>
     <span><span lang="ja">アプリ開発のご相談はこちら</span><span lang="en">Talk to us about an app</span></span>
+    <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></svg>
+  </a>
+</section>
+
+<!-- 06 DESIGN -->
+<section class="aisle aisle-alt" id="aisle-design" aria-labelledby="h-design">
+  <header class="aisle-head reveal">
+    <span class="aisle-no" aria-hidden="true"><small>AISLE</small>06</span>
+    <div>
+      <h2 id="h-design"><span lang="ja">デザイン</span><span lang="en">Design</span></h2>
+      <p class="aisle-lead">
+        <span lang="ja">会社の顔になるロゴから、アプリやWebの使いやすい画面、チラシやバナーまで。見た目も使い心地も、ていねいにデザインします。</span>
+        <span lang="en">From the logo that becomes your company's face to easy-to-use app and web screens, flyers and banners. Designed with care, for looks and for use.</span>
+      </p>
+    </div>
+      <div class="pop pop-note" role="note">
+      <span class="pop-tape" aria-hidden="true"></span>
+      <span class="pop-head"><span lang="ja">店長のひとこと</span><span lang="en">From the manager</span></span>
+      <p><span lang="ja">ロゴは会社の顔。<br>ぼくの帽子の「Y」みたいに、<br>ひと目でわかるのがいいゾウ。</span><span lang="en">A logo is your company's face.<br>Like the Y on my cap,<br>it should be clear at a glance.</span></p>
+      <span class="pop-sign"><span lang="ja">店長 ユキゾウ</span><span lang="en">Yukizo, manager</span><i class="hanko-mini" aria-hidden="true">ユ</i></span>
+    </div>
+  </header>
+
+  <div class="office svc">
+    <article class="office-card reveal" style="--accent:#d99a00">
+      <div class="mock mock-logo" aria-hidden="true">
+        <span class="mark m1"><svg viewBox="0 0 64 64"><path d="M14 14h11l7 12 7-12h11L37 34v16H27V34z"/></svg></span><span class="mark m2"><svg viewBox="0 0 64 64"><path d="M14 14h11l7 12 7-12h11L37 34v16H27V34z"/></svg></span><span class="mark m3"><svg viewBox="0 0 64 64"><path d="M14 14h11l7 12 7-12h11L37 34v16H27V34z"/></svg></span>
+      </div>
+      <h3><span lang="ja">ロゴ</span><span lang="en">Logos</span> <small><span lang="ja">ロゴ・シンボル</span><span lang="en">Marks &amp; identity</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">ロゴマーク・ロゴタイプ</span><span lang="en">Logo marks and wordmarks</span></li>
+        <li><span lang="ja">名刺・看板・制服などへの展開</span><span lang="en">Applied to business cards, signs and uniforms</span></li>
+        <li><span lang="ja">想いを聞いて、いくつかの案からご提案</span><span lang="en">We listen first, then present a few options</span></li>
+      </ul>
+    </article>
+
+    <article class="office-card reveal" style="--accent:#3a4d99">
+      <div class="mock mock-ui" aria-hidden="true">
+        <div class="wire"><b></b><i></i><i class="s"></i><span class="cards"><u></u><u></u></span><em></em></div>
+        <svg class="cursor" viewBox="0 0 24 24"><path d="M5 3l14.5 7-6.3 1.8L10.3 18z"/></svg>
+      </div>
+      <h3>UI/UX <small><span lang="ja">画面設計・使いやすさ</span><span lang="en">Screens that just work</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">アプリ・Webの画面デザイン</span><span lang="en">Screen design for apps and websites</span></li>
+        <li><span lang="ja">ワイヤーフレーム・プロトタイプ</span><span lang="en">Wireframes and clickable prototypes</span></li>
+        <li><span lang="ja">「迷わない」導線に改善</span><span lang="en">Flows improved so nobody gets lost</span></li>
+      </ul>
+    </article>
+
+    <article class="office-card reveal" style="--accent:#e0528f">
+      <div class="mock mock-graphic" aria-hidden="true">
+        <div class="poster"><span class="sun"></span><b></b><i></i><i class="s"></i></div>
+        <span class="swatches"><i style="--c:#ffb43a"></i><i style="--c:#f46f95"></i><i style="--c:#6f7cf6"></i><i style="--c:#30b9c9"></i></span>
+      </div>
+      <h3><span lang="ja">デザイン全般</span><span lang="en">Graphic design</span> <small><span lang="ja">印刷物・Web素材</span><span lang="en">Print &amp; digital</span></small></h3>
+      <ul class="ticks">
+        <li><span lang="ja">チラシ・ポスター・パンフレット</span><span lang="en">Flyers, posters and brochures</span></li>
+        <li><span lang="ja">SNS・Web用のバナー</span><span lang="en">Banners for social media and the web</span></li>
+        <li><span lang="ja">キャラクターやイラストも相談OK</span><span lang="en">Characters and illustrations too</span></li>
+      </ul>
+    </article>
+  </div>
+  <a class="aisle-cta reveal" href="#contact" data-need="design">
+    <span class="aisle-cta-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.5 5.5h15v10h-8l-4.5 3.5v-3.5h-2.5z"/></svg></span>
+    <span><span lang="ja">ロゴ・UI/UX・デザインのご相談はこちら</span><span lang="en">Talk to us about a logo, UI/UX or design</span></span>
     <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></svg>
   </a>
 </section>
@@ -521,8 +694,10 @@
         <legend><span lang="ja">ご相談の内容（複数可）</span><span lang="en">What do you need? (choose any)</span></legend>
         <label><input type="checkbox" name="need" value="games"><span><span lang="ja">ゲーム</span><span lang="en">Games</span></span></label>
         <label><input type="checkbox" name="need" value="office"><span><span lang="ja">Excel・Word・PowerPoint</span><span lang="en">Excel, Word, PowerPoint</span></span></label>
+        <label><input type="checkbox" name="need" value="media"><span><span lang="ja">音楽・動画</span><span lang="en">Music &amp; video</span></span></label>
         <label><input type="checkbox" name="need" value="web"><span><span lang="ja">LP・Webサイト</span><span lang="en">Landing pages &amp; websites</span></span></label>
         <label><input type="checkbox" name="need" value="apps"><span><span lang="ja">アプリ</span><span lang="en">Apps</span></span></label>
+        <label><input type="checkbox" name="need" value="design"><span><span lang="ja">ロゴ・UI/UX・デザイン</span><span lang="en">Logo, UI/UX &amp; design</span></span></label>
       </fieldset>
       <div class="row">
         <label class="field"><span><span lang="ja">お名前</span><span lang="en">Name</span></span><input name="name" autocomplete="name" required></label>
@@ -553,17 +728,19 @@
 <!-- ============ STAMP RALLY (スタンプラリー) ============ -->
 <div class="rally" id="rally" hidden>
   <button class="rally-btn" type="button" id="rally-btn" aria-expanded="false" aria-controls="rally-card">
-    <span class="rally-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <span><span lang="ja">スタンプ</span><span lang="en">Stamps</span> <b id="rally-count">0/4</b></span>
+    <span class="rally-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <span><span lang="ja">スタンプ</span><span lang="en">Stamps</span> <b id="rally-count">0/6</b></span>
   </button>
   <div class="rally-card" id="rally-card" hidden>
     <p class="rally-title"><span lang="ja">ユキラボ スタンプラリー</span><span lang="en">Yuki Lab stamp rally</span></p>
-    <p class="rally-sub" id="rally-sub"><span lang="ja">4つの売り場をまわって、スタンプを集めよう。</span><span lang="en">Visit all four aisles to collect a stamp from each.</span></p>
+    <p class="rally-sub" id="rally-sub"><span lang="ja">6つの売り場をまわって、スタンプを集めよう。</span><span lang="en">Visit all six aisles to collect a stamp from each.</span></p>
     <ol class="rally-slots">
       <li data-stamp="games"><span class="slot"></span><span><span lang="ja">ゲーム</span><span lang="en">Games</span></span></li>
       <li data-stamp="office"><span class="slot"></span><span><span lang="ja">オフィス</span><span lang="en">Office</span></span></li>
+      <li data-stamp="media"><span class="slot"></span><span><span lang="ja">音楽・動画</span><span lang="en">Video</span></span></li>
       <li data-stamp="web"><span class="slot"></span><span>Web</span></li>
       <li data-stamp="apps"><span class="slot"></span><span><span lang="ja">アプリ</span><span lang="en">Apps</span></span></li>
+      <li data-stamp="design"><span class="slot"></span><span><span lang="ja">デザイン</span><span lang="en">Design</span></span></li>
     </ol>
     <div class="rally-done" id="rally-done" hidden>
       <p><strong><span lang="ja">コンプリート！</span><span lang="en">Complete!</span></strong>
@@ -583,13 +760,15 @@
         <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 14h11l7 12 7-12h11L37 34v16H27V34z"/></svg></span>
         <span class="brand-text"><strong>Yuki Lab</strong><small>ユキラボ</small></span>
       </a>
-      <p><span lang="ja">ゲーム・オフィス資料・Web・アプリの制作ストア。</span><span lang="en">A made-to-order store for games, office documents, web and apps.</span></p>
+      <p><span lang="ja">ゲーム・資料・音楽・動画・デザイン・Web・アプリの制作ストア。</span><span lang="en">A made-to-order store for games, documents, music, video, design, web and apps.</span></p>
     </div>
     <nav class="footer-nav" aria-label="Footer">
       <a href="#aisle-games"><span lang="ja">ゲーム</span><span lang="en">Games</span></a>
       <a href="#aisle-office"><span lang="ja">オフィス資料</span><span lang="en">Office</span></a>
+      <a href="#aisle-media"><span lang="ja">音楽・動画</span><span lang="en">Music &amp; video</span></a>
       <a href="#aisle-web">Web</a>
       <a href="#aisle-apps"><span lang="ja">アプリ</span><span lang="en">Apps</span></a>
+      <a href="#aisle-design"><span lang="ja">デザイン</span><span lang="en">Design</span></a>
       <a href="#manager"><span lang="ja">店長紹介</span><span lang="en">Manager</span></a>
       <a href="#contact"><span lang="ja">お問い合わせ</span><span lang="en">Contact</span></a>
     </nav>
