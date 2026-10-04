@@ -5,7 +5,7 @@ import { addFur } from './fur.js';
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 /** Blender's lights and view transform lift the uniform a lot; under the site's lights these match its renders. */
-const LOOK_DEV = { uniform_navy: '#25346f', uniform_navy_dark: '#171f48' };
+const LOOK_DEV = { uniform_navy: '#25346f', uniform_navy_dark: '#171f48', mouth_inside: '#a52b3f' };
 
 /**
  * Loads the Blender-built Yukizo (.glb exported in the same space as buildYukizo(): metres, y-up,
@@ -52,6 +52,7 @@ export async function loadYukizo(url) {
       if (i !== undefined) mouths.push({ m, i });
     });
   }
+  const tongueAt = dressMouth(get('mouth'), get('tongue'));
   const trunk = repivot(face, ['trunk', 'trunk_nostril', 'trunk_nostril.001', 'trunk_tip_pad'], 'trunk_pivot', (box, pts) => {
     // the root: where the trunk meets the face, i.e. its rear-most points
     const back = pts.filter((p) => p.z < box.min.z + 0.02);
@@ -88,9 +89,11 @@ export async function loadYukizo(url) {
       const tw = ear.sx > 0 ? fx.twitchL : -fx.twitchR;
       ear.g.rotation.set(ear.rest.x, ear.rest.y + ear.sx * Math.sin(t * 1.7 + (ear.sx > 0 ? 0 : 0.6)) * 0.06 * amp + fx.lag + tw, ear.rest.z - ear.sx * 0.1 * fx.perk);
     }
-    // his smile is open at rest (weight 1 = the art, 0 = closed): grins widen it, speech flaps it open and shut
-    const talk = fx.talk || 0, open = Math.min(1.12, (1 - talk) * (0.9 + 0.25 * fx.mouth) + talk * (0.25 + 1.3 * fx.mouth));
-    for (const { m, i } of mouths) m.morphTargetInfluences[i] = open;
+    // his smile is open at rest (weight 1 = the art, 0 = closed) and grins widen it a little; while he talks the
+    // syllables (fx.mouth ≈ 0.16 … 0.66) swing it between a small opening and wide open
+    const talk = fx.talk || 0, speech = 0.3 + 1.25 * Math.max(0, fx.mouth - 0.16);
+    const open = Math.min(1.08, (1 - talk) * (0.92 + 0.2 * fx.mouth) + talk * speech);
+    setMouth(open);
     for (const { b, rest } of brows) b.position.set(rest.x, rest.y + 0.008 * fx.brow, rest.z - 0.0042 * fx.brow);
     if (hand) {
       const wave = Math.max(arms.wave, sal);
@@ -103,6 +106,12 @@ export async function loadYukizo(url) {
       Math.sin(t * 1.25) * 0.03 * amp
     );
     if (tail) tail.rotation.set(0, Math.sin(t * 2.1) * 0.18 * amp, 0);
+  }
+
+  /** 0 = closed smile, 1 = the art's open smile (a little past 1 still looks right) */
+  function setMouth(w) {
+    for (const { m, i } of mouths) m.morphTargetInfluences[i] = w;
+    tongueAt?.(w);
   }
 
   /** open: 0 (shut) .. 1 · wink: 0..1 closes the left eye */
@@ -122,12 +131,91 @@ export async function loadYukizo(url) {
     rig.position.y = 0;
     if (trunk) trunk.rotation.set(0, 0, 0);
     if (tail) tail.rotation.set(0, 0, 0);
-    for (const { m, i } of mouths) m.morphTargetInfluences[i] = 1;
+    setMouth(1);
     setEyes(1, 0);
     aimIris(0, 0);
   }
 
-  return { root, upper, head: face, headCenter: V(0, 0.9, 0), furShells, fx, arms, pose, setEyes, aimIris, rest };
+  return { root, upper, head: face, headCenter: V(0, 0.9, 0), furShells, fx, arms, pose, setEyes, setMouth, aimIris, rest };
+}
+
+/**
+ * The exported mouth is a thin patch floating just off the face, and the tongue a disc a few mm in front of it that
+ * reaches below the lower lip; as the mouth closes the patch shrinks upward but the tongue stays low, so it shows
+ * on his chin (worst while he talks). Here: the mouth marks its visible pixels in the stencil buffer and the tongue
+ * is drawn only inside them; the tongue follows the lower lip up as the mouth closes, so it peeks out while he
+ * talks; and the mouth gets a little depth, darker up under the top lip and toward the corners.
+ * Returns tongueAt(open) to place the tongue for a mouth-open weight, or null without a tongue.
+ */
+function dressMouth(mouth, tongue) {
+  if (!mouth?.isMesh) return null;
+  const mm = (mouth.material = mouth.material.clone());
+  Object.assign(mm, {
+    polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -4, // never flicker against the face
+    stencilWrite: true, stencilRef: 1, stencilFunc: THREE.AlwaysStencilFunc, stencilZPass: THREE.ReplaceStencilOp,
+  });
+  mouth.renderOrder = 1; // after the face and trunk, so only the part of the mouth you can see gets marked
+  mouth.castShadow = false;
+  const shut = morphedPoints(mouth, 0), open = morphedPoints(mouth, 1);
+  shadeMouth(mouth, open);
+  if (!tongue?.isMesh) return null;
+  const tm = (tongue.material = tongue.material.clone());
+  Object.assign(tm, {
+    depthTest: false, depthWrite: false,
+    stencilWrite: true, stencilRef: 1, stencilFunc: THREE.EqualStencilFunc,
+    stencilFail: THREE.KeepStencilOp, stencilZFail: THREE.KeepStencilOp, stencilZPass: THREE.KeepStencilOp,
+  });
+  tm.color.set('#f07a8c');
+  tm.sheen = 0;
+  // its exported normals face down and away, so it read as a dull, see-through smear: light it as if it faced
+  // forward and up out of the mouth, a shade darker toward its back edge
+  const tg = tongue.geometry, n = tg.attributes.normal.count, up = new THREE.Vector3(0, 0.45, 0.89).normalize();
+  const tp = morphedPoints(tongue, 1), tb = new THREE.Box3().setFromPoints(tp), tsz = tb.getSize(new THREE.Vector3());
+  const nrm = new Float32Array(n * 3), tcol = new Float32Array(n * 3);
+  tp.forEach((q, i) => {
+    nrm.set([up.x, up.y, up.z], i * 3);
+    const k = 0.78 + 0.22 * THREE.MathUtils.clamp(1 - (q.y - tb.min.y) / (tsz.y || 1), 0, 1);
+    tcol.set([k, k, k], i * 3);
+  });
+  tg.setAttribute('normal', new THREE.BufferAttribute(nrm, 3));
+  tg.setAttribute('color', new THREE.BufferAttribute(tcol, 3));
+  delete tg.morphAttributes.normal;
+  tm.vertexColors = true;
+  tongue.renderOrder = 2;
+  tongue.castShadow = tongue.receiveShadow = false;
+  // how far the lower lip rises from wide open to shut (in the tongue's parent space)
+  const low = (pts) => pts.reduce((m, p) => Math.min(m, p.y), Infinity), rise = low(shut) - low(open);
+  const restY = tongue.position.y, LIFT = 0.014; // a touch higher than exported, so more of it shows when he beams
+  return (w) => { tongue.position.y = restY + LIFT + rise * 0.7 * (1 - THREE.MathUtils.clamp(w, 0, 1)); };
+}
+
+/** A mesh's vertices at a weight of its "open" morph, in its parent's space. */
+function morphedPoints(mesh, w) {
+  const g = mesh.geometry, pos = g.attributes.position, i0 = mesh.morphTargetDictionary?.open, d = g.morphAttributes.position?.[i0 ?? 0];
+  const out = [], v = new THREE.Vector3(), dv = new THREE.Vector3();
+  mesh.updateMatrix();
+  for (let i = 0; i < pos.count; i++) {
+    v.fromBufferAttribute(pos, i);
+    if (d && i0 !== undefined) {
+      dv.fromBufferAttribute(d, i);
+      g.morphTargetsRelative ? v.addScaledVector(dv, w) : v.lerp(dv, w);
+    }
+    out.push(v.clone().applyMatrix4(mesh.matrix));
+  }
+  return out;
+}
+
+/** Vertex colours over the open mouth: shadowed under the top lip and toward the corners, full colour low and central. */
+function shadeMouth(mouth, pts) {
+  const box = new THREE.Box3().setFromPoints(pts), size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+  const col = new Float32Array(pts.length * 3);
+  pts.forEach((q, i) => {
+    const v = (q.y - box.min.y) / (size.y || 1), u = Math.abs(q.x - c.x) / (size.x / 2 || 1);
+    const k = THREE.MathUtils.clamp(1.05 - 0.4 * v * v - 0.2 * u * u, 0.6, 1); // 1 low in the middle → 0.6 under the top lip
+    col.set([k, k, k], i * 3);
+  });
+  mouth.geometry.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  mouth.material.vertexColors = true;
 }
 
 /**

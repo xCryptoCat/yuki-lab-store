@@ -228,7 +228,8 @@ export class Life {
     // smoothing at a fixed 60 Hz
     this.acc = Math.min(this.acc + frameDt, STEP * 6);
     const k = (x, to, s) => x + (to - x) * s;
-    while (this.acc >= STEP) {
+    // a little slack: frame times jitter around 1/60 s, and a strict test would run 0 then 2 steps (a visible stutter)
+    while (this.acc >= STEP - 0.002) {
       this.acc -= STEP;
       this.sway += (this.swayTarget - this.sway) * 0.04;
       this.eyeT.lerp(this.goal, 0.32);
@@ -239,7 +240,7 @@ export class Life {
       m.arms.r = clamp(spring(this.sp.r, tr, STEP), -0.05, 1.08);
       m.arms.l = clamp(spring(this.sp.l, tl, STEP), -0.05, 1.08);
       m.arms.wave = clamp(spring(this.sp.wave, tw, STEP, 6, 1), 0, 1);
-      fx.mouth = k(fx.mouth, mouthT, talkT ? 0.45 : 0.22); // speech needs a snappier mouth
+      fx.mouth = k(fx.mouth, mouthT, talkT ? 0.32 : 0.22); // speech needs a snappier mouth
       fx.brow = k(fx.brow, browT, 0.12);
       fx.perk = k(fx.perk, perkT, 0.08);
       // ears trail behind head turns, then settle

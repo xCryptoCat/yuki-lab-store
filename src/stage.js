@@ -11,7 +11,8 @@ const DEG = Math.PI / 180;
 export class Stage {
   constructor(host) {
     this.host = host;
-    const R = (this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }));
+    // stencil: lets the tongue show only inside the mouth (see yukizo-glb.js)
+    const R = (this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, stencil: true }));
     R.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     R.setClearColor(0x000000, 0);
     R.shadowMap.enabled = true;
