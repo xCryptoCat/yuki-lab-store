@@ -1558,7 +1558,7 @@ html[lang="en"] .pop-note p { font-size: 16.5px; }
 }
 
 /* Featured LP plan: a shop POP, with a brief entrance rather than flashing. */
-.lp-promo{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:0 0 44px;padding:32px;border:2px solid #ef6845;border-radius:22px;background:linear-gradient(130deg,#fff2db,#fffaf0 60%);box-shadow:0 10px 30px #bb432012}
+.lp-promo{--accent:#ef6845;display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:0 0 44px;padding:32px;border:2px solid #ef6845;border-radius:22px;background:linear-gradient(130deg,#fff2db,#fffaf0 60%);box-shadow:0 10px 30px #bb432012}
 .lp-promo-copy{align-self:center}
 .lp-promo-label{margin:0 0 12px;font-weight:700;color:#913018;font-size:14px}
 .lp-promo h3{margin:0 0 18px;font-family:var(--round);font-size:clamp(28px,4vw,48px);line-height:1.35;color:#a83219}
