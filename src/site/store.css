@@ -1556,3 +1556,19 @@ html[lang="en"] .pop-note p { font-size: 16.5px; }
   .rally-slots li.fresh .slot::after, .rally-card { animation: none; }
   .toast { transition: none; }
 }
+
+/* Featured LP plan: a shop POP, with a brief entrance rather than flashing. */
+.lp-promo{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:0 0 44px;padding:32px;border:2px solid #ef6845;border-radius:22px;background:linear-gradient(130deg,#fff2db,#fffaf0 60%);box-shadow:0 10px 30px #bb432012}
+.lp-promo-copy{align-self:center}
+.lp-promo-label{margin:0 0 12px;font-weight:700;color:#913018;font-size:14px}
+.lp-promo h3{margin:0 0 18px;font-family:var(--round);font-size:clamp(28px,4vw,48px);line-height:1.35;color:#a83219}
+.lp-promo h3 em{display:inline-block;font-style:normal;color:#fff;background:#c34122;padding:0 12px;border-radius:10px;transform:rotate(-5deg);animation:lp-pop .65s ease-out both}
+.lp-promo-copy>p:not(.lp-promo-label){line-height:1.9;margin-bottom:22px}
+.lp-promo-plan{min-width:0;background:#fff;border-radius:16px;padding:24px}
+.lp-promo-price{margin:0 0 18px;font:800 clamp(30px,3vw,42px)/1.35 var(--round);color:var(--navy-800)}
+.lp-promo-price span{font:500 13px/1.5 var(--sans)}
+.lp-promo-note{font-size:12px;line-height:1.8;color:var(--muted);margin:16px 0}
+.lp-promo .btn{max-width:100%;white-space:normal;text-align:center}
+@keyframes lp-pop{from{opacity:0;transform:translateY(8px) rotate(-5deg) scale(.9)}to{opacity:1;transform:translateY(0) rotate(-5deg) scale(1)}}
+@media(max-width:700px){.lp-promo{grid-template-columns:1fr;padding:20px;gap:24px}.lp-promo-plan{padding:20px}.lp-promo h3{font-size:32px}}
+@media(prefers-reduced-motion:reduce){.lp-promo h3 em{animation:none}}
