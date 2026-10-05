@@ -1558,11 +1558,11 @@ html[lang="en"] .pop-note p { font-size: 16.5px; }
 }
 
 /* Featured LP plan: a shop POP, with a brief entrance rather than flashing. */
-.lp-promo{--accent:#ef6845;display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:0 0 44px;padding:32px;border:2px solid #ef6845;border-radius:22px;background:linear-gradient(130deg,#fff2db,#fffaf0 60%);box-shadow:0 10px 30px #bb432012}
+.lp-promo{--accent:#ef6845;display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:0 auto 44px;padding:32px;border:2px solid #ef6845;border-radius:22px;background:linear-gradient(130deg,#fff2db,#fffaf0 60%);box-shadow:0 10px 30px #bb432012}
 .lp-promo-copy{align-self:center}
 .lp-promo-label{margin:0 0 12px;font-weight:700;color:#913018;font-size:14px}
 .lp-promo h3{margin:0 0 18px;font-family:var(--round);font-size:clamp(28px,4vw,48px);line-height:1.35;color:#a83219}
-.lp-promo h3 em{display:inline-block;font-style:normal;color:#fff;background:#c34122;padding:0 12px;border-radius:10px;transform:rotate(-5deg);animation:lp-pop .65s ease-out both}
+.lp-promo h3 em{display:inline-block;font-style:normal;color:#fff;background:#c34122;padding:0 12px;margin:0 .14em;border-radius:10px;transform:rotate(-5deg);animation:lp-pop .65s ease-out both}
 .lp-promo-copy>p:not(.lp-promo-label){line-height:1.9;margin-bottom:22px}
 .lp-promo-plan{min-width:0;background:#fff;border-radius:16px;padding:24px}
 .lp-promo-price{margin:0 0 18px;font:800 clamp(30px,3vw,42px)/1.35 var(--round);color:var(--navy-800)}
