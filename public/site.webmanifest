@@ -1,0 +1,16 @@
+{
+  "name": "Yuki Lab（ユキラボ）",
+  "short_name": "Yuki Lab",
+  "description": "ゲーム・LP・アプリ・動画・デザインのオーダーメイド制作ストア / A made-to-order studio for games, landing pages, apps, video and design.",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "ja",
+  "display": "browser",
+  "background_color": "#f6f9fe",
+  "theme_color": "#1b2a63",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

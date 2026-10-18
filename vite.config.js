@@ -1,7 +1,8 @@
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import seoPages from './tools/seo-plugin.js';
 
-// `vite build`            → demo site (index.html hero demo + viewer.html) in dist/
+// `vite build`            → demo site (index.html hero demo + viewer.html, plus en/index.html) in dist/
 // `vite build --mode lib` → one self-contained ES module (three.js bundled in) in dist-lib/,
 //                           ready to drop into any website with <script type="module">.
 export default defineConfig(({ mode }) =>
@@ -20,6 +21,7 @@ export default defineConfig(({ mode }) =>
         },
       }
     : {
+        plugins: [seoPages()], // adds the English page at /en and the structured data
         build: {
           chunkSizeWarningLimit: 900,
           rollupOptions: {

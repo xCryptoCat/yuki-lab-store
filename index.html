@@ -3,26 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Yuki Lab Store｜ユキラボ ストア</title>
-<meta name="description" content="Yuki Lab（ユキラボ）は Yuki Security のクリエイティブ部門。ゲーム、Excel・Word・PowerPoint 資料、音楽・動画制作、ロゴ・UI/UX デザイン、Webサイト、セキュリティアプリまで、店長ユキゾウがご案内します。">
+<title data-en="Yuki Lab | Games, landing pages, apps, video &amp; design studio in Kobe, Japan">ユキラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作｜神戸</title>
+<meta name="description" content="ユキラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門。ゲーム開発、LP・Webサイト制作（採用・問い合わせLP 88,000円税込）、スマホアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで。ご相談無料。" data-en="Yuki Lab is the creative studio of Yuki Security (Yuki Co., Ltd.) in Kobe, Japan. Made-to-order games, landing pages and websites (enquiry LP plan 88,000 JPY incl. tax), mobile apps, music and video, logo and UI/UX design, and Office documents. Free consultation.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Yuki Lab">
 <meta name="theme-color" content="#1b2a63">
-<meta property="og:title" content="Yuki Lab Store｜ユキラボ ストア">
-<meta property="og:description" content="Games, documents, music and video, logo and UI/UX design, websites and security apps, made to order by Yuki Lab, the creative studio of Yuki Security.">
-<meta property="og:image" content="/img/og.jpg">
+<link rel="canonical" href="https://yukilab.co/" data-en="https://yukilab.co/en">
+<link rel="alternate" hreflang="ja" href="https://yukilab.co/">
+<link rel="alternate" hreflang="en" href="https://yukilab.co/en">
+<link rel="alternate" hreflang="x-default" href="https://yukilab.co/">
+<meta property="og:site_name" content="Yuki Lab（ユキラボ）">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://yukilab.co/" data-en="https://yukilab.co/en">
+<meta property="og:title" content="ユキラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作" data-en="Yuki Lab | Games, landing pages, apps, video &amp; design, made to order">
+<meta property="og:description" content="神戸の警備会社 Yuki Security のクリエイティブ部門。ゲーム、LP・Webサイト、アプリ、音楽・動画、デザインまで、3Dの店長ユキゾウがご案内します。" data-en="The creative studio of Yuki Security in Kobe, Japan. Games, landing pages and websites, apps, music, video and design, with Yukizo the 3D store manager as your guide.">
+<meta property="og:locale" content="ja_JP" data-en="en_US">
+<meta property="og:locale:alternate" content="en_US" data-en="ja_JP">
+<meta property="og:image" content="https://yukilab.co/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Yuki Lab ストアと店長ユキゾウ" data-en="The Yuki Lab store and its manager, Yukizo">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231b2a63'/%3E%3Cpath d='M14 14h11l7 12 7-12h11L37 34v16H27V34z' fill='%23f6c531'/%3E%3C/svg%3E">
+<meta name="twitter:title" content="ユキラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作" data-en="Yuki Lab | Games, landing pages, apps, video &amp; design, made to order">
+<meta name="twitter:description" content="神戸の警備会社 Yuki Security のクリエイティブ部門。ゲーム、LP・Webサイト、アプリ、音楽・動画、デザインをオーダーメイドで。" data-en="The creative studio of Yuki Security in Kobe, Japan. Games, landing pages, apps, music, video and design, made to order.">
+<meta name="twitter:image" content="https://yukilab.co/img/og.jpg">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Yomogi&display=swap">
 <link rel="stylesheet" href="/src/site/store.css">
 <link rel="preload" href="/models/yukizo.glb" as="fetch" type="model/gltf-binary" crossorigin>
 <script>
-  // language before first paint: saved choice → browser language → Japanese
+  // language before first paint: /en → English; otherwise saved choice → browser language → Japanese.
+  // Search engines and other bots always get the page in the language of its URL (/ is Japanese).
   (() => {
-    let l = null;
-    try { l = localStorage.getItem('yukilab-lang'); } catch (e) {}
-    if (l !== 'ja' && l !== 'en') l = (navigator.language || 'ja').toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    const en = /^\/en\/?$/.test(location.pathname);
+    let l = en ? 'en' : null;
+    if (!l && !/bot|crawl|spider|slurp|lighthouse|headless|google-|facebookexternalhit/i.test(navigator.userAgent)) {
+      try { l = localStorage.getItem('yukilab-lang'); } catch (e) {}
+      if (l !== 'ja' && l !== 'en') l = (navigator.language || 'ja').toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    }
+    if (l !== 'en') l = 'ja';
     document.documentElement.lang = l;
     // hide below-the-fold content for its scroll-in animation before first paint (no flash on /#links);
     // safety net: if the page script never runs, show everything anyway
@@ -570,7 +594,7 @@
 
   <div class="web">
     <article class="browser reveal" aria-hidden="true">
-      <div class="browser-bar"><i></i><i></i><i></i><span>yukilab.example/campaign</span></div>
+      <div class="browser-bar"><i></i><i></i><i></i><span>yukilab.co/campaign</span></div>
       <div class="lp">
         <div class="lp-hero">
           <div class="lp-copy"><b></b><b class="s"></b><i></i><i class="s"></i><span class="lp-cta"></span></div>
@@ -817,6 +841,54 @@
   </div>
 </section>
 
+<!-- ============ FAQ (よくある質問) — also read by tools/seo-plugin.js for the FAQPage structured data ============ -->
+<section class="faq" id="faq" aria-labelledby="h-faq">
+  <div class="faq-inner">
+    <header class="faq-head reveal">
+      <p class="eyebrow"><span lang="ja">よくある質問</span><span lang="en">FAQ</span></p>
+      <h2 id="h-faq"><span lang="ja">店長に聞いてみた</span><span lang="en">Questions for the manager</span></h2>
+    </header>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">ユキラボ（Yuki Lab）はどんな会社ですか？</span><span lang="en">What is Yuki Lab?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">ユキラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門です。ゲーム、LP・Webサイト、アプリ、音楽・動画、デザイン、オフィス資料をオーダーメイドで制作しています。店長はゾウのマスコット「ユキゾウ」です。</span><span lang="en">Yuki Lab is the creative studio of Yuki Security (Yuki Co., Ltd.), a security company in Kobe, Japan. We make games, landing pages and websites, apps, music and video, design work and Office documents to order. Our store manager is Yukizo, an elephant mascot.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">どんな制作を依頼できますか？</span><span lang="en">What can I order?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">ゲーム制作、Excel・Word・PowerPoint の資料作成、音楽制作・動画制作・動画編集、LP・コーポレートサイト・3Dキャラクターなどの Web 制作、セキュリティアプリ・業務アプリ・スマホアプリの開発、ロゴ・UI/UX・グラフィックデザインの6分野です。</span><span lang="en">Six kinds of work: games; Excel, Word and PowerPoint documents; music, video production and video editing; web work such as landing pages, company websites and 3D mascots; security, business and mobile apps; and logo, UI/UX and graphic design.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">LP（ランディングページ）制作の料金はいくらですか？</span><span lang="en">How much does a landing page cost?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">採用・問い合わせLP制作は 88,000円（税込）です。1ページ・最大6セクションでスマホ対応、原稿整理とお問い合わせへの導線づくり、まとめて修正2回が含まれます。撮影・3D演出・独自機能・ドメイン等の費用は別途です。</span><span lang="en">Our recruitment and enquiry landing page plan is 88,000 JPY including tax. It covers one mobile-ready page with up to 6 sections, copy organisation, links through to your enquiry form, and 2 consolidated revision rounds. Photography, 3D, custom features and domain costs are extra.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">LP制作の納期はどれくらいですか？</span><span lang="en">How long does a landing page take?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">素材と構成が決まってから、標準で10営業日です。内容と納期はお見積もりのときに確認します。ほかの制作の期間も、ご相談内容に合わせてお見積もりでご提示します。</span><span lang="en">Typically 10 business days once the materials and structure are agreed. We confirm scope and schedule in your quote, and give timings for other projects in their quotes too.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">相談は無料ですか？アイデアがまだぼんやりしていても大丈夫？</span><span lang="en">Is the consultation free? What if my idea is still rough?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">ご相談は無料です。「まだぼんやり」でも大丈夫なので、やりたいことをお聞かせください。内容・スケジュール・費用をわかりやすくご提案します。</span><span lang="en">Yes, consultation is free, and a rough idea is fine. Tell us what you would like to make and we will send a clear outline of scope, schedule and cost.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">依頼から納品までの流れは？</span><span lang="en">How does ordering work?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">①ご相談 → ②ご提案・お見積もり → ③制作（途中経過を共有しながら一緒に仕上げます） → ④納品・アフターフォロー の4ステップです。納品後の修正や運用のご相談もお受けします。</span><span lang="en">Four steps: 1. consultation, 2. proposal and quote, 3. production, where we share progress and finish it together, and 4. delivery and aftercare, including tweaks and support after delivery.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">ユキラボのゲームはどこで遊べますか？</span><span lang="en">Where can I play Yuki Lab's games?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">ユキゾウダッシュ、ヒーローカンパニー、ユキゾウ面接官シミュレーター、ユキゾウのまちがい探し、パワースキャナー、あのゲーム、レーダークエストの7本を、App Store と Google Play で無料配信しています。ユキゾウダッシュはブラウザでも試せます。</span><span lang="en">Seven games are free on the App Store and Google Play: Yukizo Dash, Hero Company, Yukizo the Interviewer, Yukizo's Spot the Difference, Power Scanner, That Game and Radar Quest. Yukizo Dash can also be tried in the browser.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">つくった曲を世に出すこともできますか？</span><span lang="en">Can you release the music you make for me?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">はい。Yuki Lab の音楽レーベル「Yuki Record」から、いっしょにつくった曲をリリースすることもできます。TikTok（@yukirecord）でも発信しています。</span><span lang="en">Yes. Songs we make with you can be released on Yuki Lab's own music label, Yuki Record, which is also on TikTok as @yukirecord.</span></p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-q" aria-hidden="true">Q</span><span><span lang="ja">問い合わせ方法を教えてください。</span><span lang="en">How do I get in touch?</span></span></summary>
+        <div class="faq-a"><span class="faq-mark" aria-hidden="true">A</span><p><span lang="ja">このページの「店長に相談する」フォームから送信するか、メール（sakuseed0327@gmail.com）で直接ご連絡ください。</span><span lang="en">Use the "Ask the manager" form on this page, or email us directly at sakuseed0327@gmail.com.</span></p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CONTACT ============ -->
 <section class="contact" id="contact" aria-labelledby="h-contact">
   <div class="contact-inner reveal">
@@ -906,6 +978,7 @@
       <a href="#aisle-apps"><span lang="ja">アプリ</span><span lang="en">Apps</span></a>
       <a href="#aisle-design"><span lang="ja">デザイン</span><span lang="en">Design</span></a>
       <a href="#manager"><span lang="ja">店長紹介</span><span lang="en">Manager</span></a>
+      <a href="#faq"><span lang="ja">よくある質問</span><span lang="en">FAQ</span></a>
       <a href="#contact"><span lang="ja">お問い合わせ</span><span lang="en">Contact</span></a>
     </nav>
   </div>
