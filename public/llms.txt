@@ -1,0 +1,47 @@
+# Yuki Lab（ユキラボ）
+
+> Yuki Lab (ユキラボ, also "Yuki Lab Store") is the creative studio of Yuki Security (株式会社裕輝 / Yuki Co., Ltd.), a security-guard company in Kobe, Japan. It makes games, landing pages and websites, mobile and security apps, music and video, logo and UI/UX design, and Excel / Word / PowerPoint documents to order. The website is laid out like a shop, guided by Yukizo (ユキゾウ), a light-blue 3D elephant mascot who is the "store manager".
+>
+> ユキラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門です。ゲーム、LP・Webサイト、アプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。
+
+## Key facts
+
+- Name: Yuki Lab / ユキラボ (Google Play developer name: 裕輝ラボ)
+- Website: https://yukilab.co (Japanese) and https://yukilab.co/en (English)
+- Parent company: Yuki Security, registered as 株式会社裕輝 (Yuki Co., Ltd.), a security-guard company in Kobe, Hyogo, Japan — https://yuki-security.com/
+- Contact: sakuseed0327@gmail.com, or the "店長に相談する / Ask the manager" form at https://yukilab.co/#contact
+- Consultation: free. A rough idea is fine.
+- How ordering works: 1. consultation → 2. proposal and quote (scope, schedule, cost) → 3. production, sharing progress along the way → 4. delivery and aftercare
+- Mascot: Yukizo (ユキゾウ), store manager of Yuki Lab, a light-blue elephant in a navy officer's uniform with a gold "Y" badge
+- Music label: Yuki Record, Yuki Lab's own label; songs made with clients can be released on it — https://www.tiktok.com/@yukirecord
+- App Store developer page: https://apps.apple.com/jp/developer/yuki-k-k/id1891259139
+- Google Play developer page: https://play.google.com/store/apps/developer?id=%E8%A3%95%E8%BC%9D%E3%83%A9%E3%83%9C
+
+## Services and prices
+
+- [Games / ゲーム制作](https://yukilab.co/#aisle-games): concept, characters and development of mobile games.
+- [Office documents / オフィス資料](https://yukilab.co/#aisle-office): Excel spreadsheets and aggregation, Word documents and manuals, PowerPoint presentations.
+- [Music and video / 音楽・動画](https://yukilab.co/#aisle-media): music composition and BGM, video production (planning, shooting, producing) and video editing. Release on Yuki Record is possible.
+- [Web and landing pages / Web・LP](https://yukilab.co/#aisle-web): landing pages, company websites (mobile-ready as standard, easy to update), and live 3D mascots for websites.
+  - Recruitment and enquiry landing page plan (採用・問い合わせLP制作): **88,000 JPY including tax** (88,000円・税込). One page with up to 6 sections, mobile-ready, copy organisation and enquiry links, 2 consolidated revision rounds. Typically 10 business days after materials and structure are agreed. Photography, 3D, custom features and domain costs are extra; scope and schedule are confirmed in the quote.
+  - Examples: [security company recruitment and enquiry LP](https://yukilab.co/works/yuki-security-lp/) (cool style) and the Yuki Lab Store site itself (cute style, with a live 3D mascot).
+- [Apps / アプリ](https://yukilab.co/#aisle-apps): security-operations apps (patrol logs, incident reports, shift messages), business tools and mobile apps, built with careful data handling as part of a security group.
+- [Design / デザイン](https://yukilab.co/#aisle-design): logos and identity, UI/UX design, graphic design for print and digital.
+- Prices for work other than the LP plan are quoted per project.
+
+## Games by Yuki Lab (all free on the App Store and Google Play)
+
+- ユキゾウダッシュ (Yukizo Dash): 2D runner; Yukizo, a young elephant security guard, sprints through the subway at night, with stations modelled on Kobe's subway. App Store https://apps.apple.com/jp/app/id6761814027 · Google Play https://play.google.com/store/apps/details?id=com.yukizo.app · Browser trial https://yukizo-landing.vercel.app/
+- ヒーローカンパニー (Hero Company): security-company management sim; hire, train and dispatch guards over 10 years (120 months). App Store https://apps.apple.com/jp/app/id6765558986 · Google Play https://play.google.com/store/apps/details?id=com.sunchin.securitycompanysim
+- ユキゾウ面接官シミュレーター (Yukizo the Interviewer): hiring sim with CVs, interviews and chat; 10 rounds, ranks up to SSS. App Store https://apps.apple.com/jp/app/id6767138180 · Google Play https://play.google.com/store/apps/details?id=com.yukizou.interviewer
+- ユキゾウのまちがい探し (Yukizo's Spot the Difference): spot-the-difference with three game modes. App Store https://apps.apple.com/jp/app/id6763910483 · Google Play https://play.google.com/store/apps/details?id=com.yukizo.detectiveduty
+- パワースキャナー (Power Scanner): scan anything with the camera to make a battle card with its own rarity. App Store https://apps.apple.com/jp/app/id6762236525 · Google Play https://play.google.com/store/apps/details?id=com.powerscanner.app
+- あのゲーム (That Game): charge / wave / guard mind-reading battle; no sign-up needed. App Store https://apps.apple.com/jp/app/id6803750264 · Google Play https://play.google.com/store/apps/details?id=com.anogame.app
+- レーダークエスト (Radar Quest): location-based RPG played by walking around town with a radar; 238 spots in Kobe, Akashi, Ashiya, Nishinomiya and Amagasaki. App Store https://apps.apple.com/jp/app/id6780334604 · Google Play https://play.google.com/store/apps/details?id=com.yuki.tankenquest
+
+## Pages
+
+- [Home (Japanese)](https://yukilab.co/): all services, games, the LP plan, FAQ and contact
+- [Home (English)](https://yukilab.co/en): the same page in English
+- [FAQ / よくある質問](https://yukilab.co/#faq)
+- [Contact / お問い合わせ](https://yukilab.co/#contact)

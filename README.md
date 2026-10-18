@@ -121,5 +121,7 @@ npm run build     # site → dist/ (deploy this folder), component → dist-lib/
 | `src/export.js` | GLB and OBJ+MTL downloads. |
 | `src/yukizo-hero.js` | The custom element. |
 | `src/site/store.css`, `src/site/store.js` | The Yuki Lab Store website: layout, language switch, Yukizo's speech bubble, shelf interactions and the contact form. |
+| `tools/seo-plugin.js`, `src/seo/schema.js` | Search setup. The build writes the English page to `en/index.html` (served at `/en`), swapping in the `data-en` values of the `<head>` tags, and adds the JSON-LD structured data. The FAQPage data is read from the FAQ section (`#faq`), so editing those questions updates it too. |
+| `public/robots.txt`, `public/sitemap.xml`, `public/llms.txt` | Crawler rules, the sitemap, and a plain-text summary of Yuki Lab for AI assistants. Update `llms.txt` and `src/seo/schema.js` when services, prices or games change. |
 
 The original design handoff (prototype, chat transcript, reference images) is in `project/` and `chats/`.

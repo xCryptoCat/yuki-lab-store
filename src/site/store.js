@@ -93,14 +93,14 @@ const HINT = {
   hover: { ja: 'クリックで売り場へ →', en: 'Click to visit the aisle →' },
   touch: { ja: 'もう一度タップで売り場へ →', en: 'Tap again to visit the aisle →' },
 };
-const META = {
+const META = { // keep in step with the <head> of index.html (Japanese, and the data-en values for /en)
   ja: {
-    title: 'Yuki Lab Store｜ユキラボ ストア',
-    description: 'Yuki Lab（ユキラボ）は Yuki Security のクリエイティブ部門。ゲーム、Excel・Word・PowerPoint 資料、音楽・動画制作、ロゴ・UI/UX デザイン、Webサイト、セキュリティアプリまで、店長ユキゾウがご案内します。',
+    title: 'ユキラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作｜神戸',
+    description: 'ユキラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門。ゲーム開発、LP・Webサイト制作（採用・問い合わせLP 88,000円税込）、スマホアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで。ご相談無料。',
   },
   en: {
-    title: 'Yuki Lab Store — games, video, design, web & apps',
-    description: 'Yuki Lab is the creative studio of Yuki Security. Games, Excel / Word / PowerPoint documents, music and video, logo and UI/UX design, websites and security apps, made to order with Yukizo the store manager as your guide.',
+    title: 'Yuki Lab | Games, landing pages, apps, video & design studio in Kobe, Japan',
+    description: 'Yuki Lab is the creative studio of Yuki Security (Yuki Co., Ltd.) in Kobe, Japan. Made-to-order games, landing pages and websites (enquiry LP plan 88,000 JPY incl. tax), mobile apps, music and video, logo and UI/UX design, and Office documents. Free consultation.',
   },
 };
 const HERO_LABEL = {
@@ -253,6 +253,11 @@ function applyMeta(l) {
   syncLangButtons(l);
   document.title = META[l].title;
   document.querySelector('meta[name="description"]').setAttribute('content', META[l].description);
+  // each language has its own address (/ and /en), so a shared link opens in the language on screen
+  const path = l === 'en' ? '/en' : '/';
+  if (location.pathname !== path && /^\/(en\/?)?$/.test(location.pathname)) {
+    try { history.replaceState(history.state, '', path + location.search + location.hash); } catch (e) {}
+  }
 }
 const hintFor = () => HINT[canHover.matches ? 'hover' : 'touch'][lang()];
 for (const b of document.querySelectorAll('[data-set-lang]')) b.addEventListener('click', () => setLang(b.dataset.setLang));
