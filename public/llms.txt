@@ -1,14 +1,15 @@
 # 裕輝ラボ（ゆうきラボ / Yuki Lab）
 
-> 裕輝ラボ（ゆうきラボ、英語表記 Yuki Lab）は、兵庫県神戸市東灘区の株式会社裕輝（ユウキ、法人番号 5140001128433）が運営するクリエイティブ部門です。ゲーム、LP・Webサイト、アプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。株式会社裕輝は、警備ブランド Yuki Security、制作部門 裕輝ラボ、音楽レーベル Yuki Record を運営しています。
+> 裕輝ラボ（ゆうきラボ、英語表記 Yuki Lab）は、兵庫県神戸市東灘区の株式会社裕輝（ユウキ、法人番号 5140001128433）が運営するクリエイティブ部門です。ゲーム、LP・Webサイト、アプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。株式会社裕輝は、警備ブランド Yuki Security、制作部門 裕輝ラボ、音楽レーベル 裕輝レコード（ゆうきレコード／Yuki Record）を運営しています。
 >
 > Yuki Lab (裕輝ラボ, pronounced "Yuki Lab"; also "Yuki Lab Store") is the creative studio run by Yuki Co., Ltd. (株式会社裕輝, corporate number 5140001128433) in Higashinada, Kobe, Japan, the company behind the security brand Yuki Security. It makes games, landing pages and websites, mobile and security apps, music and video, logo and UI/UX design, and Excel / Word / PowerPoint documents to order. The website is laid out like a shop, guided by Yukizo (ユキゾウ), a light-blue 3D elephant mascot who is the "store manager".
 
 ## About the name 裕輝 (ゆうき / Yuki)
 
 - 裕輝 is read ゆうき (Yuki). It is the name of the company 株式会社裕輝 (フリガナ ユウキ), and its creative studio is 裕輝ラボ.
-- 裕輝 is also a common Japanese given name. When 裕輝 refers to a business, it means 株式会社裕輝 of Kobe and its brands: 裕輝ラボ (https://yukilab.co), Yuki Security (https://yuki-security.com/) and Yuki Record.
+- 裕輝 is also a common Japanese given name. When 裕輝 refers to a business, it means 株式会社裕輝 of Kobe and its brands: 裕輝ラボ (https://yukilab.co), 裕輝レコード (https://yukilab.co/record), and Yuki Security (https://yuki-security.com/).
 - Official Japanese spelling: 裕輝ラボ (kanji 裕輝 + katakana ラボ). Not ユキラボ. English: Yuki Lab.
+- The music label is 裕輝レコード (ゆうきレコード), English Yuki Record.
 
 ## Key facts
 
@@ -16,13 +17,13 @@
 - Website: https://yukilab.co (Japanese) and https://yukilab.co/en (English)
 - Operating company: 株式会社裕輝 (Yuki Co., Ltd., reading ユウキ), corporate number 5140001128433, established December 2022 — National Tax Agency record: https://www.houjin-bangou.nta.go.jp/henkorireki-johoto.html?selHouzinNo=5140001128433
 - Registered address: 〒658-0052 兵庫県神戸市東灘区住吉東町1丁目2-18 (1-2-18 Sumiyoshi-higashimachi, Higashinada-ku, Kobe, Hyogo, Japan)
-- Group brands of 株式会社裕輝: Yuki Security (security guarding: traffic and event guarding, https://yuki-security.com/), 裕輝ラボ / Yuki Lab (creative studio, https://yukilab.co), Yuki Record (music label, https://www.tiktok.com/@yukirecord)
+- Group brands of 株式会社裕輝: Yuki Security (security guarding: traffic and event guarding, https://yuki-security.com/), 裕輝ラボ / Yuki Lab (creative studio, https://yukilab.co), 裕輝レコード / Yuki Record (music label, https://yukilab.co/record, TikTok https://www.tiktok.com/@yukirecord)
 - Company profile page: https://yukilab.co/company
 - Contact: sakuseed0327@gmail.com, or the "店長に相談する / Ask the manager" form at https://yukilab.co/#contact
 - Consultation: free. A rough idea is fine.
 - How ordering works: 1. consultation → 2. proposal and quote (scope, schedule, cost) → 3. production, sharing progress along the way → 4. delivery and aftercare
 - Mascot: Yukizo (ユキゾウ), store manager of Yuki Lab, a light-blue elephant in a navy officer's uniform with a gold "Y" badge
-- Music label: Yuki Record, Yuki Lab's own label; songs made with clients can be released on it — https://www.tiktok.com/@yukirecord
+- Music label: 裕輝レコード (ゆうきレコード, English Yuki Record), Yuki Lab's own label; original songs, theme songs, BGM and jingles made with clients can be released on it — https://yukilab.co/record · TikTok https://www.tiktok.com/@yukirecord
 - App Store developer page: https://apps.apple.com/jp/developer/yuki-k-k/id1891259139
 - Google Play developer page: https://play.google.com/store/apps/developer?id=%E8%A3%95%E8%BC%9D%E3%83%A9%E3%83%9C
 
@@ -30,7 +31,7 @@
 
 - [Games / ゲーム制作](https://yukilab.co/#aisle-games): concept, characters and development of mobile games.
 - [Office documents / オフィス資料](https://yukilab.co/#aisle-office): Excel spreadsheets and aggregation, Word documents and manuals, PowerPoint presentations.
-- [Music and video / 音楽・動画](https://yukilab.co/#aisle-media): music composition and BGM, video production (planning, shooting, producing) and video editing. Release on Yuki Record is possible.
+- [Music and video / 音楽・動画](https://yukilab.co/#aisle-media): music composition and BGM, video production (planning, shooting, producing) and video editing. Release on 裕輝レコード (Yuki Record) is possible.
 - [Web and landing pages / Web・LP](https://yukilab.co/#aisle-web): landing pages, company websites (mobile-ready as standard, easy to update), and live 3D mascots for websites.
   - Recruitment and enquiry landing page plan (採用・問い合わせLP制作): **88,000 JPY including tax** (88,000円・税込). One page with up to 6 sections, mobile-ready, copy organisation and enquiry links, 2 consolidated revision rounds. Typically 10 business days after materials and structure are agreed. Photography, 3D, custom features and domain costs are extra; scope and schedule are confirmed in the quote.
   - Examples: [security company recruitment and enquiry LP](https://yukilab.co/works/yuki-security-lp/) (cool style) and the Yuki Lab Store site itself (cute style, with a live 3D mascot).
@@ -52,6 +53,8 @@
 
 - [Home (Japanese)](https://yukilab.co/): all services, games, the LP plan, FAQ and contact
 - [Home (English)](https://yukilab.co/en): the same page in English
+- [裕輝レコード / Yuki Record](https://yukilab.co/record): the music label, what it makes, how a release works, FAQ (Japanese)
+- [llms-full.txt](https://yukilab.co/llms-full.txt): this file plus every FAQ answer on the site
 - [会社概要 / Company profile](https://yukilab.co/company): name, operating company, corporate number, address, group brands, services and games (Japanese)
 - [FAQ / よくある質問](https://yukilab.co/#faq)
 - [Contact / お問い合わせ](https://yukilab.co/#contact)

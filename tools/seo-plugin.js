@@ -9,7 +9,10 @@
 // src/seo/schema.js, and the FAQPage data is read straight from the FAQ section, so it always matches.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { structuredData, companyStructuredData } from '../src/seo/schema.js';
+import { structuredData, companyStructuredData, recordStructuredData } from '../src/seo/schema.js';
+
+// Japanese-only extra pages and their structured data (each page's own FAQ, if any, becomes a FAQPage too)
+const EXTRA_PAGES = { company: companyStructuredData, record: recordStructuredData };
 
 const ldTag = (id, data) =>
   `<script type="application/ld+json" id="${id}">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
@@ -39,6 +42,7 @@ function langText(fragment, l) {
 /** FAQPage from the visible FAQ section: <details class="faq-item"><summary>Q</summary><div class="faq-a">A</div></details> */
 export function faqData(html, l) {
   const items = [...html.matchAll(/<details class="faq-item"[^>]*>([\s\S]*?)<\/details>/g)].map(([, body]) => {
+    body = body.replace(/<span class="faq-(q|mark)"[^>]*>[^<]*<\/span>/g, '');
     const q = body.match(/<summary[^>]*>([\s\S]*?)<\/summary>/)?.[1] ?? '';
     const a = body.match(/<div class="faq-a">([\s\S]*?)<\/div>\s*$/)?.[1] ?? '';
     return { q: langText(q, l) || text(q), a: langText(a, l) || text(a) };
@@ -72,6 +76,19 @@ export function toEnglish(html) {
   return stripEn(withStructuredData(html, 'en'));
 }
 
+/** llms-full.txt = llms.txt + every FAQ answer on the site, in Japanese and English, for AI assistants. */
+async function writeLlmsFull(outDir, homeHtml) {
+  const base = await readFile(resolve(outDir, 'llms.txt'), 'utf8');
+  const qa = (data) => (data?.mainEntity ?? []).map((x) => `### ${x.name}\n\n${x.acceptedAnswer.text}\n`).join('\n');
+  let out = base.trimEnd() + '\n\n## FAQ（日本語） — https://yukilab.co/#faq\n\n' + qa(faqData(homeHtml, 'ja'));
+  out += '\n## FAQ (English) — https://yukilab.co/en#faq\n\n' + qa(faqData(homeHtml, 'en'));
+  try {
+    const rec = await readFile(resolve(outDir, 'record.html'), 'utf8');
+    out += '\n## 裕輝レコード FAQ — https://yukilab.co/record\n\n' + qa(faqData(rec, 'ja'));
+  } catch {}
+  await writeFile(resolve(outDir, 'llms-full.txt'), out);
+}
+
 export default function seoPages() {
   let outDir = 'dist';
   let root = process.cwd();
@@ -81,8 +98,10 @@ export default function seoPages() {
     transformIndexHtml: {
       order: 'post',
       handler(html, ctx) {
-        if (/(^|\/)company\.html$/.test(ctx.filename)) {
-          return html.replace('</head>', `${ldTag('ld-site', companyStructuredData())}\n</head>`);
+        const extra = ctx.filename.match(/(?:^|\/)(\w+)\.html$/)?.[1];
+        if (EXTRA_PAGES[extra]) {
+          const faq = faqData(html, 'ja');
+          return html.replace('</head>', `${ldTag('ld-site', EXTRA_PAGES[extra]())}\n${faq ? ldTag('ld-faq', faq) + '\n' : ''}</head>`);
         }
         if (!/(^|\/)index\.html$/.test(ctx.filename)) return html;
         return withStructuredData(html, 'ja');
@@ -106,6 +125,7 @@ export default function seoPages() {
       await mkdir(resolve(outDir, 'en'), { recursive: true });
       await writeFile(resolve(outDir, 'en', 'index.html'), toEnglish(html));
       await writeFile(file, stripEn(html));
+      await writeLlmsFull(outDir, html);
     },
   };
 }

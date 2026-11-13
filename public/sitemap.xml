@@ -17,6 +17,11 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yukilab.co/"/>
   </url>
   <url>
+    <loc>https://yukilab.co/record</loc>
+    <lastmod>2026-11-13</lastmod>
+    <image:image><image:loc>https://yukilab.co/img/og-record.jpg</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://yukilab.co/company</loc>
     <lastmod>2026-11-13</lastmod>
   </url>
