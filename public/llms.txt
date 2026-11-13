@@ -1,12 +1,12 @@
-# Yuki Lab（ユキラボ）
+# Yuki Lab（裕輝ラボ）
 
-> Yuki Lab (ユキラボ, also "Yuki Lab Store") is the creative studio of Yuki Security (株式会社裕輝 / Yuki Co., Ltd.), a security-guard company in Kobe, Japan. It makes games, landing pages and websites, mobile and security apps, music and video, logo and UI/UX design, and Excel / Word / PowerPoint documents to order. The website is laid out like a shop, guided by Yukizo (ユキゾウ), a light-blue 3D elephant mascot who is the "store manager".
+> Yuki Lab (裕輝ラボ, also "Yuki Lab Store") is the creative studio of Yuki Security (株式会社裕輝 / Yuki Co., Ltd.), a security-guard company in Kobe, Japan. It makes games, landing pages and websites, mobile and security apps, music and video, logo and UI/UX design, and Excel / Word / PowerPoint documents to order. The website is laid out like a shop, guided by Yukizo (ユキゾウ), a light-blue 3D elephant mascot who is the "store manager".
 >
-> ユキラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門です。ゲーム、LP・Webサイト、アプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。
+> 裕輝ラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門です。ゲーム、LP・Webサイト、アプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。
 
 ## Key facts
 
-- Name: Yuki Lab / ユキラボ (Google Play developer name: 裕輝ラボ)
+- Name: 裕輝ラボ (official Japanese name; Google Play developer name) / Yuki Lab in English. 裕輝 is read ゆうき (Yuki).
 - Website: https://yukilab.co (Japanese) and https://yukilab.co/en (English)
 - Parent company: Yuki Security, registered as 株式会社裕輝 (Yuki Co., Ltd.), a security-guard company in Kobe, Hyogo, Japan — https://yuki-security.com/
 - Contact: sakuseed0327@gmail.com, or the "店長に相談する / Ask the manager" form at https://yukilab.co/#contact

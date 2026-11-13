@@ -101,12 +101,12 @@ export function structuredData(l) {
         '@type': 'Organization',
         '@id': ORG,
         name: 'Yuki Lab',
-        alternateName: ['ユキラボ', 'Yuki Lab Store', 'ユキラボ ストア', '裕輝ラボ'],
+        alternateName: ['裕輝ラボ', 'ユキラボ', 'Yuki Lab Store', '裕輝ラボ ストア'],
         url: `${SITE}/`,
         logo: { '@type': 'ImageObject', url: `${SITE}/icon-512.png`, width: 512, height: 512 },
         image: `${SITE}/img/og.jpg`,
         description: T(l,
-          'ユキラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門です。ゲーム、LP・Webサイト、スマホアプリ・セキュリティアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。店長はゾウのマスコット「ユキゾウ」。',
+          '裕輝ラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門です。ゲーム、LP・Webサイト、スマホアプリ・セキュリティアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。店長はゾウのマスコット「ユキゾウ」。',
           'Yuki Lab is the creative studio of Yuki Security (Yuki Co., Ltd.), a security company in Kobe, Japan. It makes games, landing pages and websites, mobile and security apps, music and video, logo and UI/UX design, and Excel, Word and PowerPoint documents to order. Its store manager is Yukizo, an elephant mascot.'),
         email: CONTACT_EMAIL,
         contactPoint: {
@@ -128,7 +128,7 @@ export function structuredData(l) {
         ],
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
-          name: T(l, 'ユキラボの制作メニュー', 'What Yuki Lab makes'),
+          name: T(l, '裕輝ラボの制作メニュー', 'What Yuki Lab makes'),
           itemListElement: [
             lpPlan,
             ...SERVICES.map(([nja, nen, dja, den]) => ({
@@ -167,8 +167,8 @@ export function structuredData(l) {
         '@type': 'WebSite',
         '@id': WEBSITE,
         url: `${SITE}/`,
-        name: 'Yuki Lab（ユキラボ）',
-        alternateName: ['ユキラボ', 'Yuki Lab Store'],
+        name: 'Yuki Lab（裕輝ラボ）',
+        alternateName: ['裕輝ラボ', 'ユキラボ', 'Yuki Lab Store'],
         inLanguage: ['ja', 'en'],
         publisher: { '@id': ORG },
       },
@@ -176,7 +176,7 @@ export function structuredData(l) {
         '@type': 'WebPage',
         '@id': `${page}#webpage`,
         url: page,
-        name: T(l, 'ユキラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作｜神戸', 'Yuki Lab | Games, landing pages, apps, video and design studio in Kobe, Japan'),
+        name: T(l, '裕輝ラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作｜神戸', 'Yuki Lab | Games, landing pages, apps, video and design studio in Kobe, Japan'),
         inLanguage: l,
         isPartOf: { '@id': WEBSITE },
         about: { '@id': ORG },
@@ -186,7 +186,7 @@ export function structuredData(l) {
       {
         '@type': 'ItemList',
         '@id': `${page}#games`,
-        name: T(l, 'ユキラボが配信中のゲーム', 'Games by Yuki Lab'),
+        name: T(l, '裕輝ラボが配信中のゲーム', 'Games by Yuki Lab'),
         numberOfItems: GAMES.length,
         itemListElement: GAMES.map((g, i) => ({
           '@type': 'ListItem',

@@ -85,7 +85,7 @@ const LINES = {
     en: "You collected <strong>every stamp</strong> — thank you! Ask me about anything that caught your eye.",
   },
   salute: {
-    ja: 'はいっ、敬礼！ご用命は<strong>ユキラボ</strong>へ！',
+    ja: 'はいっ、敬礼！ご用命は<strong>裕輝ラボ</strong>へ！',
     en: 'Salute! For anything you need, call on <strong>Yuki Lab</strong>!',
   },
 };
@@ -95,8 +95,8 @@ const HINT = {
 };
 const META = { // keep in step with the <head> of index.html (Japanese, and the data-en values for /en)
   ja: {
-    title: 'ユキラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作｜神戸',
-    description: 'ユキラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門。ゲーム開発、LP・Webサイト制作（採用・問い合わせLP 88,000円税込）、スマホアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで。ご相談無料。',
+    title: '裕輝ラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作｜神戸',
+    description: '裕輝ラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門。ゲーム開発、LP・Webサイト制作（採用・問い合わせLP 88,000円税込）、スマホアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで。ご相談無料。',
   },
   en: {
     title: 'Yuki Lab | Games, landing pages, apps, video & design studio in Kobe, Japan',
