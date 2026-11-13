@@ -1,0 +1,57 @@
+/* 会社概要 (/company): a plain, fast text page that reuses the store's tokens, buttons and brand mark. */
+.co { background: linear-gradient(180deg, #eef6fe, var(--paper) 420px); }
+.co-nav {
+  position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  height: var(--nav-h); padding: 0 max(16px, calc((100% - 960px) / 2));
+  background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.co-nav .brand-text small { display: block; }
+#main { max-width: 960px; margin: 0 auto; padding: 20px 16px 72px; }
+.co-crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; font: 700 12.5px/1.5 var(--round); color: var(--muted); }
+.co-crumbs li + li::before { content: "›"; margin-right: 6px; }
+.co-crumbs a { color: var(--sky-700); }
+.co-hero { padding: 36px 0 28px; }
+.co-hero h1 { margin-top: 12px; font-size: clamp(32px, 5vw, 48px); font-weight: 800; color: var(--navy-900); }
+.co-hero h1 small { display: block; margin-top: 10px; font-size: clamp(17px, 2.4vw, 22px); color: var(--navy); }
+.co-hero rt { font-size: 0.45em; letter-spacing: 0.08em; color: var(--sky-700); }
+.co-lead { margin-top: 18px; max-width: 46em; font-size: 16px; line-height: 1.95; color: #3c4670; }
+.co-card { margin-top: 22px; padding: 26px 28px; border-radius: 22px; background: #fff; box-shadow: var(--shadow-1); }
+.co-card h2 { font-size: clamp(21px, 2.8vw, 26px); font-weight: 800; color: var(--navy-900); padding-left: 14px; border-left: 5px solid var(--gold); margin-bottom: 14px; }
+.co-card p + p { margin-top: 10px; }
+.co-card p { line-height: 1.95; }
+.co-card a { color: var(--sky-700); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.co-table { margin: 0; }
+.co-table div { display: grid; grid-template-columns: 9em minmax(0, 1fr); gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+.co-table div:last-child { border-bottom: 0; }
+.co-table dt { font: 700 14px/1.7 var(--round); color: var(--muted); }
+.co-table dd { margin: 0; font-size: 15px; line-height: 1.8; color: var(--navy-900); }
+.co-table small { font-size: 12.5px; color: var(--muted); }
+.co-dots { margin: 0; padding-left: 1.2em; }
+.co-brands, .co-services, .co-games { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.co-brands { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.co-brands li { display: grid; gap: 6px; align-content: start; padding: 16px; border-radius: 16px; background: var(--paper); border: 1px solid var(--line); }
+.co-brands li.is-here { background: var(--gold-100); border-color: var(--gold); }
+.co-brands b, .co-services b, .co-games b { font: 800 16px/1.4 var(--round); color: var(--navy-900); }
+.co-brands span, .co-services span, .co-games span { font-size: 14px; line-height: 1.75; color: #3c4670; }
+.co-brands a { font: 700 13px/1.4 var(--round); }
+.co-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.co-services a { display: grid; gap: 4px; height: 100%; padding: 14px 16px; border-radius: 14px; background: var(--paper); border: 1px solid var(--line); text-decoration: none; }
+.co-services a:hover { border-color: var(--sky); }
+.co-games { margin-top: 12px; }
+.co-games li { display: grid; gap: 4px; padding: 14px 0; border-bottom: 1px dashed var(--line); }
+.co-games li:last-child { border-bottom: 0; }
+.co-links { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.co-links a { font: 700 13px/1.5 var(--round); }
+.co-cta { margin-top: 28px; padding: 32px 24px; border-radius: 22px; text-align: center; background: var(--navy-800); color: #e9eeff; }
+.co-cta h2 { font-size: clamp(22px, 3vw, 28px); font-weight: 800; color: #fff; }
+.co-cta p { margin-top: 10px; }
+.co-cta-btns { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px !important; }
+.co-foot { padding: 28px 16px 36px; text-align: center; background: var(--navy-950); color: #8e99c4; font-size: 13px; }
+.co-foot p { margin-bottom: 8px; }
+.co-foot a { color: #dfe5fb; }
+@media (max-width: 760px) {
+  .co-brands, .co-services { grid-template-columns: minmax(0, 1fr); }
+  .co-card { padding: 22px 18px; }
+  .co-table div { grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 12px 0; }
+  .co-lead { font-size: 15px; }
+}

@@ -727,6 +727,60 @@ html[lang="en"] .lang [data-set-lang="en"] { background: #fff; color: var(--navy
 .receipt-foot { margin-top: 14px; min-height: 86px; padding-top: 4px; padding-right: 96px; text-align: left; font: 700 12px/1 var(--round); letter-spacing: 0.12em; color: var(--muted); }
 
 /* ============================================================
+   ABOUT (会社概要)
+   ============================================================ */
+.about { padding: 24px 16px 96px; background: #eef6fe; }
+.about-inner { max-width: 1080px; margin: 0 auto; }
+.about-head { text-align: center; max-width: 760px; margin: 0 auto; }
+.about-head h2 { margin-top: 10px; font-size: clamp(30px, 4.2vw, 44px); font-weight: 800; color: var(--navy-900); }
+.about-head h2 rt { font: 700 0.32em/1 var(--round); letter-spacing: 0.1em; color: var(--sky-700); }
+.about-lead { margin-top: 16px; font-size: 15.5px; line-height: 1.9; color: #3c4670; word-break: auto-phrase; }
+.about-grid { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.profile { border-radius: 22px; overflow: hidden; background: #fff; box-shadow: var(--shadow-2); }
+.profile-head {
+  display: flex; justify-content: space-between; gap: 12px; padding: 13px 22px;
+  background: var(--navy-800); color: var(--gold); font: 800 12px/1 var(--round); letter-spacing: 0.22em;
+}
+.profile dl { margin: 0; padding: 6px 22px 10px; }
+.profile dl div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 14px; padding: 13px 0; border-bottom: 1px dashed var(--line); }
+.profile dl div:last-child { border-bottom: 0; }
+.profile dt { font: 700 13px/1.65 var(--round); color: var(--muted); }
+.profile dd { margin: 0; font: 700 14.5px/1.65 var(--round); color: var(--navy-900); overflow-wrap: anywhere; }
+.profile dd small { font-size: 12px; color: var(--muted); }
+.profile dd a { color: var(--sky-700); text-underline-offset: 3px; }
+.group { border-radius: 22px; background: #fff; box-shadow: var(--shadow-1); padding: 22px; }
+.group-title { font: 800 12px/1 var(--round); letter-spacing: 0.22em; color: var(--sky-700); }
+.group-root {
+  margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: var(--navy-800); color: #fff;
+  display: grid; gap: 4px; text-align: center;
+}
+.group-root b { font: 800 19px/1.3 var(--round); letter-spacing: 0.04em; }
+.group-root small { font: 700 12px/1.4 var(--round); color: #c3cbea; }
+.group-list { list-style: none; margin: 0; padding: 14px 0 0 18px; display: grid; gap: 10px; position: relative; }
+.group-list::before { content: ""; position: absolute; left: 6px; top: 0; bottom: 26px; border-left: 2px dashed var(--sky-300); }
+.group-list li { position: relative; }
+.group-list li::before { content: ""; position: absolute; left: -12px; top: 50%; width: 10px; border-top: 2px dashed var(--sky-300); }
+.group-list a {
+  display: grid; gap: 2px; padding: 11px 14px; border-radius: 12px; text-decoration: none;
+  background: var(--paper); border: 1px solid var(--line); transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.group-list a:hover { border-color: var(--sky); transform: translateX(2px); }
+.group-list b { font: 800 15.5px/1.3 var(--round); color: var(--navy-900); }
+.group-list small { font: 700 12px/1.4 var(--round); color: var(--muted); }
+.group-list .is-here a { background: var(--gold-100); border-color: var(--gold); }
+.group-more { margin-top: 18px; text-align: center; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) {
+  .about { padding: 16px 16px 72px; }
+  .about-lead { font-size: 14.5px; text-align: left; }
+  .profile dl { padding: 4px 16px 8px; }
+  .profile dl div { grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 11px 0; }
+  .profile-head { padding: 12px 16px; }
+  .group { padding: 18px 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .group-list a { transition: none; } }
+
+/* ============================================================
    FAQ (よくある質問)
    ============================================================ */
 .faq { padding: 8px 16px 104px; background: linear-gradient(180deg, #eef6fe, var(--paper)); }

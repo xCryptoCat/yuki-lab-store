@@ -510,7 +510,7 @@ function award(key, label) {
     ? (l === 'ja' ? 'スタンプコンプリート！' : 'Stamp card complete!')
     : (l === 'ja' ? `「${label.ja}」のスタンプをゲット！` : `${label.en} stamp collected!`);
   const sub = done ? (l === 'ja' ? 'ご来店ありがとうございます' : 'Thanks for visiting every aisle') : `${n}/${ALL}`;
-  showToast(`<span class="toast-stamp" aria-hidden="true">ユ</span><span>${title}<small>${sub}</small></span>`);
+  showToast(`<span class="toast-stamp" aria-hidden="true">裕</span><span>${title}<small>${sub}</small></span>`);
 }
 renderRally();
 const dwell = new Map();
