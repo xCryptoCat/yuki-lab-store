@@ -1,4 +1,4 @@
-# Yuki Lab (ユキラボ) — https://yukilab.co
+# Yuki Lab (裕輝ラボ) — https://yukilab.co
 # Search engines and AI assistants are welcome to read and cite this site.
 User-agent: *
 Allow: /
