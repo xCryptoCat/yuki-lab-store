@@ -9,7 +9,7 @@
 // src/seo/schema.js, and the FAQPage data is read straight from the FAQ section, so it always matches.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { structuredData } from '../src/seo/schema.js';
+import { structuredData, companyStructuredData } from '../src/seo/schema.js';
 
 const ldTag = (id, data) =>
   `<script type="application/ld+json" id="${id}">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
@@ -81,6 +81,9 @@ export default function seoPages() {
     transformIndexHtml: {
       order: 'post',
       handler(html, ctx) {
+        if (/(^|\/)company\.html$/.test(ctx.filename)) {
+          return html.replace('</head>', `${ldTag('ld-site', companyStructuredData())}\n</head>`);
+        }
         if (!/(^|\/)index\.html$/.test(ctx.filename)) return html;
         return withStructuredData(html, 'ja');
       },

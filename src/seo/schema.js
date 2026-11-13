@@ -2,16 +2,38 @@
 // tools/seo-plugin.js injects it into index.html (Japanese, /) and en/index.html (English, /en).
 // Keep the facts here in step with what the page itself says.
 
+const T = (l, ja, en) => (l === 'ja' ? ja : en);
+
 export const SITE = 'https://yukilab.co';
 export const PAGE_URL = { ja: `${SITE}/`, en: `${SITE}/en` };
 export const CONTACT_EMAIL = 'sakuseed0327@gmail.com';
+
+// Operating company, as registered with the National Tax Agency (国税庁 法人番号公表サイト).
+export const COMPANY = {
+  ja: '株式会社裕輝',
+  kana: 'ユウキ',
+  en: 'Yuki Co., Ltd.',
+  corporateNumber: '5140001128433',
+  registry: 'https://www.houjin-bangou.nta.go.jp/henkorireki-johoto.html?selHouzinNo=5140001128433',
+  founded: '2022-12',
+  site: 'https://yuki-security.com/',
+};
+const ADDRESS = (l) => ({
+  '@type': 'PostalAddress',
+  postalCode: '658-0052',
+  addressRegion: T(l, '兵庫県', 'Hyogo'),
+  addressLocality: T(l, '神戸市東灘区', 'Higashinada-ku, Kobe'),
+  streetAddress: T(l, '住吉東町1丁目2-18', '1-2-18 Sumiyoshi-higashimachi'),
+  addressCountry: 'JP',
+});
+// Names people may search for. 裕輝 is read ゆうき (Yuki).
+const LAB_NAMES = ['裕輝ラボ', 'ゆうきラボ', 'ユウキラボ', 'ユキラボ', 'Yuki Lab', 'Yukilab', 'YUKI LAB', '裕輝ラボ ストア', 'Yuki Lab Store'];
 
 const ORG = `${SITE}/#organization`;
 const PARENT = `${SITE}/#parent`;
 const LABEL = `${SITE}/#yuki-record`;
 const WEBSITE = `${SITE}/#website`;
 
-const T = (l, ja, en) => (l === 'ja' ? ja : en);
 
 const GAMES = [
   {
@@ -100,14 +122,16 @@ export function structuredData(l) {
       {
         '@type': 'Organization',
         '@id': ORG,
-        name: 'Yuki Lab',
-        alternateName: ['裕輝ラボ', 'ユキラボ', 'Yuki Lab Store', '裕輝ラボ ストア'],
+        name: T(l, '裕輝ラボ', 'Yuki Lab'),
+        alternateName: LAB_NAMES.filter((n) => n !== T(l, '裕輝ラボ', 'Yuki Lab')),
+        brand: { '@type': 'Brand', name: '裕輝ラボ', alternateName: 'Yuki Lab', logo: `${SITE}/icon-512.png` },
+        slogan: T(l, 'ほしいものを、オーダーメイドで。', 'Games, video, music, design, web and apps, all made to order.'),
         url: `${SITE}/`,
         logo: { '@type': 'ImageObject', url: `${SITE}/icon-512.png`, width: 512, height: 512 },
         image: `${SITE}/img/og.jpg`,
         description: T(l,
-          '裕輝ラボ（Yuki Lab）は、神戸の警備会社 Yuki Security（株式会社裕輝）のクリエイティブ部門です。ゲーム、LP・Webサイト、スマホアプリ・セキュリティアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。店長はゾウのマスコット「ユキゾウ」。',
-          'Yuki Lab is the creative studio of Yuki Security (Yuki Co., Ltd.), a security company in Kobe, Japan. It makes games, landing pages and websites, mobile and security apps, music and video, logo and UI/UX design, and Excel, Word and PowerPoint documents to order. Its store manager is Yukizo, an elephant mascot.'),
+          '裕輝ラボ（ゆうきラボ／Yuki Lab）は、兵庫県神戸市の株式会社裕輝（ユウキ、法人番号 5140001128433）が運営するクリエイティブ部門です。株式会社裕輝は警備ブランド Yuki Security も運営しています。ゲーム、LP・Webサイト、スマホアプリ・セキュリティアプリ、音楽・動画、ロゴ・UI/UXデザイン、Excel・Word・PowerPoint資料をオーダーメイドで制作します。店長はゾウのマスコット「ユキゾウ」。',
+          'Yuki Lab (裕輝ラボ, pronounced "Yuki Lab") is the creative studio run by Yuki Co., Ltd. (株式会社裕輝, corporate number 5140001128433) in Kobe, Japan, the company behind the security brand Yuki Security. It makes games, landing pages and websites, mobile and security apps, music and video, logo and UI/UX design, and Excel, Word and PowerPoint documents to order. Its store manager is Yukizo, an elephant mascot.'),
         email: CONTACT_EMAIL,
         contactPoint: {
           '@type': 'ContactPoint',
@@ -116,7 +140,9 @@ export function structuredData(l) {
           availableLanguage: ['Japanese', 'English'],
           areaServed: 'JP',
         },
-        address: { '@type': 'PostalAddress', addressLocality: T(l, '神戸市', 'Kobe'), addressRegion: T(l, '兵庫県', 'Hyogo'), addressCountry: 'JP' },
+        address: ADDRESS(l),
+        location: { '@type': 'Place', name: T(l, '神戸市東灘区', 'Higashinada-ku, Kobe'), address: ADDRESS(l) },
+        foundingLocation: { '@type': 'Place', name: T(l, '兵庫県神戸市', 'Kobe, Hyogo, Japan') },
         areaServed: { '@type': 'Country', name: 'Japan' },
         knowsLanguage: ['ja', 'en'],
         knowsAbout: ['Game development', 'Mobile apps', 'Landing pages', 'Web design', 'Three.js 3D characters', 'Music production', 'Video production', 'Logo design', 'UI/UX design', 'Security operations apps'],
@@ -124,6 +150,7 @@ export function structuredData(l) {
         subOrganization: { '@id': LABEL },
         sameAs: [
           'https://apps.apple.com/jp/developer/yuki-k-k/id1891259139',
+          'https://www.tiktok.com/@yukirecord',
           'https://play.google.com/store/apps/developer?id=%E8%A3%95%E8%BC%9D%E3%83%A9%E3%83%9C',
         ],
         hasOfferCatalog: {
@@ -147,19 +174,26 @@ export function structuredData(l) {
       {
         '@type': 'Corporation',
         '@id': PARENT,
-        name: T(l, '株式会社裕輝', 'Yuki Co., Ltd.'),
-        legalName: '株式会社裕輝',
-        alternateName: ['Yuki Security', 'Yuki Co., Ltd.', '株式会社裕輝'],
-        url: 'https://yuki-security.com/',
-        description: T(l, '神戸の警備会社。', 'A security-guard company in Kobe, Japan.'),
-        address: { '@type': 'PostalAddress', addressLocality: T(l, '神戸市', 'Kobe'), addressRegion: T(l, '兵庫県', 'Hyogo'), addressCountry: 'JP' },
-        subOrganization: { '@id': ORG },
+        name: T(l, COMPANY.ja, COMPANY.en),
+        legalName: COMPANY.ja,
+        alternateName: ['裕輝', '株式会社ユウキ', 'ユウキ', 'Yuki Co., Ltd.', 'Yuki Security', COMPANY.ja].filter((n) => n !== T(l, COMPANY.ja, COMPANY.en)),
+        url: COMPANY.site,
+        identifier: { '@type': 'PropertyValue', propertyID: T(l, '法人番号', 'Japan Corporate Number'), value: COMPANY.corporateNumber },
+        foundingDate: COMPANY.founded,
+        description: T(l,
+          '兵庫県神戸市東灘区の会社。警備ブランド Yuki Security（交通誘導・イベント警備）と、クリエイティブ部門の裕輝ラボ、音楽レーベル Yuki Record を運営。',
+          'A company in Higashinada, Kobe, Japan. It runs the security brand Yuki Security (traffic and event guarding), the creative studio Yuki Lab (裕輝ラボ) and the music label Yuki Record.'),
+        address: ADDRESS(l),
+        sameAs: [COMPANY.registry],
+        brand: [{ '@type': 'Brand', name: 'Yuki Security' }, { '@type': 'Brand', name: '裕輝ラボ', alternateName: 'Yuki Lab' }],
+        subOrganization: [{ '@id': ORG }, { '@id': LABEL }],
       },
       {
         '@type': 'Organization',
         '@id': LABEL,
         name: 'Yuki Record',
-        description: T(l, 'Yuki Lab の音楽レーベル。いっしょにつくった曲をリリースできます。', "Yuki Lab's own music label, which releases songs made with clients."),
+        url: 'https://www.tiktok.com/@yukirecord',
+        description: T(l, '裕輝ラボ（株式会社裕輝）の音楽レーベル。いっしょにつくった曲をリリースできます。', "Yuki Lab's own music label, which releases songs made with clients."),
         parentOrganization: { '@id': ORG },
         sameAs: ['https://www.tiktok.com/@yukirecord'],
       },
@@ -167,8 +201,9 @@ export function structuredData(l) {
         '@type': 'WebSite',
         '@id': WEBSITE,
         url: `${SITE}/`,
-        name: 'Yuki Lab（裕輝ラボ）',
-        alternateName: ['裕輝ラボ', 'ユキラボ', 'Yuki Lab Store'],
+        // Google takes the site name shown in results from WebSite.name on the home page
+        name: T(l, '裕輝ラボ', 'Yuki Lab'),
+        alternateName: [T(l, 'Yuki Lab', '裕輝ラボ'), 'ゆうきラボ', 'yukilab.co'],
         inLanguage: ['ja', 'en'],
         publisher: { '@id': ORG },
       },
@@ -176,7 +211,7 @@ export function structuredData(l) {
         '@type': 'WebPage',
         '@id': `${page}#webpage`,
         url: page,
-        name: T(l, '裕輝ラボ（Yuki Lab）｜ゲーム・LP・アプリ・動画・デザイン制作｜神戸', 'Yuki Lab | Games, landing pages, apps, video and design studio in Kobe, Japan'),
+        name: T(l, '裕輝ラボ（ゆうきラボ）｜株式会社裕輝のゲーム・LP・アプリ・動画・デザイン制作｜神戸', 'Yuki Lab (裕輝ラボ) | Games, landing pages, apps, video and design studio of Yuki Co., Ltd. in Kobe, Japan'),
         inLanguage: l,
         isPartOf: { '@id': WEBSITE },
         about: { '@id': ORG },
@@ -212,3 +247,34 @@ export function structuredData(l) {
 }
 
 export { GAMES, SERVICES };
+
+/** Structured data for the 会社概要 page (/company, Japanese only). */
+export function companyStructuredData() {
+  const url = `${SITE}/company`;
+  const graph = structuredData('ja')['@graph'].filter((n) => [ORG, PARENT, LABEL, WEBSITE].includes(n['@id']));
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      ...graph,
+      {
+        '@type': 'AboutPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: '会社概要｜裕輝ラボ（ゆうきラボ）・株式会社裕輝',
+        inLanguage: 'ja',
+        isPartOf: { '@id': WEBSITE },
+        about: [{ '@id': ORG }, { '@id': PARENT }],
+        mainEntity: { '@id': ORG },
+        breadcrumb: { '@id': `${url}#breadcrumb` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '裕輝ラボ', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: '会社概要', item: url },
+        ],
+      },
+    ],
+  };
+}
