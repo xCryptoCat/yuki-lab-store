@@ -27,6 +27,7 @@ const ADDRESS = (l) => ({
   addressCountry: 'JP',
 });
 // Names people may search for. 裕輝 is read ゆうき (Yuki).
+const RECORD_NAMES = ['裕輝レコード', 'ゆうきレコード', 'ユウキレコード', 'Yuki Record', 'YUKI RECORD', 'Yuki Records', 'yukirecord'];
 const LAB_NAMES = ['裕輝ラボ', 'ゆうきラボ', 'ユウキラボ', 'ユキラボ', 'Yuki Lab', 'Yukilab', 'YUKI LAB', '裕輝ラボ ストア', 'Yuki Lab Store'];
 
 const ORG = `${SITE}/#organization`;
@@ -83,7 +84,7 @@ const GAMES = [
 const SERVICES = [
   ['ゲーム制作', 'Game development', '企画・キャラクター・開発まで、スマホゲームをまるごと制作。', 'Mobile games from concept and characters to development.'],
   ['Excel・Word・PowerPoint資料作成', 'Excel, Word and PowerPoint documents', '表計算・集計、文書・マニュアル、プレゼン資料の作成。', 'Spreadsheets, documents and manuals, and presentation decks.'],
-  ['音楽制作', 'Music production', '作曲・BGM制作。自社レーベル Yuki Record からのリリースも可能。', 'Composing and background music, with release on our own label, Yuki Record.'],
+  ['音楽制作', 'Music production', '作曲・BGM制作。自社レーベル 裕輝レコード（Yuki Record）からのリリースも可能。', 'Composing and background music, with release on our own label, Yuki Record.'],
   ['動画制作・動画編集', 'Video production and editing', '企画・撮影・制作から、お手持ちの素材の編集まで。', 'Planning, shooting and producing video, or editing your footage.'],
   ['コーポレートサイト制作', 'Company websites', '更新しやすく、スマホ対応が標準のコーポレートサイト。', 'Company websites that are easy to update and mobile-ready as standard.'],
   ['3Dキャラクター・Web演出', '3D mascots for websites', '動いて反応する3Dキャラクターをサイトに。', 'Live 3D characters that move and react on your website.'],
@@ -150,7 +151,6 @@ export function structuredData(l) {
         subOrganization: { '@id': LABEL },
         sameAs: [
           'https://apps.apple.com/jp/developer/yuki-k-k/id1891259139',
-          'https://www.tiktok.com/@yukirecord',
           'https://play.google.com/store/apps/developer?id=%E8%A3%95%E8%BC%9D%E3%83%A9%E3%83%9C',
         ],
         hasOfferCatalog: {
@@ -181,19 +181,25 @@ export function structuredData(l) {
         identifier: { '@type': 'PropertyValue', propertyID: T(l, '法人番号', 'Japan Corporate Number'), value: COMPANY.corporateNumber },
         foundingDate: COMPANY.founded,
         description: T(l,
-          '兵庫県神戸市東灘区の会社。警備ブランド Yuki Security（交通誘導・イベント警備）と、クリエイティブ部門の裕輝ラボ、音楽レーベル Yuki Record を運営。',
-          'A company in Higashinada, Kobe, Japan. It runs the security brand Yuki Security (traffic and event guarding), the creative studio Yuki Lab (裕輝ラボ) and the music label Yuki Record.'),
+          '兵庫県神戸市東灘区の会社。警備ブランド Yuki Security（交通誘導・イベント警備）と、クリエイティブ部門の裕輝ラボ、音楽レーベルの裕輝レコード（Yuki Record）を運営。',
+          'A company in Higashinada, Kobe, Japan. It runs the security brand Yuki Security (traffic and event guarding), the creative studio Yuki Lab (裕輝ラボ) and the music label Yuki Record (裕輝レコード).'),
         address: ADDRESS(l),
         sameAs: [COMPANY.registry],
-        brand: [{ '@type': 'Brand', name: 'Yuki Security' }, { '@type': 'Brand', name: '裕輝ラボ', alternateName: 'Yuki Lab' }],
+        brand: [{ '@type': 'Brand', name: 'Yuki Security' }, { '@type': 'Brand', name: '裕輝ラボ', alternateName: 'Yuki Lab' }, { '@type': 'Brand', name: '裕輝レコード', alternateName: 'Yuki Record' }],
         subOrganization: [{ '@id': ORG }, { '@id': LABEL }],
       },
       {
         '@type': 'Organization',
         '@id': LABEL,
-        name: 'Yuki Record',
-        url: 'https://www.tiktok.com/@yukirecord',
-        description: T(l, '裕輝ラボ（株式会社裕輝）の音楽レーベル。いっしょにつくった曲をリリースできます。', "Yuki Lab's own music label, which releases songs made with clients."),
+        name: T(l, '裕輝レコード', 'Yuki Record'),
+        alternateName: RECORD_NAMES.filter((n) => n !== T(l, '裕輝レコード', 'Yuki Record')),
+        url: `${SITE}/record`,
+        logo: { '@type': 'ImageObject', url: `${SITE}/img/og-record.jpg`, width: 1200, height: 630 },
+        description: T(l,
+          '裕輝レコード（ゆうきレコード／Yuki Record）は、裕輝ラボ（株式会社裕輝）の音楽レーベルです。裕輝ラボでいっしょにつくったオリジナル曲・テーマソング・BGMを、裕輝レコードからリリースできます。',
+          "Yuki Record (裕輝レコード) is the music label of Yuki Lab (Yuki Co., Ltd.) in Kobe, Japan. Original songs, theme songs and BGM made with clients at Yuki Lab can be released on it."),
+        knowsAbout: ['Music production', 'Composition', 'Background music', 'Theme songs', 'Jingles', 'Music release'],
+        address: ADDRESS(l),
         parentOrganization: { '@id': ORG },
         sameAs: ['https://www.tiktok.com/@yukirecord'],
       },
@@ -217,6 +223,8 @@ export function structuredData(l) {
         about: { '@id': ORG },
         primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}/img/og.jpg`, width: 1200, height: 630 },
         mainEntity: { '@id': ORG },
+        // what a voice assistant should read aloud when asked about 裕輝ラボ
+        speakable: { '@type': 'SpeakableSpecification', cssSelector: ['#about .about-lead', '#faq .faq-item:first-child .faq-a'] },
       },
       {
         '@type': 'ItemList',
@@ -273,6 +281,50 @@ export function companyStructuredData() {
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: '裕輝ラボ', item: `${SITE}/` },
           { '@type': 'ListItem', position: 2, name: '会社概要', item: url },
+        ],
+      },
+    ],
+  };
+}
+
+/** Structured data for the 裕輝レコード page (/record, Japanese only). The FAQPage comes from the page's own FAQ. */
+export function recordStructuredData() {
+  const url = `${SITE}/record`;
+  const graph = structuredData('ja')['@graph'].filter((n) => [ORG, PARENT, LABEL, WEBSITE].includes(n['@id']));
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      ...graph,
+      {
+        '@type': ['WebPage', 'AboutPage'],
+        '@id': `${url}#webpage`,
+        url,
+        name: '裕輝レコード（ゆうきレコード／Yuki Record）｜裕輝ラボの音楽レーベル',
+        inLanguage: 'ja',
+        isPartOf: { '@id': WEBSITE },
+        about: { '@id': LABEL },
+        mainEntity: { '@id': LABEL },
+        primaryImageOfPage: { '@type': 'ImageObject', url: `${SITE}/img/og-record.jpg`, width: 1200, height: 630 },
+        breadcrumb: { '@id': `${url}#breadcrumb` },
+        speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.co-lead'] },
+      },
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: '音楽制作・裕輝レコードからのリリース',
+        serviceType: '音楽制作',
+        description: 'オリジナル曲・テーマソング・BGM・ジングルの制作。できた曲は裕輝ラボの音楽レーベル「裕輝レコード」からリリースできます。',
+        provider: { '@id': ORG },
+        brand: { '@id': LABEL },
+        areaServed: { '@type': 'Country', name: 'Japan' },
+        url,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: '裕輝ラボ', item: `${SITE}/` },
+          { '@type': 'ListItem', position: 2, name: '裕輝レコード', item: url },
         ],
       },
     ],

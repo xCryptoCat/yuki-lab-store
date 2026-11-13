@@ -37,7 +37,7 @@ const LINES = {
     en: '<strong>PowerPoint</strong> decks that get your point across.',
   },
   music: {
-    ja: '<strong>音楽制作</strong>。BGMもテーマソングもつくれるし、うちのレーベル<strong>Yuki Record</strong>からリリースもできるゾウ。♪',
+    ja: '<strong>音楽制作</strong>。BGMもテーマソングもつくれるし、うちのレーベル<strong>裕輝レコード</strong>からリリースもできるゾウ。♪',
     en: '<strong>Music</strong>: BGM, jingles, even a theme song, and we can release it on our own label, <strong>Yuki Record</strong>. ♪',
   },
   video: {

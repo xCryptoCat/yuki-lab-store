@@ -1,0 +1,6 @@
+# 裕輝ラボ（Yuki Lab）/ 株式会社裕輝 — https://yukilab.co
+# Found a security issue on this site? Please tell us. セキュリティ上の問題を見つけたらご連絡ください。
+Contact: mailto:sakuseed0327@gmail.com
+Expires: 2027-11-13T00:00:00.000Z
+Preferred-Languages: ja, en
+Canonical: https://yukilab.co/.well-known/security.txt

@@ -29,6 +29,8 @@ export default defineConfig(({ mode }) =>
               index: resolve(import.meta.dirname, 'index.html'),
               viewer: resolve(import.meta.dirname, 'viewer.html'),
               company: resolve(import.meta.dirname, 'company.html'),
+              record: resolve(import.meta.dirname, 'record.html'),
+              404: resolve(import.meta.dirname, '404.html'),
             },
           },
         },
